@@ -1,0 +1,71 @@
+{
+  "name": "velvet-ui-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Velvet UI - A modern React UI component library",
+  "keywords": ["react", "ui", "components", "typescript", "monorepo"],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@8.15.0",
+  "workspaces": [
+    "packages/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "dev": "pnpm --filter @velvet-ui/docs dev",
+    "build": "pnpm --filter @velvet-ui/core build",
+    "build:docs": "pnpm --filter @velvet-ui/docs build",
+    "test": "pnpm --filter @velvet-ui/core test",
+    "test:watch": "pnpm --filter @velvet-ui/core test:watch",
+    "test:coverage": "pnpm --filter @velvet-ui/core test:coverage",
+    "test:e2e": "pnpm --filter @velvet-ui/core test:e2e",
+    "storybook": "pnpm --filter @velvet-ui/core storybook",
+    "build-storybook": "pnpm --filter @velvet-ui/core build-storybook",
+    "lint": "pnpm --filter @velvet-ui/core lint",
+    "lint:fix": "pnpm --filter @velvet-ui/core lint:fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "clean": "pnpm -r exec -- rm -rf node_modules && rm -rf node_modules",
+    "install:all": "pnpm install",
+    "new": "pnpm --filter @velvet-ui/core new",
+    "preview": "pnpm --filter @velvet-ui/docs preview",
+    "analyze": "pnpm --filter @velvet-ui/core analyze"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@umijs/fabric": "^3",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
+    "prettier-plugin-packagejson": "^2.4.0",
+    "typescript": "^5.4.0"
+  },
+  "lint-staged": {
+    "*.ts?(x)": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.less": [
+      "stylelint --syntax less --fix"
+    ],
+    "*.{md,html,json}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "@velvet-ui/scripts",
+  "version": "0.1.0",
+  "description": "Velvet UI - Scripts and automation",
+  "private": true,
+  "scripts": {
+    "setup": "echo 'Scripts placeholder'"
+  }
+} 
