@@ -9,10 +9,14 @@ velvet-ui/
 ├── packages/
 │   ├── core/              # 核心组件库
 │   │   ├── src/           # 组件源代码
-│   │   ├── components/    # 组件目录
-│   │   │   ├── ai/        # AI 组件目录
-│   │   │   └── common/    # 通用组件
-│   │   ├── styles/        # 样式文件
+│   │   │   ├── components/    # 组件目录
+│   │   │   │   ├── ai/        # AI 组件目录
+│   │   │   │   └── common/    # 通用组件
+│   │   │   │       └── button/ # 按钮组件
+│   │   │   ├── styles/        # 样式文件
+│   │   │   ├── utils/         # 工具函数
+│   │   │   ├── types/         # 类型定义
+│   │   │   └── index.ts       # 入口文件
 │   │   ├── tests/         # 测试文件
 │   │   └── package.json   # 核心包配置
 │   └── docs/              # 文档网站
@@ -35,7 +39,7 @@ velvet-ui/
 - **架构**: Monorepo (pnpm workspace)
 - **组件开发**: Storybook 7.6+
 - **代码高亮**: Highlight.js 11.9+
-- **测试**: Jest + React Testing Library
+- **测试**: Jest 29.7+ + React Testing Library 14.3+
 - **样式**: CSS Modules + 设计系统
 - **Markdown 渲染**: react-markdown 9.0.1+
 - **图标库**: lucide-react 0.294.0+
@@ -43,7 +47,28 @@ velvet-ui/
 ## 组件功能
 
 ### 已实现组件
-- **Button** - 按钮组件，支持多种样式、状态和图标
+- **Button** - 按钮组件
+  - [x] 多种按钮类型：default（默认）、primary（主要）、dashed（虚线）、text（文本）、link（链接）
+  - [x] 禁用状态支持：通过 disabled 属性
+  - [x] 测试覆盖：完整的测试体系
+    - **单元测试**（27个测试用例）
+      - 基础渲染测试（4个测试用例）
+      - 按钮类型测试（5个测试用例）
+      - 禁用状态测试（2个测试用例）
+      - 点击事件测试（3个测试用例）
+      - HTML属性测试（3个测试用例）
+      - 样式和样式属性测试（2个测试用例）
+      - 无障碍性测试（3个测试用例）
+      - 边界情况测试（3个测试用例）
+      - 性能测试（2个测试用例）
+    - **快照测试**（8个测试用例）
+      - 默认按钮快照
+      - 各种类型按钮快照
+      - 禁用状态快照
+      - 自定义样式快照
+    - **测试统计**
+      - 总测试用例：35个
+      - 测试覆盖率：78.57%
 
 ### 待实现组件
 - **AIChat** - 智能聊天组件
@@ -111,15 +136,15 @@ pnpm build
 # 构建文档网站
 pnpm build:docs
 
-# 运行测试
-pnpm test
+# 测试相关命令
+pnpm test                    # 运行所有测试
+pnpm test:watch             # 运行测试（监听模式）
+pnpm test:coverage          # 生成测试覆盖率报告
+pnpm test:update            # 更新快照测试
+pnpm test:e2e               # 运行 E2E 测试
 
-# 运行 E2E 测试
-pnpm test:e2e
-
-# 代码检查
-pnpm lint
-
-# 代码格式化
-pnpm format
+# 代码质量
+pnpm lint                   # 代码检查
+pnpm lint:fix               # 自动修复代码问题
+pnpm format                 # 代码格式化
 ```

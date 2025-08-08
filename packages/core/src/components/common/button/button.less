@@ -1,0 +1,213 @@
+/* 基础按钮样式 */
+.velvet-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  height: 32px;
+  padding: 4px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.5715;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition: all var(--transition-normal);
+  outline: none;
+  box-sizing: border-box;
+  margin: 0;
+
+  /* 悬停态（非禁用时） */
+  &:hover:not(:disabled):not(.velvet-btn--disabled) {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-color: var(--primary-color-light);
+  }
+
+  /* 激活态（非禁用时） */
+  &:active:not(:disabled):not(.velvet-btn--disabled) {
+    color: var(--primary-color-active);
+    border-color: var(--primary-color-active);
+    background-color: var(--primary-color-light);
+  }
+
+  /* 键盘聚焦可见态 */
+  &:focus-visible {
+    outline: 2px solid var(--primary-color-light);
+    outline-offset: 1px;
+  }
+
+  /* 主要按钮 */
+  &.velvet-btn--primary {
+    color: var(--text-color-inverse);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+
+    &:hover:not(:disabled):not(.velvet-btn--disabled) {
+      background-color: var(--primary-color-hover);
+      border-color: var(--primary-color-hover);
+      color: var(--text-color-inverse);
+    }
+
+    &:active:not(:disabled):not(.velvet-btn--disabled) {
+      background-color: var(--primary-color-active);
+      border-color: var(--primary-color-active);
+    }
+  }
+
+  /* 虚线按钮 */
+  &.velvet-btn--dashed {
+    border-style: dashed;
+  }
+
+  /* 文本按钮 */
+  &.velvet-btn--text {
+    color: var(--text-color);
+    background-color: transparent;
+    border-color: transparent;
+    padding: 0;
+    height: auto;
+
+    &:hover:not(:disabled):not(.velvet-btn--disabled) {
+      color: var(--text-color-secondary);
+      background-color: var(--bg-color-light);
+    }
+
+    &:active:not(:disabled):not(.velvet-btn--disabled) {
+      color: var(--text-color);
+      background-color: var(--bg-color-dark);
+    }
+  }
+
+  /* 禁用状态（属性和类名双重支持） */
+  &[disabled],
+  &[aria-disabled="true"],
+  &.velvet-btn--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    border-color: var(--border-color);
+    color: var(--text-color-disabled);
+    background-color: var(--bg-color-light);
+    box-shadow: none;
+
+    /* 禁用时禁止任何交互样式 */
+    &:hover,
+    &:focus,
+    &:active {
+      cursor: not-allowed;
+      pointer-events: none;
+      border-color: var(--border-color);
+      color: var(--text-color-disabled);
+      background-color: var(--bg-color-light);
+      box-shadow: none;
+    }
+
+    /* 链接按钮禁用状态 - 无边框无背景但保持下划线 */
+    &.velvet-btn--link {
+      border: none !important;
+      border-color: transparent !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+      text-decoration: underline;
+      
+      &:hover,
+      &:focus,
+      &:active {
+        border: none !important;
+        border-color: transparent !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        text-decoration: underline;
+      }
+    }
+
+    /* 文本按钮禁用状态 - 无边框无背景 */
+    &.velvet-btn--text {
+      border-color: transparent;
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: transparent;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+/* 链接按钮 - 使用更高特异性确保样式生效 */
+button.velvet-btn.velvet-btn--link,
+.velvet-btn.velvet-btn--link {
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  height: auto !important;
+  text-decoration: underline !important;
+
+  &:hover:not(:disabled):not(.velvet-btn--disabled),
+  &:focus:not(:disabled):not(.velvet-btn--disabled),
+  &:active:not(:disabled):not(.velvet-btn--disabled) {
+    background-color: transparent !important;
+    border: 0 !important;
+    border-width: 0 !important;
+    border-style: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    text-decoration: underline !important;
+  }
+
+  &:hover:not(:disabled):not(.velvet-btn--disabled) {
+    color: var(--primary-color-hover) !important;
+  }
+
+  &:active:not(:disabled):not(.velvet-btn--disabled) {
+    color: var(--primary-color-active) !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color-light) !important;
+    outline-offset: 1px !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* 禁用状态 */
+  &[disabled],
+  &[aria-disabled="true"],
+  &.velvet-btn--disabled {
+    border: 0 !important;
+    border-width: 0 !important;
+    border-style: none !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    text-decoration: underline !important;
+    color: var(--text-color-disabled) !important;
+    
+    &:hover,
+    &:focus,
+    &:active {
+      border: 0 !important;
+      border-width: 0 !important;
+      border-style: none !important;
+      border-color: transparent !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+      text-decoration: underline !important;
+      color: var(--text-color-disabled) !important;
+    }
+  }
+}

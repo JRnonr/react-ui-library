@@ -1,14 +1,26 @@
-import { FC } from 'react';
-import { Props } from './interface';
+import React, { forwardRef } from 'react';
+import classNames from 'classnames';
+import './{{kebabCase name}}.less';
 
-const defaultProps = {
+export interface {{pascalCase name}}Props {
+  /** 自定义类名 */
+  className?: string;
+  /** 自定义样式 */
+  style?: React.CSSProperties;
+  /** 子元素 */
+  children?: React.ReactNode;
+}
 
-};
+export const {{pascalCase name}} = forwardRef<HTMLDivElement, {{pascalCase name}}Props>(
+  ({ className, style, children, ...rest }, ref) => {
+    const classes = classNames('velvet-{{kebabCase name}}', className);
 
-const {{pascalCase name}}: FC<Props> = userProps => {
-  const props = { ...defaultProps, ...userProps };
+    return (
+      <div ref={ref} className={classes} style={style} {...rest}>
+        {children}
+      </div>
+    );
+  }
+);
 
-  return <>{{pascalCase name}}</>;
-  };
-
-  export default {{pascalCase name}};
+{{pascalCase name}}.displayName = '{{pascalCase name}}';

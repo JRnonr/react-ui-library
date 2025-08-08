@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "description": "Velvet UI - A modern React UI component library",
-  "keywords": ["react", "ui", "components", "typescript", "monorepo"],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "typescript",
+    "monorepo"
+  ],
   "author": {
     "name": "Your Name",
     "email": "your.email@example.com"
@@ -42,6 +48,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.0",
     "husky": "^9.0.0",
+    "less": "^4.2.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.0",
     "prettier-plugin-packagejson": "^2.4.0",

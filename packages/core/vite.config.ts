@@ -46,6 +46,13 @@ export default defineConfig(({ command }) => {
             react: 'React',
             'react-dom': 'ReactDOM',
           },
+          assetFileNames: (assetInfo) => {
+            const info = assetInfo as { name?: string };
+            if (info.name === 'style.css') {
+              return 'styles/index.css';
+            }
+            return info.name || 'unknown';
+          },
         },
       },
       sourcemap: true,

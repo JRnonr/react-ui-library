@@ -61,7 +61,7 @@ function App() {
         </div>
         <div className="header-right">
           <div className="search-box">
-            <span className="search-icon">🔍</span>
+            <span className="search-icon">搜索</span>
             <input 
               type="text" 
               placeholder="输入关键字搜索..." 

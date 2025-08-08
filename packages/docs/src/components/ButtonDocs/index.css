@@ -1,7 +1,7 @@
 /* Button 文档页面样式 */
 .button-docs {
   max-width: 100%;
-  padding: 0;
+  padding: 24px;
 }
 
 /* 文档头部 */
@@ -29,10 +29,12 @@
 /* 演示区域 */
 .demo-section {
   margin-bottom: 48px;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
 }
 
 .demo-header {
-  margin-bottom: 24px;
+  padding: 24px 24px 12px;
 }
 
 .demo-title {
@@ -51,19 +53,13 @@
 }
 
 .demo-content {
-  border: 1px solid #f0f0f0;
-  border-radius: 6px;
-  overflow: hidden;
+  position: relative;
 }
 
 .demo-preview {
-  padding: 32px 24px;
-  background: #fafafa;
-  border-bottom: 1px solid #f0f0f0;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  padding: 42px 24px;
+  background: #ffffff;
+  border-top: 1px solid #f0f0f0;
 }
 
 .demo-buttons {
@@ -75,14 +71,14 @@
 
 /* 代码区域 */
 .demo-code {
-  background: #fff;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
 }
 
 .demo-code-header {
   padding: 12px 16px;
-  border-bottom: 1px solid #f0f0f0;
-  display: flex;
-  justify-content: flex-end;
+  text-align: center;
+  border-bottom: 1px dashed #f0f0f0;
 }
 
 .demo-code-toggle {
@@ -97,27 +93,29 @@
 }
 
 .demo-code-toggle:hover {
-  border-color: #1890ff;
   color: #1890ff;
+  border-color: #1890ff;
 }
 
 .demo-code-content {
   margin: 0;
-  padding: 16px;
-  background: #f6f8fa;
-  border-radius: 0;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #24292e;
+  padding: 16px 24px;
+  background: #ffffff;
   overflow-x: auto;
 }
 
 .demo-code-content code {
-  background: none;
-  padding: 0;
-  font-size: inherit;
-  color: inherit;
+  display: block;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #595959;
+}
+
+/* 代码高亮主题覆盖 */
+.hljs {
+  background: #ffffff !important;
+  padding: 0 !important;
 }
 
 /* API 文档 */
@@ -135,26 +133,47 @@
 }
 
 .api-table {
+  width: 100%;
   overflow-x: auto;
 }
 
 .api-table table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  table-layout: fixed;
 }
 
 .api-table th,
 .api-table td {
-  padding: 12px 16px;
+  padding: 16px;
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
-  vertical-align: top;
+}
+
+/* 设置列宽 */
+.api-table th:nth-child(1),
+.api-table td:nth-child(1) {
+  width: 15%;
+}
+
+.api-table th:nth-child(2),
+.api-table td:nth-child(2) {
+  width: 25%;
+}
+
+.api-table th:nth-child(3),
+.api-table td:nth-child(3) {
+  width: 35%;
+}
+
+.api-table th:nth-child(4),
+.api-table td:nth-child(4) {
+  width: 25%;
 }
 
 .api-table th {
-  background: #fafafa;
   font-weight: 600;
+  background: #fafafa;
   color: #262626;
 }
 
@@ -167,12 +186,16 @@
   padding: 2px 6px;
   border-radius: 3px;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   color: #d73a49;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .button-docs {
+    padding: 16px;
+  }
+
   .docs-title {
     font-size: 24px;
   }

@@ -12,49 +12,34 @@ export default function (plop: NodePlopAPI) {
     actions: [
       {
         type: 'add',
-        path: path.resolve(__dirname, '../src/{{kebabCase name}}/index.ts'),
+        path: path.resolve(__dirname, '../src/components/common/{{kebabCase name}}/index.ts'),
         templateFile: path.resolve(__dirname, '../templates/component/index.hbs'),
       },
       {
         type: 'add',
-        path: path.resolve(__dirname, '../src/{{kebabCase name}}/{{kebabCase name}}.tsx'),
+        path: path.resolve(__dirname, '../src/components/common/{{kebabCase name}}/{{kebabCase name}}.tsx'),
         templateFile: path.resolve(__dirname, '../templates/component/comp.hbs'),
       },
       {
         type: 'add',
-        path: path.resolve(__dirname, '../src/{{kebabCase name}}/style/index.less'),
+        path: path.resolve(__dirname, '../src/components/common/{{kebabCase name}}/{{kebabCase name}}.less'),
         templateFile: path.resolve(__dirname, '../templates/component/style/style.hbs'),
       },
       {
         type: 'add',
-        path: path.resolve(__dirname, '../src/{{kebabCase name}}/style/index.ts'),
-        templateFile: path.resolve(__dirname, '../templates/component/style/index.hbs'),
+        path: path.resolve(__dirname, '../src/components/common/{{kebabCase name}}/{{kebabCase name}}.stories.tsx'),
+        templateFile: path.resolve(__dirname, '../templates/component/stories.hbs'),
       },
       {
         type: 'add',
-        path: path.resolve(__dirname, '../src/{{kebabCase name}}/index.md'),
-        templateFile: path.resolve(__dirname, '../templates/component/doc.hbs'),
-      },
-      {
-        type: 'add',
-        path: path.resolve(__dirname, '../src/{{kebabCase name}}/interface.ts'),
-        templateFile: path.resolve(__dirname, '../templates/component/interface.hbs'),
-      },
-      {
-        type: 'add',
-        path: path.resolve(__dirname, '../src/{{kebabCase name}}/demo/basic.tsx'),
-        templateFile: path.resolve(__dirname, '../templates/component/demo/basic.hbs'),
-      },
-      {
-        type: 'add',
-        path: path.resolve(__dirname, '../src/{{kebabCase name}}/__tests__/index.test.tsx'),
+        path: path.resolve(__dirname, '../src/components/common/{{kebabCase name}}/__tests__/{{kebabCase name}}.test.tsx'),
         templateFile: path.resolve(__dirname, '../templates/component/__tests__/index.test.hbs'),
       },
       {
         type: 'append',
         path: path.resolve(__dirname, '../src/index.ts'),
         pattern: '/* PLOP_INJECT_EXPORT */',
-        template: "export { default as {{pascalCase name}} } from './{{kebabCase name}}';",
+        template: "export { {{pascalCase name}} } from './components/common/{{kebabCase name}}';",
       },
     ],
   });

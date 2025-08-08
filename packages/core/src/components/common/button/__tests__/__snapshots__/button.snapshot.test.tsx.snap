@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button 快照测试 dashed类型按钮应该匹配快照 1`] = `
+<button
+  aria-disabled="false"
+  class="velvet-btn velvet-btn--dashed"
+  type="button"
+>
+  虚线按钮
+</button>
+`;
+
+exports[`Button 快照测试 link类型按钮应该匹配快照 1`] = `
+<button
+  aria-disabled="false"
+  class="velvet-btn velvet-btn--link"
+  type="button"
+>
+  链接按钮
+</button>
+`;
+
+exports[`Button 快照测试 primary类型按钮应该匹配快照 1`] = `
+<button
+  aria-disabled="false"
+  class="velvet-btn velvet-btn--primary"
+  type="button"
+>
+  主要按钮
+</button>
+`;
+
+exports[`Button 快照测试 text类型按钮应该匹配快照 1`] = `
+<button
+  aria-disabled="false"
+  class="velvet-btn velvet-btn--text"
+  type="button"
+>
+  文本按钮
+</button>
+`;
+
+exports[`Button 快照测试 带自定义样式的按钮应该匹配快照 1`] = `
+<button
+  aria-disabled="false"
+  class="velvet-btn"
+  style="background-color: red; color: white;"
+  type="button"
+>
+  自定义样式按钮
+</button>
+`;
+
+exports[`Button 快照测试 带自定义类名的按钮应该匹配快照 1`] = `
+<button
+  aria-disabled="false"
+  class="velvet-btn custom-button"
+  type="button"
+>
+  自定义类名按钮
+</button>
+`;
+
+exports[`Button 快照测试 禁用状态按钮应该匹配快照 1`] = `
+<button
+  aria-disabled="true"
+  class="velvet-btn velvet-btn--disabled"
+  disabled=""
+  type="button"
+>
+  禁用按钮
+</button>
+`;
+
+exports[`Button 快照测试 默认按钮应该匹配快照 1`] = `
+<button
+  aria-disabled="false"
+  class="velvet-btn"
+  type="button"
+>
+  测试按钮
+</button>
+`;

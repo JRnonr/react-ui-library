@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from './components/Button';
+import { Button } from './components/common/button';
 import './App.css';
 
 function App() {
@@ -83,7 +83,7 @@ function App() {
         </div>
         <div className="header-right">
           <div className="search-box">
-            <span className="search-icon">🔍</span>
+            <span className="search-icon">搜索</span>
             <input 
               type="text" 
               placeholder="输入关键字搜索..." 

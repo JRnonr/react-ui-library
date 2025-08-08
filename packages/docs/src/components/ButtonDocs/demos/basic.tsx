@@ -1,21 +1,29 @@
 /**
  * title: 基础按钮
- * description: 按钮有五种类型：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。主按钮在同一个操作区域最多出现一次。
+ * description: 基础按钮组件，支持多种类型和状态。
  */
 
 import React from 'react';
 import { Button } from '@velvet-ui/core';
 
-const BasicDemo: React.FC = () => {
+export default function ButtonExample() {
   return (
-    <div className="demo-buttons">
-      <Button>Default</Button>
-      <Button type="primary">Primary</Button>
-      <Button type="dashed">Dashed</Button>
-      <Button type="text">Text</Button>
-      <Button type="link">Link</Button>
+    <div style={{ display: 'flex', gap: '8px' }}>
+      <Button type="default">
+        默认按钮
+      </Button>
+      <Button type="primary">
+        主要按钮
+      </Button>
+      <Button type="dashed">
+        虚线按钮
+      </Button>
+      <Button type="text">
+        文本按钮
+      </Button>
+      <Button type="link">
+        链接按钮
+      </Button>
     </div>
   );
-};
-
-export default BasicDemo; 
+} 
