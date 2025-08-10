@@ -164,15 +164,28 @@
   line-height: 1.6;
 }
 
+.getting-started-demo h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #262626;
+  margin: 48px 0 24px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.getting-started-demo h2:first-of-type {
+  margin-top: 32px;
+}
+
 /* 组件页面布局 */
 .components-layout {
   display: flex;
-  gap: 32px;
+  gap: 48px;
   margin-top: 32px;
 }
 
 .components-sidebar {
-  width: 240px;
+  width: 280px;
   flex-shrink: 0;
 }
 
@@ -207,13 +220,15 @@
 
 .sidebar-item a {
   display: block;
-  padding: 8px 0;
+  padding: 12px 16px;
   color: #666;
   text-decoration: none;
   font-size: 14px;
   transition: all 0.2s;
   border-left: 3px solid transparent;
-  padding-left: 16px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  cursor: pointer;
 }
 
 .sidebar-item a:hover {
@@ -225,7 +240,129 @@
   color: #1890ff;
   background: #f0f8ff;
   border-left-color: #1890ff;
+  font-weight: 500;
 }
+
+/* 组件区域样式 */
+.component-section {
+  margin-bottom: 48px;
+}
+
+.component-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #262626;
+  margin: 0 0 16px;
+  line-height: 1.4;
+}
+
+.component-description {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+.component-demo {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid #e8e8e8;
+}
+
+.demo-section {
+  margin-bottom: 40px;
+}
+
+.demo-section:last-child {
+  margin-bottom: 0;
+}
+
+.demo-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.demo-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 代码示例样式 */
+.demo-code {
+  margin-top: 20px;
+}
+
+/* API表格样式 */
+.component-api {
+  margin-top: 48px;
+}
+
+.api-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #262626;
+  margin: 0 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.api-table {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+}
+
+.api-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.api-table th {
+  background: #fafafa;
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #262626;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 14px;
+}
+
+.api-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #666;
+  vertical-align: top;
+}
+
+.api-table td:first-child {
+  font-weight: 500;
+  color: #262626;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.api-table td code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  color: #d63384;
+}
+
+.api-table tr:last-child td {
+  border-bottom: none;
+}
+
+
 
 /* 组件占位符 */
 .component-placeholder {
@@ -252,22 +389,25 @@
   font-size: 14px;
 }
 
-/* 禁用状态的导航链接 */
-.sidebar-item a.disabled {
-  color: #ccc;
-  cursor: not-allowed;
-  pointer-events: none;
-}
 
-.sidebar-item a.disabled:hover {
-  color: #ccc;
-}
 
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .main-content {
     padding: 24px 32px;
     margin: 16px;
+  }
+  
+  .components-layout {
+    gap: 32px;
+  }
+  
+  .components-sidebar {
+    width: 240px;
+  }
+  
+  .component-demo {
+    padding: 24px;
   }
 }
 
@@ -296,5 +436,13 @@
   
   .components-sidebar {
     width: 100%;
+  }
+  
+  .component-demo {
+    padding: 20px;
+  }
+  
+  .demo-row {
+    gap: 12px;
   }
 } 

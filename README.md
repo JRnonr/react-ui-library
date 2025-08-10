@@ -30,7 +30,8 @@
 ├── packages/                # 包目录
 │   ├── ui/                 # UI 组件库 (核心)
 │   │   ├── src/            # 组件源码
-│   │   │   ├── components/ # 在这里添加新组件
+│   │   │   ├── components/ # 组件目录
+│   │   │   │   └── Button/ # Button 按钮组件 (已完成)
 │   │   │   ├── stories/    # 在这里写组件故事
 │   │   │   ├── __tests__/  # 在这里写组件测试
 │   │   │   └── index.ts    # 在这里导出组件
@@ -55,6 +56,32 @@
 ```
 
 ## 组件开发指南
+
+### **已完成的组件**：
+
+#### **Button 按钮组件**
+- **位置**: `packages/ui/src/components/Button/`
+- **特性**: 支持多种样式变体、尺寸、状态
+- **变体**: default, primary, secondary, outline, ghost, danger
+- **尺寸**: sm, md, lg
+- **状态**: disabled, loading, block
+- **文档**: 在 `docs/` 中有完整的使用示例和 API 文档
+- **测试**: 包含完整的单元测试，**30 个测试用例**
+- **测试覆盖率**:
+  - **语句覆盖率**: 87.5%
+  - **分支覆盖率**: 95.23%
+  - **函数覆盖率**: 100%
+  - **行覆盖率**: 86.66%
+- **覆盖的功能**:
+  - 基础渲染和内容显示
+  - 所有样式变体 (primary, secondary, outline, ghost, danger)
+  - 所有尺寸 (sm, md, lg)
+  - 状态管理 (disabled, loading, block)
+  - 事件处理 (onClick, 事件阻止)
+  - 自定义样式和类名
+  - 边界情况和边缘值
+  - SVG 加载动画
+  - 属性组合和默认值
 
 ### **实现组件时需要动的文件/文件夹**：
 
@@ -100,6 +127,9 @@ pnpm build
 # 测试
 pnpm test
 
+# 测试覆盖率
+pnpm test -- --coverage
+
 # 类型检查
 pnpm typecheck
 
@@ -123,6 +153,8 @@ pnpm --filter @repo/ui add -D @types/lodash
 pnpm --filter @repo/ui run build
 ```
 
+
+
 ## 开发流程
 
 1. **组件开发**：在 `packages/ui/src/components/` 中创建组件
@@ -131,4 +163,32 @@ pnpm --filter @repo/ui run build
 4. **组件测试**：在 `packages/ui/src/__tests__/` 中写测试用例
 5. **实时预览**：运行 `pnpm storybook` 测试组件
 6. **文档编写**：在 `docs/` 中编写使用文档
-7. **最终展示**：运行 `pnpm dev` 查看文档网站 
+7. **最终展示**：运行 `pnpm dev` 查看文档网站
+
+## 组件使用示例
+
+### Button 按钮组件
+
+```tsx
+import React from 'react';
+import { Button } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Button>默认按钮</Button>
+    <Button variant="primary">主要按钮</Button>
+    <Button variant="secondary">次要按钮</Button>
+    <Button variant="outline">描边按钮</Button>
+    <Button variant="ghost">幽灵按钮</Button>
+    <Button variant="danger">危险按钮</Button>
+  </div>
+);
+
+export default App;
+```
+
+**支持的特性**：
+- **样式变体**: `variant="primary|secondary|outline|ghost|danger"`
+- **尺寸**: `size="sm|md|lg"`
+- **状态**: `disabled`, `loading`, `block`
+- **事件**: `onClick` 回调函数 
