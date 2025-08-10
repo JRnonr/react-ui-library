@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+/dist/
+/build/
+.esbuild/
+.vite/
+storybook-static/
+
+# Coverage
+/coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# OS / Editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Caches / Temp
+.cache/
+.tmp/
+**/*.tsbuildinfo
+
+# Misc
+**/.DS_Store
+
+*storybook.log

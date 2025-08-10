@@ -1,0 +1,62 @@
+{
+  "name": "@repo/root",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.13.1",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "dev": "pnpm run docs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "docs": "pnpm --filter @velvet/docs dev",
+    "docs:build": "pnpm --filter @velvet/docs build"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10.13.1"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5",
+    "@chromatic-com/storybook": "^4.1.0",
+    "@eslint/js": "^9.33.0",
+    "@storybook/addon-a11y": "^9.1.1",
+    "@storybook/addon-docs": "^9.1.1",
+    "@storybook/addon-onboarding": "^9.1.1",
+    "@storybook/addon-vitest": "^9.1.1",
+    "@storybook/react-vite": "^9.1.1",
+    "@types/highlight.js": "^10.1.0",
+    "@types/node": "^20.19.10",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-storybook": "^9.1.1",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "less": "^4.4.0",
+    "lint-staged": "^15.5.2",
+    "playwright": "^1.54.2",
+    "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "storybook": "^9.1.1",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0",
+    "vite": "^5.4.19",
+    "vite-plugin-css-modules": "^0.0.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "highlight.js": "^11.11.1",
+    "lucide-react": "^0.539.0",
+    "react-markdown": "^10.1.0",
+    "tailwind-merge": "^3.3.1"
+  }
+}

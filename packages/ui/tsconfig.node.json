@@ -1,0 +1,9 @@
+{
+  "extends": "../../configs/tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "types": ["node"],
+    "noEmit": true
+  },
+  "include": ["vite.config.ts"]
+} 
