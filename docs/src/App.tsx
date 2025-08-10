@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Button } from '@velvet/ui';
+import { useState } from 'react';
+import { Button, ChatInterface } from '@velvet/ui';
 import { CodeBlock } from './components';
-import '../../packages/ui/src/components/Button/Button.css';
 import './App.css';
 
 function App() {
@@ -11,7 +10,9 @@ function App() {
     basic: false,
     size: false,
     state: false,
-    block: false
+    block: false,
+    chatBasic: false,
+    chatCustom: false
   });
 
   // 快速上手页面
@@ -88,6 +89,14 @@ pnpm add @velvet/ui`}
                   onClick={() => setActiveComponent('radio')}
                 >
                   Radio 单选框
+                </a>
+              </li>
+              <li className="sidebar-item">
+                <a 
+                  className={activeComponent === 'chat' ? 'active' : ''}
+                  onClick={() => setActiveComponent('chat')}
+                >
+                  ChatInterface 聊天界面
                 </a>
               </li>
             </ul>
@@ -319,6 +328,163 @@ export default App;`}
               <div className="component-placeholder">
                 <h3>开发中</h3>
                 <p>Radio 组件正在开发中，敬请期待...</p>
+              </div>
+            </div>
+          )}
+          
+          {activeComponent === 'chat' && (
+            <div className="component-section">
+              <h3 className="component-title">ChatInterface 聊天界面</h3>
+              <p className="component-description">AI聊天界面组件，支持实时对话、打字机效果和自定义消息渲染。</p>
+              
+              <div className="component-demo">
+                <div className="demo-section">
+                  <h4 className="demo-title">基础用法</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '600px' }}>
+                      <ChatInterface 
+                        placeholder="输入你的问题..."
+                        initialMessages={[
+                          {
+                            id: '1',
+                            content: '你好！我是AI助手，有什么可以帮助你的吗？',
+                            type: 'assistant',
+                            timestamp: new Date(),
+                          }
+                        ]}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { ChatInterface } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <ChatInterface 
+    placeholder="输入你的问题..."
+    initialMessages={[
+      {
+        id: '1',
+        content: '你好！我是AI助手，有什么可以帮助你的吗？',
+        type: 'assistant',
+        timestamp: new Date(),
+      }
+    ]}
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.chatBasic}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, chatBasic: !prev.chatBasic}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">自定义消息处理</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '600px' }}>
+                      <ChatInterface 
+                        placeholder="输入消息..."
+                                                 onSendMessage={async (message: string) => {
+                           // 这里可以集成真实的AI API
+                           console.log('发送消息:', message);
+                           // 模拟AI回复
+                           return new Promise<void>(resolve => {
+                             setTimeout(() => {
+                               console.log('AI回复:', `这是对"${message}"的回复`);
+                               resolve();
+                             }, 1000);
+                           });
+                         }}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { ChatInterface } from '@velvet/ui';
+
+const App: React.FC = () => {
+  const handleSendMessage = async (message: string) => {
+    // 集成OpenAI、Claude等AI服务
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    });
+    
+    const data = await response.json();
+    return data.reply;
+  };
+
+  return (
+    <ChatInterface 
+      placeholder="输入消息..."
+      onSendMessage={handleSendMessage}
+    />
+  );
+};
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.chatCustom}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, chatCustom: !prev.chatCustom}))}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="component-api">
+                <h4 className="api-title">API</h4>
+                <div className="api-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>initialMessages</td>
+                        <td>初始消息列表</td>
+                        <td><code>Message[]</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td>placeholder</td>
+                        <td>输入框占位符</td>
+                        <td><code>string</code></td>
+                        <td><code>'输入消息...'</code></td>
+                      </tr>
+                      <tr>
+                        <td>disabled</td>
+                        <td>是否禁用输入</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>onSendMessage</td>
+                        <td>发送消息回调</td>
+                        <td><code>(message: string) =&gt; void | Promise&lt;void&gt;</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td>renderMessage</td>
+                        <td>自定义消息渲染</td>
+                        <td><code>(message: Message) =&gt; React.ReactNode</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           )}

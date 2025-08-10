@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+'use client';
+import React, { useState, useRef, useEffect, useCallback, forwardRef } from 'react';
 import './ChatInterface.css';
 
 export interface Message {
@@ -9,7 +10,7 @@ export interface Message {
   isTyping?: boolean;
 }
 
-export interface ChatInterfaceProps {
+export interface ChatInterfaceProps extends React.HTMLAttributes<HTMLDivElement> {
   /** 初始消息列表 */
   initialMessages?: Message[];
   /** 占位符文本 */
@@ -26,7 +27,7 @@ export interface ChatInterfaceProps {
   style?: React.CSSProperties;
 }
 
-export const ChatInterface = ({
+export const ChatInterface = forwardRef<HTMLDivElement, ChatInterfaceProps>(({
   initialMessages = [],
   placeholder = '输入消息...',
   disabled = false,
@@ -34,7 +35,8 @@ export const ChatInterface = ({
   renderMessage,
   className = '',
   style,
-}: ChatInterfaceProps) => {
+  ...rest
+}, ref) => {
   // 确保 initialMessages 始终是数组
   const safeInitialMessages = Array.isArray(initialMessages) ? initialMessages : [];
   const [messages, setMessages] = useState<Message[]>(safeInitialMessages);
@@ -42,7 +44,7 @@ export const ChatInterface = ({
   const [isLoading, setIsLoading] = useState(false);
   const [pendingMessages, setPendingMessages] = useState<Set<string>>(new Set());
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const internalInputRef = useRef<HTMLTextAreaElement>(null);
 
   // 自动滚动到底部
   const scrollToBottom = useCallback(() => {
@@ -186,7 +188,7 @@ export const ChatInterface = ({
   );
 
   return (
-    <div className={`chat-interface ${className}`} style={style}>
+    <div ref={ref} className={`chat-interface ${className}`} style={style} {...rest}>
       <div className="chat-interface__header">
         <h3 className="chat-interface__title">AI 助手</h3>
         <div className="chat-interface__status">
@@ -212,7 +214,7 @@ export const ChatInterface = ({
       
       <div className="chat-interface__input">
         <textarea
-          ref={inputRef}
+          ref={internalInputRef}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -236,4 +238,6 @@ export const ChatInterface = ({
       </div>
     </div>
   );
-}; 
+});
+
+ChatInterface.displayName = 'ChatInterface'; 

@@ -1,0 +1,91 @@
+{
+  "summary": {
+    "coverage": {
+      "statements": 90.38461538461539,
+      "branches": 86.95652173913044,
+      "functions": 100,
+      "lines": 0
+    },
+    "bundle": {
+      "button_gzip_kb": 1.3
+    },
+    "ssr_safe": false,
+    "storybook": {
+      "a11y_addon": true
+    }
+  },
+  "components": {
+    "Button": {
+      "forwardRef": false,
+      "polymorphicAs": false,
+      "api": {
+        "controlled": "yes",
+        "semanticOnChange": "yes"
+      },
+      "a11y": {
+        "aria": true,
+        "keyboard": "no",
+        "focusTrap": false,
+        "axe_errors": 0
+      },
+      "theme_tokens": false,
+      "stories": [
+        "variants",
+        "sizes",
+        "states"
+      ],
+      "tests": {
+        "files": 1
+      },
+      "coverage": {
+        "statements": 83.33333333333334,
+        "branches": 93.33333333333333,
+        "functions": 100,
+        "lines": 0
+      },
+      "bundle_gzip_kb": 1.3,
+      "todos": [
+        "支持 forwardRef 以支持 ref 转发",
+        "支持 as 多态类型以支持不同的 HTML 元素",
+        "添加更多 ARIA 属性支持",
+        "添加键盘导航和焦点管理"
+      ]
+    },
+    "ChatInterface": {
+      "forwardRef": false,
+      "polymorphicAs": false,
+      "api": {
+        "controlled": "partial",
+        "semanticOnChange": "yes"
+      },
+      "a11y": {
+        "aria": true,
+        "keyboard": "yes",
+        "focusTrap": false,
+        "axe_errors": 0
+      },
+      "theme_tokens": false,
+      "stories": [
+        "basic",
+        "with-messages",
+        "disabled"
+      ],
+      "tests": {
+        "files": 1
+      },
+      "coverage": {
+        "statements": 93.75,
+        "branches": 83.87096774193549,
+        "functions": 100,
+        "lines": 0
+      },
+      "bundle_gzip_kb": 2.1,
+      "todos": [
+        "支持 forwardRef 以支持 ref 转发",
+        "添加更多 ARIA 属性支持",
+        "改进键盘导航和焦点管理",
+        "添加虚拟滚动支持长列表"
+      ]
+    }
+  }
+}

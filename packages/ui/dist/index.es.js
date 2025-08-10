@@ -1,347 +1,264 @@
-import ee from "react";
-var Y = { exports: {} }, v = {};
+import P, { forwardRef as V, useState as D, useRef as A, useCallback as y, useEffect as q } from "react";
+var K = { exports: {} }, E = {};
 /**
  * @license React
- * react-jsx-runtime.production.js
+ * react-jsx-runtime.production.min.js
  *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var V;
-function re() {
-  if (V) return v;
-  V = 1;
-  var c = Symbol.for("react.transitional.element"), b = Symbol.for("react.fragment");
-  function d(u, n, s) {
-    var i = null;
-    if (s !== void 0 && (i = "" + s), n.key !== void 0 && (i = "" + n.key), "key" in n) {
-      s = {};
-      for (var m in n)
-        m !== "key" && (s[m] = n[m]);
-    } else s = n;
-    return n = s.ref, {
-      $$typeof: c,
-      type: u,
-      key: i,
-      ref: n !== void 0 ? n : null,
-      props: s
-    };
-  }
-  return v.Fragment = b, v.jsx = d, v.jsxs = d, v;
+var F = P, M = Symbol.for("react.element"), U = Symbol.for("react.fragment"), z = Object.prototype.hasOwnProperty, J = F.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, Y = { key: !0, ref: !0, __self: !0, __source: !0 };
+function W(l, a, c) {
+  var s, r = {}, d = null, m = null;
+  c !== void 0 && (d = "" + c), a.key !== void 0 && (d = "" + a.key), a.ref !== void 0 && (m = a.ref);
+  for (s in a) z.call(a, s) && !Y.hasOwnProperty(s) && (r[s] = a[s]);
+  if (l && l.defaultProps) for (s in a = l.defaultProps, a) r[s] === void 0 && (r[s] = a[s]);
+  return { $$typeof: M, type: l, key: d, ref: m, props: r, _owner: J.current };
 }
-var R = {};
-/**
- * @license React
- * react-jsx-runtime.development.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var q;
-function te() {
-  return q || (q = 1, process.env.NODE_ENV !== "production" && function() {
-    function c(e) {
-      if (e == null) return null;
-      if (typeof e == "function")
-        return e.$$typeof === Z ? null : e.displayName || e.name || null;
-      if (typeof e == "string") return e;
-      switch (e) {
-        case j:
-          return "Fragment";
-        case A:
-          return "Profiler";
-        case I:
-          return "StrictMode";
-        case J:
-          return "Suspense";
-        case B:
-          return "SuspenseList";
-        case H:
-          return "Activity";
-      }
-      if (typeof e == "object")
-        switch (typeof e.tag == "number" && console.error(
-          "Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."
-        ), e.$$typeof) {
-          case $:
-            return "Portal";
-          case w:
-            return (e.displayName || "Context") + ".Provider";
-          case S:
-            return (e._context.displayName || "Context") + ".Consumer";
-          case G:
-            var r = e.render;
-            return e = e.displayName, e || (e = r.displayName || r.name || "", e = e !== "" ? "ForwardRef(" + e + ")" : "ForwardRef"), e;
-          case X:
-            return r = e.displayName || null, r !== null ? r : c(e.type) || "Memo";
-          case D:
-            r = e._payload, e = e._init;
-            try {
-              return c(e(r));
-            } catch {
-            }
+E.Fragment = U;
+E.jsx = W;
+E.jsxs = W;
+K.exports = E;
+var e = K.exports;
+const G = V(
+  ({
+    as: l,
+    className: a = "",
+    variant: c = "primary",
+    size: s = "md",
+    loading: r = !1,
+    block: d = !1,
+    disabled: m = !1,
+    type: $ = "button",
+    onClick: b,
+    style: j,
+    children: x,
+    ...p
+  }, u) => {
+    const g = l || "button";
+    if (g === "button") {
+      const I = "btn", v = `btn--${c}`, w = `btn--${s}`, t = [
+        I,
+        v,
+        w,
+        d ? "btn--block" : "",
+        r ? "btn--loading" : "",
+        m || r ? "btn--disabled" : "",
+        a
+      ].filter(Boolean).join(" "), i = (n) => {
+        if (m || r) {
+          n.preventDefault();
+          return;
         }
-      return null;
-    }
-    function b(e) {
-      return "" + e;
-    }
-    function d(e) {
-      try {
-        b(e);
-        var r = !1;
-      } catch {
-        r = !0;
-      }
-      if (r) {
-        r = console;
-        var t = r.error, a = typeof Symbol == "function" && Symbol.toStringTag && e[Symbol.toStringTag] || e.constructor.name || "Object";
-        return t.call(
-          r,
-          "The provided key is an unsupported type %s. This value must be coerced to a string before using it here.",
-          a
-        ), b(e);
-      }
-    }
-    function u(e) {
-      if (e === j) return "<>";
-      if (typeof e == "object" && e !== null && e.$$typeof === D)
-        return "<...>";
-      try {
-        var r = c(e);
-        return r ? "<" + r + ">" : "<...>";
-      } catch {
-        return "<...>";
-      }
-    }
-    function n() {
-      var e = h.A;
-      return e === null ? null : e.getOwner();
-    }
-    function s() {
-      return Error("react-stack-top-frame");
-    }
-    function i(e) {
-      if (F.call(e, "key")) {
-        var r = Object.getOwnPropertyDescriptor(e, "key").get;
-        if (r && r.isReactWarning) return !1;
-      }
-      return e.key !== void 0;
-    }
-    function m(e, r) {
-      function t() {
-        L || (L = !0, console.error(
-          "%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props)",
-          r
-        ));
-      }
-      t.isReactWarning = !0, Object.defineProperty(e, "key", {
-        get: t,
-        configurable: !0
-      });
-    }
-    function g() {
-      var e = c(this.type);
-      return W[e] || (W[e] = !0, console.error(
-        "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
-      )), e = this.props.ref, e !== void 0 ? e : null;
-    }
-    function x(e, r, t, a, f, l, N, y) {
-      return t = l.ref, e = {
-        $$typeof: O,
-        type: e,
-        key: r,
-        props: l,
-        _owner: f
-      }, (t !== void 0 ? t : null) !== null ? Object.defineProperty(e, "ref", {
-        enumerable: !1,
-        get: g
-      }) : Object.defineProperty(e, "ref", { enumerable: !1, value: null }), e._store = {}, Object.defineProperty(e._store, "validated", {
-        configurable: !1,
-        enumerable: !1,
-        writable: !0,
-        value: 0
-      }), Object.defineProperty(e, "_debugInfo", {
-        configurable: !1,
-        enumerable: !1,
-        writable: !0,
-        value: null
-      }), Object.defineProperty(e, "_debugStack", {
-        configurable: !1,
-        enumerable: !1,
-        writable: !0,
-        value: N
-      }), Object.defineProperty(e, "_debugTask", {
-        configurable: !1,
-        enumerable: !1,
-        writable: !0,
-        value: y
-      }), Object.freeze && (Object.freeze(e.props), Object.freeze(e)), e;
-    }
-    function T(e, r, t, a, f, l, N, y) {
-      var o = r.children;
-      if (o !== void 0)
-        if (a)
-          if (Q(o)) {
-            for (a = 0; a < o.length; a++)
-              k(o[a]);
-            Object.freeze && Object.freeze(o);
-          } else
-            console.error(
-              "React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead."
-            );
-        else k(o);
-      if (F.call(r, "key")) {
-        o = c(e);
-        var E = Object.keys(r).filter(function(K) {
-          return K !== "key";
-        });
-        a = 0 < E.length ? "{key: someKey, " + E.join(": ..., ") + ": ...}" : "{key: someKey}", z[o + a] || (E = 0 < E.length ? "{" + E.join(": ..., ") + ": ...}" : "{}", console.error(
-          `A props object containing a "key" prop is being spread into JSX:
-  let props = %s;
-  <%s {...props} />
-React keys must be passed directly to JSX without using spread:
-  let props = %s;
-  <%s key={someKey} {...props} />`,
-          a,
-          o,
-          E,
-          o
-        ), z[o + a] = !0);
-      }
-      if (o = null, t !== void 0 && (d(t), o = "" + t), i(r) && (d(r.key), o = "" + r.key), "key" in r) {
-        t = {};
-        for (var C in r)
-          C !== "key" && (t[C] = r[C]);
-      } else t = r;
-      return o && m(
-        t,
-        typeof e == "function" ? e.displayName || e.name || "Unknown" : e
-      ), x(
-        e,
-        o,
-        l,
-        f,
-        n(),
-        t,
-        N,
-        y
-      );
-    }
-    function k(e) {
-      typeof e == "object" && e !== null && e.$$typeof === O && e._store && (e._store.validated = 1);
-    }
-    var _ = ee, O = Symbol.for("react.transitional.element"), $ = Symbol.for("react.portal"), j = Symbol.for("react.fragment"), I = Symbol.for("react.strict_mode"), A = Symbol.for("react.profiler"), S = Symbol.for("react.consumer"), w = Symbol.for("react.context"), G = Symbol.for("react.forward_ref"), J = Symbol.for("react.suspense"), B = Symbol.for("react.suspense_list"), X = Symbol.for("react.memo"), D = Symbol.for("react.lazy"), H = Symbol.for("react.activity"), Z = Symbol.for("react.client.reference"), h = _.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, F = Object.prototype.hasOwnProperty, Q = Array.isArray, P = console.createTask ? console.createTask : function() {
-      return null;
-    };
-    _ = {
-      react_stack_bottom_frame: function(e) {
-        return e();
-      }
-    };
-    var L, W = {}, M = _.react_stack_bottom_frame.bind(
-      _,
-      s
-    )(), U = P(u(s)), z = {};
-    R.Fragment = j, R.jsx = function(e, r, t, a, f) {
-      var l = 1e4 > h.recentlyCreatedOwnerStacks++;
-      return T(
-        e,
-        r,
-        t,
-        !1,
-        a,
-        f,
-        l ? Error("react-stack-top-frame") : M,
-        l ? P(u(e)) : U
-      );
-    }, R.jsxs = function(e, r, t, a, f) {
-      var l = 1e4 > h.recentlyCreatedOwnerStacks++;
-      return T(
-        e,
-        r,
-        t,
-        !0,
-        a,
-        f,
-        l ? Error("react-stack-top-frame") : M,
-        l ? P(u(e)) : U
-      );
-    };
-  }()), R;
-}
-process.env.NODE_ENV === "production" ? Y.exports = re() : Y.exports = te();
-var p = Y.exports;
-const ae = ({
-  children: c,
-  variant: b = "primary",
-  size: d = "md",
-  disabled: u = !1,
-  loading: n = !1,
-  block: s = !1,
-  onClick: i,
-  type: m = "button",
-  className: g = "",
-  style: x,
-  ...T
-}) => {
-  const k = "btn", _ = `btn--${b}`, O = `btn--${d}`, A = [
-    k,
-    _,
-    O,
-    s ? "btn--block" : "",
-    n ? "btn--loading" : "",
-    u || n ? "btn--disabled" : "",
-    g
-  ].filter(Boolean).join(" "), S = (w) => {
-    if (u || n) {
-      w.preventDefault();
-      return;
-    }
-    i == null || i(w);
-  };
-  return /* @__PURE__ */ p.jsxs(
-    "button",
-    {
-      type: m,
-      className: A,
-      disabled: u || n,
-      onClick: S,
-      style: x,
-      ...T,
-      children: [
-        n && /* @__PURE__ */ p.jsx("span", { className: "btn__loading-spinner", "aria-hidden": "true", "data-testid": "loading-spinner", children: /* @__PURE__ */ p.jsx(
-          "svg",
-          {
-            className: "btn__loading-svg",
-            viewBox: "0 0 24 24",
-            fill: "none",
-            xmlns: "http://www.w3.org/2000/svg",
-            children: /* @__PURE__ */ p.jsx(
-              "circle",
+        b == null || b(n);
+      };
+      return /* @__PURE__ */ e.jsxs(
+        "button",
+        {
+          ref: u,
+          type: $,
+          className: t,
+          disabled: m || r,
+          onClick: i,
+          style: j,
+          ...p,
+          children: [
+            r && /* @__PURE__ */ e.jsx("span", { className: "btn__loading-spinner", "aria-hidden": "true", "data-testid": "loading-spinner", children: /* @__PURE__ */ e.jsx(
+              "svg",
               {
-                className: "btn__loading-circle",
-                cx: "12",
-                cy: "12",
-                r: "10",
-                stroke: "currentColor",
-                strokeWidth: "2",
-                strokeLinecap: "round"
+                className: "btn__loading-svg",
+                viewBox: "0 0 24 24",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: /* @__PURE__ */ e.jsx(
+                  "circle",
+                  {
+                    className: "btn__loading-circle",
+                    cx: "12",
+                    cy: "12",
+                    r: "10",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round"
+                  }
+                )
               }
-            )
-          }
-        ) }),
-        /* @__PURE__ */ p.jsx("span", { className: "btn__content", children: c })
-      ]
+            ) }),
+            /* @__PURE__ */ e.jsx("span", { className: "btn__content", children: x })
+          ]
+        }
+      );
     }
-  );
-}, oe = "0.0.0";
+    const f = "btn", N = `btn--${c}`, C = `btn--${s}`, T = [
+      f,
+      N,
+      C,
+      d ? "btn--block" : "",
+      r ? "btn--loading" : "",
+      a
+    ].filter(Boolean).join(" ");
+    return P.createElement(g, {
+      ref: u,
+      className: T,
+      style: j,
+      ...p
+    }, [
+      r && /* @__PURE__ */ e.jsx("span", { className: "btn__loading-spinner", "aria-hidden": "true", "data-testid": "loading-spinner", children: /* @__PURE__ */ e.jsx(
+        "svg",
+        {
+          className: "btn__loading-svg",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /* @__PURE__ */ e.jsx(
+            "circle",
+            {
+              className: "btn__loading-circle",
+              cx: "12",
+              cy: "12",
+              r: "10",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              strokeLinecap: "round"
+            }
+          )
+        }
+      ) }, "loading"),
+      /* @__PURE__ */ e.jsx("span", { className: "btn__content", children: x }, "content")
+    ].filter(Boolean));
+  }
+);
+G.displayName = "Button";
+const H = V(({
+  initialMessages: l = [],
+  placeholder: a = "输入消息...",
+  disabled: c = !1,
+  onSendMessage: s,
+  renderMessage: r,
+  className: d = "",
+  style: m,
+  ...$
+}, b) => {
+  const j = Array.isArray(l) ? l : [], [x, p] = D(j), [u, g] = D(""), [f, N] = D(!1), [C, S] = D(/* @__PURE__ */ new Set()), k = A(null), T = A(null), I = y(() => {
+    var t;
+    (t = k.current) != null && t.scrollIntoView && k.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+  q(() => {
+    I();
+  }, [x, I]);
+  const v = y((t, i) => {
+    const n = {
+      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+      content: t,
+      type: i,
+      timestamp: /* @__PURE__ */ new Date()
+    };
+    return p((o) => [...o, n]), n;
+  }, []), w = y(async (t) => {
+    const i = {
+      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+      content: "",
+      type: "assistant",
+      timestamp: /* @__PURE__ */ new Date(),
+      isTyping: !0
+    };
+    p((h) => [...h, i]);
+    let n = "";
+    const o = t.split(" ");
+    for (let h = 0; h < o.length; h++)
+      n += (h > 0 ? " " : "") + o[h], p(
+        (_) => _.map(
+          (B) => B.id === i.id ? { ...B, content: n } : B
+        )
+      ), await new Promise((_) => setTimeout(_, 100 + Math.random() * 50));
+    p(
+      (h) => h.map(
+        (_) => _.id === i.id ? { ..._, isTyping: !1 } : _
+      )
+    );
+  }, []), R = y(async () => {
+    if (!u.trim() || c || !s && f) return;
+    const t = u.trim(), i = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+    if (!C.has(i)) {
+      S((n) => {
+        const o = new Set(n);
+        return o.add(i), o;
+      }), v(t, "user"), g(""), s || N(!0);
+      try {
+        if (s) {
+          const n = await s(t);
+          typeof n == "string" && n.trim() && await w(n);
+        } else {
+          const n = `这是对"${t}"的AI回复。我理解你的问题，让我为你提供详细的解答...`;
+          await w(n);
+        }
+      } catch (n) {
+        console.error("发送消息失败:", n), v("抱歉，发送消息时出现错误，请重试。", "assistant");
+      } finally {
+        s || N(!1), S((n) => {
+          const o = new Set(n);
+          return o.delete(i), o;
+        });
+      }
+    }
+  }, [u, c, f, v, s, w, C]), L = y((t) => {
+    t.key === "Enter" && !t.shiftKey && (t.preventDefault(), R());
+  }, [R]), O = (t) => /* @__PURE__ */ e.jsxs("div", { className: `chat-message chat-message--${t.type}`, children: [
+    /* @__PURE__ */ e.jsx("div", { className: "chat-message__avatar", children: t.type === "user" ? "👤" : "🤖" }),
+    /* @__PURE__ */ e.jsxs("div", { className: "chat-message__content", children: [
+      /* @__PURE__ */ e.jsxs("div", { className: "chat-message__text", children: [
+        t.content,
+        t.isTyping && /* @__PURE__ */ e.jsx("span", { className: "chat-message__typing-indicator", children: "|" })
+      ] }),
+      /* @__PURE__ */ e.jsx("div", { className: "chat-message__timestamp", children: t.timestamp.toLocaleTimeString() })
+    ] })
+  ] }, t.id);
+  return /* @__PURE__ */ e.jsxs("div", { ref: b, className: `chat-interface ${d}`, style: m, ...$, children: [
+    /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__header", children: [
+      /* @__PURE__ */ e.jsx("h3", { className: "chat-interface__title", children: "AI 助手" }),
+      /* @__PURE__ */ e.jsx("div", { className: "chat-interface__status", children: !s && f ? "正在思考..." : "在线" })
+    ] }),
+    /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__messages", children: [
+      x.length === 0 ? /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__empty", children: [
+        /* @__PURE__ */ e.jsx("div", { className: "chat-interface__empty-icon", children: "💬" }),
+        /* @__PURE__ */ e.jsx("p", { children: "开始与AI助手对话吧！" })
+      ] }) : x.map((t) => /* @__PURE__ */ e.jsx("div", { children: r ? r(t) : O(t) }, t.id)),
+      /* @__PURE__ */ e.jsx("div", { ref: k })
+    ] }),
+    /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__input", children: [
+      /* @__PURE__ */ e.jsx(
+        "textarea",
+        {
+          ref: T,
+          value: u,
+          onChange: (t) => g(t.target.value),
+          onKeyDown: L,
+          placeholder: a,
+          disabled: c || !s && f,
+          className: "chat-interface__textarea",
+          rows: 1
+        }
+      ),
+      /* @__PURE__ */ e.jsx(
+        "button",
+        {
+          onClick: R,
+          disabled: !u.trim() || c || !s && f,
+          className: "chat-interface__send-btn",
+          "aria-label": "发送消息",
+          children: !s && f ? /* @__PURE__ */ e.jsx("span", { className: "chat-interface__loading-spinner" }) : "发送"
+        }
+      )
+    ] })
+  ] });
+});
+H.displayName = "ChatInterface";
+const X = "0.0.0";
 export {
-  ae as Button,
-  oe as version
+  G as Button,
+  H as ChatInterface,
+  X as version
 };
 //# sourceMappingURL=index.es.js.map

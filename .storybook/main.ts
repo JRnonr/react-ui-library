@@ -2,7 +2,8 @@ import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   "stories": [
-    // 这里将添加你的组件 stories
+    "../packages/ui/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
   "addons": [
     "@chromatic-com/storybook",

@@ -18,11 +18,41 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       formats: ['es', 'cjs'],
       fileName: (format) => (format === 'es' ? 'index.es.js' : 'index.cjs.js'),
-      name: 'RepoUI',
+      name: 'VelvetUI',
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
+      output: {
+        exports: 'named',
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+      },
+      onwarn(warning, warn) {
+        if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
+        warn(warning);
+      },
     },
     sourcemap: true,
+  },
+  define: {
+    'process.env.NODE_ENV': '"production"',
+  },
+  optimizeDeps: {
+    exclude: ['react', 'react-dom'],
+  },
+  ssr: {
+    external: ['react', 'react-dom'],
+  },
+  resolve: {
+    alias: {
+      'react': 'react',
+      'react-dom': 'react-dom',
+    },
+  },
+  esbuild: {
+    jsx: 'automatic',
+    jsxImportSource: 'react',
   },
 }); 

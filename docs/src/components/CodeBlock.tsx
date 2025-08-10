@@ -11,6 +11,8 @@ interface CodeBlockProps {
   onToggle?: () => void;
 }
 
+
+
 const CodeBlock: React.FC<CodeBlockProps> = ({
   code,
   language = 'typescript',
@@ -22,6 +24,13 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
 
   useEffect(() => {
     if (expanded && codeRef.current) {
+      // 清除之前的高亮状态
+      if (codeRef.current.dataset.highlighted) {
+        delete codeRef.current.dataset.highlighted;
+      }
+      // 设置安全的代码内容
+      codeRef.current.textContent = code;
+      // 重新高亮
       hljs.highlightElement(codeRef.current);
     }
   }, [expanded, code]);

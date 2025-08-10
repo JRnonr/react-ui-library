@@ -175,6 +175,9 @@ pnpm lint
 
 # Storybook (组件开发)
 pnpm storybook
+
+# 构建 Storybook
+pnpm build-storybook
 ```
 
 ## 包管理
@@ -202,72 +205,3 @@ pnpm --filter @repo/ui run build
 6. **文档编写**：在 `docs/` 中编写使用文档
 7. **最终展示**：运行 `pnpm dev` 查看文档网站
 
-## 组件使用示例
-
-### Button 按钮组件
-
-```tsx
-import React from 'react';
-import { Button } from '@velvet/ui';
-
-const App: React.FC = () => (
-  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <Button>默认按钮</Button>
-    <Button variant="primary">主要按钮</Button>
-    <Button variant="secondary">次要按钮</Button>
-    <Button variant="outline">描边按钮</Button>
-    <Button variant="ghost">幽灵按钮</Button>
-    <Button variant="danger">危险按钮</Button>
-  </div>
-);
-
-export default App;
-```
-
-**支持的特性**：
-- **样式变体**: `variant="primary|secondary|outline|ghost|danger"`
-- **尺寸**: `size="sm|md|lg"`
-- **状态**: `disabled`, `loading`, `block`
-- **事件**: `onClick` 回调函数
-
-### ChatInterface 聊天界面组件
-
-```tsx
-import React from 'react';
-import { ChatInterface } from '@velvet/ui';
-
-const App: React.FC = () => (
-  <ChatInterface 
-    placeholder="输入你的问题..."
-    initialMessages={[
-      {
-        id: '1',
-        content: '你好！我是AI助手，有什么可以帮助你的吗？',
-        type: 'assistant',
-        timestamp: new Date(),
-      }
-    ]}
-  />
-);
-
-export default App;
-```
-
-**支持的特性**：
-- **基础功能**: 消息发送、接收、显示
-- **交互方式**: 回车发送、Shift+Enter换行
-- **自定义**: 占位符文本、初始消息、禁用状态
-- **扩展性**: 自定义消息渲染、发送回调函数
-- **响应式**: 完美适配各种屏幕尺寸
-
-## 项目状态
-
-- **当前版本**: 0.0.0
-- **已实现组件**: 2个 (Button, ChatInterface)
-- **测试覆盖率**: 
-  - **总体覆盖率**: 90.38% 语句, 90.41% 分支, 100% 函数, 96.66% 行
-  - **Button 组件**: 87.5% 语句, 95.23% 分支, 100% 函数, 86.66% 行
-  - **ChatInterface 组件**: 94.87% 语句, 88.46% 分支, 100% 函数, 98.57% 行
-- **测试用例**: 89个测试用例，3个测试套件全部通过
-- **文档状态**: 完整的API文档和使用示例
-- **开发环境**: Storybook + 文档网站双环境支持 
