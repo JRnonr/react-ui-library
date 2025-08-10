@@ -1,0 +1,280 @@
+/* Input 组件基础样式 */
+.input__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.input__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1.25rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.input__required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.input__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input__prefix,
+.input__suffix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.input__prefix {
+  margin-right: 0.75rem;
+}
+
+.input__suffix-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.75rem;
+}
+
+.input__count {
+  font-size: 0.75rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.input__clear,
+.input__password-toggle {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 0.25rem;
+  transition: all 0.15s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.input__clear:hover,
+.input__password-toggle:hover {
+  color: #374151;
+  background-color: #f3f4f6;
+}
+
+.input__clear:focus,
+.input__password-toggle:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* 基础输入框样式 */
+.input {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  color: #111827;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.input:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 变体样式 */
+.input--outline {
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+}
+
+.input--filled {
+  border: 1px solid transparent;
+  background-color: #f9fafb;
+}
+
+.input--filled:focus {
+  background-color: #ffffff;
+}
+
+.input--underline {
+  border: none;
+  border-bottom: 1px solid #d1d5db;
+  border-radius: 0;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.input--underline:focus {
+  border-bottom-color: #3b82f6;
+  box-shadow: none;
+}
+
+/* 尺寸样式 */
+.input--sm {
+  padding: 0.375rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.input--md {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.input--lg {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* 状态样式 */
+.input--disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.input--disabled::placeholder {
+  color: #d1d5db;
+}
+
+.input--readonly {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: default;
+}
+
+.input--error {
+  border-color: #ef4444;
+}
+
+.input--error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.input--focused {
+  border-color: #3b82f6;
+}
+
+/* 前缀和后缀的尺寸调整 */
+.input--sm + .input__prefix,
+.input--sm + .input__suffix-group {
+  font-size: 0.75rem;
+}
+
+.input--lg + .input__prefix,
+.input--lg + .input__suffix-group {
+  font-size: 1rem;
+}
+
+/* 消息样式 */
+.input__message {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.25rem;
+}
+
+.input__message--help {
+  color: #6b7280;
+}
+
+.input__message--error {
+  color: #ef4444;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+  .input__wrapper {
+    gap: 0.375rem;
+  }
+  
+  .input__label {
+    font-size: 0.8125rem;
+  }
+  
+  .input__message {
+    font-size: 0.6875rem;
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .input__label {
+    color: #d1d5db;
+  }
+  
+  .input {
+    background-color: #1f2937;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .input::placeholder {
+    color: #6b7280;
+  }
+  
+  .input--filled {
+    background-color: #374151;
+  }
+  
+  .input--filled:focus {
+    background-color: #1f2937;
+  }
+  
+  .input--underline {
+    background-color: transparent;
+  }
+  
+  .input--disabled {
+    background-color: #374151;
+    color: #6b7280;
+    border-color: #4b5563;
+  }
+  
+  .input--readonly {
+    background-color: #374151;
+    color: #9ca3af;
+  }
+  
+  .input__message--help {
+    color: #9ca3af;
+  }
+  
+  .input__clear:hover,
+  .input__password-toggle:hover {
+    background-color: #4b5563;
+    color: #d1d5db;
+  }
+} 

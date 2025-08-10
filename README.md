@@ -32,7 +32,8 @@
 │   │   ├── src/            # 组件源码
 │   │   │   ├── components/ # 组件目录
 │   │   │   │   ├── Button/ # Button 按钮组件 (已完成)
-│   │   │   │   └── ChatInterface/ # ChatInterface 聊天界面组件 (已完成)
+│   │   │   │   ├── ChatInterface/ # ChatInterface 聊天界面组件 (已完成)
+│   │   │   │   └── Input/ # Input 输入框组件 (已完成)
 │   │   │   ├── stories/    # 在这里写组件故事
 │   │   │   ├── __tests__/  # 在这里写组件测试
 │   │   │   └── index.ts    # 在这里导出组件
@@ -119,6 +120,46 @@
   - 错误处理和异常情况
   - 异步操作和状态更新
   - 用户交互和事件响应
+
+#### **Input 输入框组件**
+- **位置**: `packages/ui/src/components/Input/`
+- **特性**: 功能完整的现代化输入框组件，支持多种输入类型和交互功能
+- **核心功能**:
+  - 多种输入类型 - 支持text、password、email、number、tel、url、search等
+  - 样式变体 - outline（轮廓）、filled（填充）、underline（下划线）
+  - 尺寸选择 - sm（小）、md（中）、lg（大）
+  - 状态管理 - 支持disabled、readOnly、error、focused等状态
+  - 前缀后缀 - 支持图标、文本等前缀后缀内容
+  - 清除功能 - 支持一键清除输入内容
+  - 密码切换 - 支持密码显示/隐藏切换
+  - 字符计数 - 支持最大长度限制和字符计数显示
+  - 标签系统 - 支持标签、必填标记、帮助文本、错误文本
+  - 响应式设计 - 完美适配各种屏幕尺寸
+  - 深色模式 - 自动适配系统深色模式
+- **API 特性**:
+  - 受控/非受控模式支持
+  - 完整的事件回调（onChange、onFocus、onBlur、onKeyDown、onEnter）
+  - 丰富的属性支持（maxLength、autoComplete、autoFocus、inputMode等）
+  - 自定义样式和类名支持
+  - 无障碍访问支持（aria-label、tabIndex等）
+- **测试**: 包含完整的单元测试，**29 个测试用例**
+- **测试覆盖率**:
+  - **语句覆盖率**: 77.61%
+  - **分支覆盖率**: 100%
+  - **函数覆盖率**: 100%
+  - **行覆盖率**: 76.56%
+- **覆盖的功能**:
+  - 基础组件渲染和属性设置
+  - 受控和非受控模式
+  - 标签、帮助文本、错误文本显示
+  - 前缀后缀图标渲染
+  - 清除功能和密码切换功能
+  - 字符计数功能
+  - 事件处理（onChange、onFocus、onBlur、onEnter）
+  - 状态管理（disabled、readOnly、error）
+  - 样式变体和尺寸
+  - 输入类型和属性设置
+  - ref转发和边界情况处理
 
 ### **实现组件时需要动的文件/文件夹**：
 
