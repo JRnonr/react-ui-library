@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ChatInterface } from './ChatInterface';
 
 const meta: Meta<typeof ChatInterface> = {

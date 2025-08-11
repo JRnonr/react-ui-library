@@ -33,7 +33,8 @@
 │   │   │   ├── components/ # 组件目录
 │   │   │   │   ├── Button/ # Button 按钮组件 (已完成)
 │   │   │   │   ├── ChatInterface/ # ChatInterface 聊天界面组件 (已完成)
-│   │   │   │   └── Input/ # Input 输入框组件 (已完成)
+│   │   │   │   ├── Input/ # Input 输入框组件 (已完成)
+│   │   │   │   └── AIMessage/ # AIMessage AI消息组件 (已完成)
 │   │   │   ├── stories/    # 在这里写组件故事
 │   │   │   ├── __tests__/  # 在这里写组件测试
 │   │   │   └── index.ts    # 在这里导出组件
@@ -56,6 +57,67 @@
 ├── vitest.config.ts        # Vitest 测试配置
 └── README.md               # 项目说明
 ```
+
+## 开发
+
+```bash
+# 安装依赖
+pnpm install
+
+# 启动文档网站 (开发模式)
+pnpm dev
+# 或者
+pnpm run docs
+
+# 构建所有包
+pnpm build
+
+# 测试
+pnpm test
+
+# 测试覆盖率
+pnpm test:coverage
+
+# 类型检查
+pnpm typecheck
+
+# 代码检查
+pnpm lint
+
+# Storybook (组件开发)
+pnpm storybook
+
+# 构建 Storybook
+pnpm build-storybook
+```
+
+## 包管理
+
+```bash
+# 为特定包添加依赖
+pnpm --filter @repo/ui add lodash
+
+# 为特定包添加开发依赖
+pnpm --filter @repo/ui add -D @types/lodash
+
+# 运行特定包的脚本
+pnpm --filter @repo/ui run build
+```
+
+
+
+## 开发流程
+
+1. **组件开发**：在 `packages/ui/src/components/` 中创建组件
+2. **故事编写**：在 `packages/ui/src/stories/` 中写组件故事
+3. **组件导出**：在 `packages/ui/src/index.ts` 中导出组件
+4. **组件测试**：在 `packages/ui/src/__tests__/` 中写测试用例
+5. **实时预览**：运行 `pnpm storybook` 测试组件
+6. **文档编写**：在 `docs/` 中编写使用文档
+7. **最终展示**：运行 `pnpm dev` 查看文档网站
+
+## 项目当前状态总结
+
 
 ## 组件开发指南
 
@@ -161,6 +223,39 @@
   - 输入类型和属性设置
   - ref转发和边界情况处理
 
+#### **AIMessage AI消息组件** 
+- **位置**: `packages/ui/src/components/AIMessage/`
+- **特性**: 专门用于显示AI对话消息的独立组件，支持markdown渲染和代码高亮
+- **核心功能**:
+  - **Markdown渲染** - 完整支持Markdown语法，包括标题、列表、链接、图片等
+  - **代码高亮** - 支持多种编程语言的语法高亮显示
+  - **代码复制** - 一键复制代码块内容，提升用户体验
+  - **响应式设计** - 完美适配各种屏幕尺寸和设备
+  - **深色模式** - 自动适配系统深色模式偏好
+  - **可访问性** - 支持屏幕阅读器和键盘导航
+  - **高度可定制** - 支持自定义样式、主题和渲染逻辑
+- **API 特性**:
+  - 支持传入markdown格式的content内容
+  - 可自定义代码高亮主题（支持github、vs、atom-one-dark等）
+  - 支持自定义CSS类名和样式覆盖
+  - 支持自定义代码块渲染逻辑
+  - 完整的事件回调支持
+- **技术亮点**:
+  - 使用react-markdown进行安全的Markdown解析
+  - 集成highlight.js实现代码语法高亮
+  - 实现代码块复制功能，提升用户交互体验
+  - 响应式设计，完美适配移动端和桌面端
+- **测试**: 包含完整的单元测试，**多个测试用例**
+- **测试覆盖率**: 待补充
+- **覆盖的功能**:
+  - Markdown内容渲染
+  - 代码语法高亮
+  - 代码块复制功能
+  - 响应式布局适配
+  - 深色模式支持
+  - 可访问性功能
+  - 自定义样式支持
+
 ### **实现组件时需要动的文件/文件夹**：
 
 #### 1. **核心组件库** - `packages/ui/`：
@@ -169,6 +264,48 @@
 - `packages/ui/src/stories/` ← **在这里写组件故事**
 - `packages/ui/src/__tests__/` ← **在这里写组件测试**
 - `packages/ui/package.json` ← **添加组件依赖**
+
+### **待完成的AI相关组件**：
+
+#### **AI Loading 组件** ⭐⭐⭐⭐
+- **作用**：AI处理时的加载动画独立组件
+- **功能**：
+  - 打字机效果
+  - 思考中的动画（如旋转的圆点）
+  - 进度指示器
+  - 可自定义的加载文本
+- **设计理念**：专注加载状态，可与其他组件组合使用
+
+#### **AI Prompt Input 组件** ⭐⭐⭐⭐
+- **作用**：智能提示输入框独立组件
+- **功能**：
+  - 自动补全建议
+  - 历史记录
+  - 快捷指令（如"/"触发）
+  - 模板选择器
+- **设计理念**：专注输入增强，可替换普通Input组件
+
+#### **AI Response Viewer 组件** ⭐⭐⭐
+- **作用**：展示AI响应的独立组件
+- **功能**：
+  - 结构化数据展示
+  - 图表渲染支持
+  - 可折叠的长文本
+  - 导出功能
+- **设计理念**：专注内容展示，可独立使用或与其他组件组合
+
+#### 组件组合使用示例**：
+```
+// 可以这样组合使用
+<AIMessage content={aiResponse} />
+<AILoading type="thinking" />
+<AIPromptInput suggestions={prompts} />
+<AIResponseViewer data={structuredData} />
+
+// 或者单独使用
+<AIMessage content="Hello AI!" />
+<AILoading type="typing" />
+```
 
 #### 2. **组件开发环境**：
 - 运行 `pnpm storybook` 启动组件开发环境
@@ -188,61 +325,16 @@
 #### 2. **根目录管理文件**：
 - `package.json`（根目录）、`README.md`（根目录）
 
-## 开发
 
-```bash
-# 安装依赖
-pnpm install
-
-# 启动文档网站 (开发模式)
-pnpm dev
-# 或者
-pnpm run docs
-
-# 构建所有包
-pnpm build
-
-# 测试
-pnpm test
-
-# 测试覆盖率
-pnpm test:coverage
-
-# 类型检查
-pnpm typecheck
-
-# 代码检查
-pnpm lint
-
-# Storybook (组件开发)
-pnpm storybook
-
-# 构建 Storybook
-pnpm build-storybook
-```
-
-## 包管理
-
-```bash
-# 为特定包添加依赖
-pnpm --filter @repo/ui add lodash
-
-# 为特定包添加开发依赖
-pnpm --filter @repo/ui add -D @types/lodash
-
-# 运行特定包的脚本
-pnpm --filter @repo/ui run build
-```
+#### **进行中**
+- **AI Loading组件** - AI处理时的加载动画组件
+- **AI Prompt Input组件** - 智能提示输入框组件
+- **AI Response Viewer组件** - AI响应展示组件
 
 
-
-## 开发流程
-
-1. **组件开发**：在 `packages/ui/src/components/` 中创建组件
-2. **故事编写**：在 `packages/ui/src/stories/` 中写组件故事
-3. **组件导出**：在 `packages/ui/src/index.ts` 中导出组件
-4. **组件测试**：在 `packages/ui/src/__tests__/` 中写测试用例
-5. **实时预览**：运行 `pnpm storybook` 测试组件
-6. **文档编写**：在 `docs/` 中编写使用文档
-7. **最终展示**：运行 `pnpm dev` 查看文档网站
+#### **已解决的技术难题**
+1. **复杂异步状态管理** - 使用useReducer优化聊天界面状态管理
+2. **TypeScript类型安全** - 解决forwardRef和多态组件的类型问题
+3. **Markdown渲染优化** - 实现高性能的Markdown解析和代码高亮
+4. **性能优化** - 打字机效果、懒加载、内存管理等优化
 

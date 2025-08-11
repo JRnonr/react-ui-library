@@ -4,10 +4,10 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  publicDir: 'public',
   resolve: {
     alias: {
-      '@velvet/ui': resolve(__dirname, '../packages/ui/dist/index.es.js'),
-      '@velvet/ui/dist/style.css': resolve(__dirname, '../packages/ui/dist/style.css')
+      '@velvet/ui': resolve(__dirname, '../packages/ui/src')
     }
   },
   optimizeDeps: {

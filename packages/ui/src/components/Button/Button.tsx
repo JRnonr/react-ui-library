@@ -1,5 +1,6 @@
 'use client';
 import React, { forwardRef } from 'react';
+import { Loader2 } from 'lucide-react';
 import './Button.css';
 
 export type ButtonOwnProps = {
@@ -75,22 +76,7 @@ export const Button = forwardRef<Element, ButtonOwnProps & React.HTMLAttributes<
         >
           {loading && (
             <span className="btn__loading-spinner" aria-hidden="true" data-testid="loading-spinner">
-              <svg
-                className="btn__loading-svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  className="btn__loading-circle"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <Loader2 className="btn__loading-svg" size={16} />
             </span>
           )}
           <span className="btn__content">{children}</span>
@@ -124,22 +110,7 @@ export const Button = forwardRef<Element, ButtonOwnProps & React.HTMLAttributes<
     }, [
       loading && (
         <span key="loading" className="btn__loading-spinner" aria-hidden="true" data-testid="loading-spinner">
-          <svg
-            className="btn__loading-svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              className="btn__loading-circle"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
+          <Loader2 className="btn__loading-svg" size={16} />
         </span>
       ),
       <span key="content" className="btn__content">{children}</span>

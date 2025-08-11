@@ -1,0 +1,15 @@
+import { Meta, StoryObj } from '@storybook/react';
+import { AIMessage } from './AIMessage';
+declare const meta: Meta<typeof AIMessage>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const WithMarkdown: Story;
+export declare const CodeHighlight: Story;
+export declare const DifferentStatuses: Story;
+export declare const CustomAvatar: Story;
+export declare const LongMessage: Story;
+export declare const NoCopyButton: Story;
+export declare const NoCodeHighlight: Story;
+export declare const ResponsiveDesign: Story;
+export declare const DarkMode: Story;

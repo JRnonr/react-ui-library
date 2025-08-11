@@ -6,6 +6,40 @@
   background: #fafafa;
 }
 
+/* 全局滚动条样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* 为Webkit浏览器设置全局滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  min-height: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.35);
+  background-clip: content-box;
+}
+
 /* 顶部导航栏 */
 .app-header {
   background: white;
@@ -15,9 +49,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
+  position: fixed; /* 改为固定定位，确保完全不动 */
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* 提高层级，确保在最上层 */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -125,13 +161,14 @@
   display: flex;
   flex: 1;
   height: calc(100vh - 64px);
+  margin-top: 64px; /* 为固定的顶部导航栏留出空间 */
 }
 
 /* 主内容区域 */
 .main-content {
   flex: 1;
   padding: 32px 48px;
-  overflow-y: auto;
+  overflow: visible; /* 移除滚动，让子元素控制滚动 */
   background: white;
   margin: 24px;
   border-radius: 8px;
@@ -182,16 +219,95 @@
   display: flex;
   gap: 48px;
   margin-top: 32px;
+  height: calc(100vh - 184px); /* 减去固定头部(64px)、margin-top(64px)和边距(56px)的高度 */
+  position: relative;
 }
 
 .components-sidebar {
   width: 280px;
   flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+  height: fit-content;
+  max-height: calc(100vh - 184px); /* 调整最大高度 */
+  overflow-y: auto;
+}
+
+/* 侧边栏滚动条样式 - 精致小滑动条 */
+.components-sidebar::-webkit-scrollbar {
+  width: 6px; /* 侧边栏稍微窄一点 */
+}
+
+.components-sidebar::-webkit-scrollbar-track {
+  background: transparent; /* 轨道透明 */
+  border-radius: 3px;
+}
+
+.components-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15); /* 更淡的颜色，不抢眼 */
+  border-radius: 3px;
+  border: 1px solid transparent; /* 透明边框 */
+  background-clip: content-box;
+  min-height: 30px; /* 最小高度 */
+}
+
+.components-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25); /* 悬停时稍微明显 */
+  background-clip: content-box;
+}
+
+.components-sidebar::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.35); /* 激活时更明显 */
+  background-clip: content-box;
+}
+
+/* 为Firefox添加侧边栏滚动条样式 */
+.components-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
 }
 
 .components-content {
   flex: 1;
   min-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px; /* 为滚动条留出空间 */
+  padding-top: 0; /* 确保顶部没有额外内边距 */
+  height: 100%; /* 确保高度填满容器 */
+}
+
+/* 内容区域滚动条样式 - 精致小滑动条 */
+.components-content::-webkit-scrollbar {
+  width: 8px; /* 稍微加宽一点，更容易操作 */
+}
+
+.components-content::-webkit-scrollbar-track {
+  background: transparent; /* 轨道透明，更简洁 */
+  border-radius: 4px;
+}
+
+.components-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2); /* 半透明黑色，更现代 */
+  border-radius: 4px;
+  border: 2px solid transparent; /* 透明边框 */
+  background-clip: content-box; /* 背景裁剪到内容区域 */
+  min-height: 40px; /* 最小高度，确保可操作性 */
+}
+
+.components-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4); /* 悬停时更明显 */
+  background-clip: content-box;
+}
+
+.components-content::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.6); /* 激活时最明显 */
+  background-clip: content-box;
+}
+
+/* 为Firefox添加滚动条样式 */
+.components-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
 /* 侧边栏样式 */
@@ -200,9 +316,9 @@
 }
 
 .sidebar-title {
-  font-size: 12px;
+  font-size: 30 px;
   font-weight: 600;
-  color: #999;
+  color: #262626;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0 0 16px;
@@ -246,6 +362,13 @@
 /* 组件区域样式 */
 .component-section {
   margin-bottom: 48px;
+  padding-top: 0; /* 确保顶部没有额外内边距 */
+}
+
+/* 第一个组件区域确保顶部对齐 */
+.component-section:first-child {
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .component-title {
@@ -292,6 +415,17 @@
   gap: 16px;
   align-items: center;
   flex-wrap: wrap;
+}
+
+/* Input组件特殊展示样式 */
+.demo-row:has(.input) {
+  flex-direction: column;
+  align-items: stretch;
+  width: 300px;
+}
+
+.demo-row:has(.input) .input {
+  width: 100%;
 }
 
 /* 代码示例样式 */
@@ -362,6 +496,67 @@
   border-bottom: none;
 }
 
+/* 代码块样式 */
+.code-block {
+  margin-top: 24px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #fafafa;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.code-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.code-toggle-btn {
+  padding: 6px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  background: white;
+  color: #666;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.code-toggle-btn:hover {
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+.code-content {
+  margin: 0;
+  padding: 20px;
+  background: #f6f8fa;
+  border: none;
+  border-radius: 0;
+  overflow-x: auto;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #24292e;
+}
+
+.code-content code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 
 
 /* 组件占位符 */
@@ -389,8 +584,6 @@
   font-size: 14px;
 }
 
-
-
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .main-content {
@@ -400,14 +593,26 @@
   
   .components-layout {
     gap: 32px;
+    height: calc(100vh - 164px); /* 调整平板端高度：减去固定头部(64px)、margin-top(64px)和边距(36px) */
   }
   
   .components-sidebar {
     width: 240px;
+    top: 16px; /* 调整移动端顶部距离 */
+    max-height: calc(100vh - 164px); /* 调整平板端最大高度 */
   }
   
   .component-demo {
     padding: 24px;
+  }
+  
+  .demo-section {
+    padding: 24px;
+  }
+  
+  .demo-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
@@ -432,10 +637,19 @@
   .components-layout {
     flex-direction: column;
     gap: 24px;
+    height: auto; /* 移动端取消固定高度 */
   }
   
   .components-sidebar {
     width: 100%;
+    position: static; /* 移动端取消sticky定位 */
+    max-height: none;
+    overflow-y: visible;
+  }
+  
+  .components-content {
+    overflow-y: visible; /* 移动端取消独立滚动 */
+    padding-right: 0;
   }
   
   .component-demo {

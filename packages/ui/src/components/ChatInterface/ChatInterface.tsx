@@ -53,9 +53,30 @@ export const ChatInterface = forwardRef<HTMLDivElement, ChatInterfaceProps>(({
     }
   }, []);
 
+  // 强制滚动条显示
+  const forceScrollbarDisplay = useCallback(() => {
+    const messagesContainer = messagesEndRef.current?.parentElement;
+    if (messagesContainer) {
+      // 临时添加一个不可见的元素来强制显示滚动条
+      const tempElement = document.createElement('div');
+      tempElement.style.height = '1px';
+      tempElement.style.visibility = 'hidden';
+      messagesContainer.appendChild(tempElement);
+      
+      // 立即移除
+      setTimeout(() => {
+        if (tempElement.parentNode) {
+          tempElement.parentNode.removeChild(tempElement);
+        }
+      }, 0);
+    }
+  }, []);
+
   useEffect(() => {
     scrollToBottom();
-  }, [messages, scrollToBottom]);
+    // 确保滚动条显示
+    forceScrollbarDisplay();
+  }, [messages, scrollToBottom, forceScrollbarDisplay]);
 
   // 添加消息
   const addMessage = useCallback((content: string, type: 'user' | 'assistant') => {

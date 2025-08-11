@@ -60,26 +60,67 @@
 .chat-interface__messages {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 1rem;
   background: #f8fafc;
+  /* 确保滚动条始终显示 */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+  /* 强制显示滚动条 */
+  scrollbar-gutter: stable;
 }
 
+/* Webkit 浏览器滚动条样式 */
 .chat-interface__messages::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 .chat-interface__messages::-webkit-scrollbar-track {
   background: #f1f5f9;
-  border-radius: 3px;
+  border-radius: 4px;
+  margin: 2px;
 }
 
 .chat-interface__messages::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-  border-radius: 3px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  min-height: 40px;
 }
 
 .chat-interface__messages::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+  border-color: #cbd5e1;
+}
+
+.chat-interface__messages::-webkit-scrollbar-thumb:active {
+  background: #64748b;
+  border-color: #475569;
+}
+
+.chat-interface__messages::-webkit-scrollbar-corner {
+  background: #f1f5f9;
+}
+
+/* Firefox 滚动条样式 */
+.chat-interface__messages {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+/* 确保在内容不足时也能看到滚动条区域 */
+.chat-interface__messages:not(:empty) {
+  min-height: 200px;
+}
+
+/* 滚动条显示优化 */
+.chat-interface__messages:hover {
+  scrollbar-width: auto;
+}
+
+.chat-interface__messages:hover::-webkit-scrollbar {
+  width: 10px;
 }
 
 /* 空状态 */
