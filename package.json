@@ -14,7 +14,8 @@
     "build-storybook": "storybook build",
     "docs": "pnpm --filter @velvet/docs dev",
     "docs:build": "pnpm --filter @velvet/docs build",
-    "audit": "tsx scripts/audit.ts"
+    "audit": "tsx scripts/audit.ts",
+    "check-pnpm": "node scripts/check-pnpm.js"
   },
   "engines": {
     "node": ">=20",

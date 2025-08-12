@@ -15,6 +15,14 @@ export default [{
     '**/node_modules/**',
   ],
 }, js.configs.recommended, ...tseslint.configs.recommended, {
+  files: ['scripts/**/*.js'],
+  languageOptions: {
+    globals: {
+      ...globals.node,
+      console: 'readonly',
+    },
+  },
+}, {
   files: ['**/*.{ts,tsx}'],
   languageOptions: {
     globals: globals.browser,

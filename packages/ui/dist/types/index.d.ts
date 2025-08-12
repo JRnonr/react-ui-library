@@ -7,3 +7,7 @@ export { Input } from './components/Input';
 export type { InputOwnProps } from './components/Input';
 export { AIMessage } from './components/AIMessage';
 export type { AIMessageOwnProps, MessageStatus } from './components/AIMessage';
+export { AILoading } from './components/AILoading';
+export type { AILoadingProps } from './components/AILoading';
+export { AIPromptInput } from './components/AIPromptInput';
+export type { AIPromptInputProps, PromptSuggestion, PromptTemplate } from './components/AIPromptInput';

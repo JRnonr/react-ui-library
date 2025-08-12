@@ -10,9 +10,6 @@ export default defineConfig({
       '@velvet/ui': resolve(__dirname, '../packages/ui/src')
     }
   },
-  optimizeDeps: {
-    include: ['@velvet/ui']
-  },
   define: {
     global: 'globalThis',
   },

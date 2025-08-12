@@ -1,0 +1,17 @@
+import { Meta, StoryObj } from '@storybook/react';
+import { AIPromptInput } from './AIPromptInput';
+declare const meta: Meta<typeof AIPromptInput>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Basic: Story;
+export declare const WithSuggestions: Story;
+export declare const WithHistory: Story;
+export declare const WithTemplates: Story;
+export declare const WithShortcuts: Story;
+export declare const FullFeatured: Story;
+export declare const Sizes: Story;
+export declare const Variants: Story;
+export declare const States: Story;
+export declare const Controlled: Story;
+export declare const CustomStyling: Story;
+export declare const Responsive: Story;

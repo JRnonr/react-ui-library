@@ -1,0 +1,259 @@
+/* AI Loading 组件样式 */
+.ai-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  min-height: 80px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.ai-loading:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 打字机效果样式 */
+.ai-loading-typing {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.ai-loading-text {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ai-loading-cursor {
+  color: #3b82f6;
+  font-weight: bold;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* 思考动画样式 */
+.ai-loading-thinking {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.ai-loading-dots {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.ai-loading-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #9ca3af;
+  transition: all 0.3s ease;
+}
+
+.ai-loading-dot.active {
+  background-color: #3b82f6;
+  transform: scale(1.2);
+}
+
+/* 处理中样式 */
+.ai-loading-processing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.ai-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 纯点动画样式 */
+.ai-loading-dots-only {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-loading-dots-only .ai-loading-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #9ca3af;
+  transition: all 0.3s ease;
+}
+
+.ai-loading-dots-only .ai-loading-dot.active {
+  background-color: #3b82f6;
+  transform: scale(1.3);
+}
+
+/* 进度条样式 */
+.ai-loading-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.ai-loading-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ai-loading-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.ai-loading-progress-fill.indeterminate {
+  background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 50%, #3b82f6 100%);
+  background-size: 200% 100%;
+  animation: indeterminate-progress 2s infinite;
+}
+
+@keyframes indeterminate-progress {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.ai-loading-progress-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* 尺寸变体 */
+.ai-loading.ai-loading-sm {
+  padding: 1rem;
+  min-height: 60px;
+  font-size: 0.875rem;
+}
+
+.ai-loading.ai-loading-sm .ai-loading-spinner {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.ai-loading.ai-loading-lg {
+  padding: 2rem;
+  min-height: 100px;
+  font-size: 1.25rem;
+}
+
+.ai-loading.ai-loading-lg .ai-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .ai-loading {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    color: #f9fafb;
+  }
+  
+  .ai-loading-typing,
+  .ai-loading-thinking,
+  .ai-loading-processing {
+    color: #f9fafb;
+  }
+  
+  .ai-loading-dot {
+    background-color: #6b7280;
+  }
+  
+  .ai-loading-progress-bar {
+    background-color: #374151;
+  }
+  
+  .ai-loading-progress-text {
+    color: #9ca3af;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+  .ai-loading {
+    padding: 1rem;
+    min-height: 60px;
+  }
+  
+  .ai-loading-typing,
+  .ai-loading-thinking,
+  .ai-loading-processing {
+    font-size: 1rem;
+  }
+  
+  .ai-loading-spinner {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* 动画优化 */
+.ai-loading * {
+  will-change: transform, opacity;
+}
+
+/* 无障碍访问优化 */
+.ai-loading[aria-hidden="true"] {
+  display: none;
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .ai-loading {
+    border: 2px solid #000;
+  }
+  
+  .ai-loading-dot.active {
+    border: 1px solid #000;
+  }
+  
+  .ai-loading-progress-fill {
+    border: 1px solid #000;
+  }
+} 

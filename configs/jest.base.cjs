@@ -8,7 +8,6 @@ module.exports = {
         parser: { syntax: 'typescript', tsx: true },
         transform: { react: { runtime: 'automatic' } },
       },
-      module: { type: 'es6' },
     }],
   },
   moduleNameMapper: {

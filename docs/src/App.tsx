@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, ChatInterface, Input, AIMessage } from '@velvet/ui';
+import { Button, ChatInterface, Input, AIMessage, AILoading, AIPromptInput } from '@velvet/ui';
 import { CodeBlock } from './components';
 import './App.css';
 
@@ -20,7 +20,16 @@ function App() {
     aiMessageCode: false,
     aiMessageLong: false,
     aiMessageDisabled: false,
-    aiMessageResponsive: false
+    aiMessageResponsive: false,
+    aiLoadingBasic: false,
+    aiLoadingTypes: false,
+    aiLoadingProgress: false,
+    aiPromptInputBasic: false,
+    aiPromptInputSuggestions: false,
+    aiPromptInputHistory: false,
+    aiPromptInputTemplates: false,
+    aiPromptInputShortcuts: false,
+    aiPromptInputFull: false
   });
 
   // 快速上手页面
@@ -113,6 +122,22 @@ pnpm add @velvet/ui`}
                   onClick={() => setActiveComponent('ai-message')}
                 >
                   AIMessage AI消息
+                </a>
+              </li>
+              <li className="sidebar-item">
+                <a 
+                  className={activeComponent === 'ai-loading' ? 'active' : ''}
+                  onClick={() => setActiveComponent('ai-loading')}
+                >
+                  AILoading AI加载
+                </a>
+              </li>
+              <li className="sidebar-item">
+                <a 
+                  className={activeComponent === 'ai-prompt-input' ? 'active' : ''}
+                  onClick={() => setActiveComponent('ai-prompt-input')}
+                >
+                  AIPromptInput AI提示输入
                 </a>
               </li>
             </ul>
@@ -1145,6 +1170,645 @@ export default App;`}
                         <td>是否显示复制按钮</td>
                         <td><code>boolean</code></td>
                         <td><code>true</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {activeComponent === 'ai-loading' && (
+            <div className="component-section">
+              <h3 className="component-title">AILoading AI加载</h3>
+              <p className="component-description">专门用于AI处理时的加载动画组件，支持多种加载类型和动画效果。</p>
+              
+              <div className="component-demo">
+                <div className="demo-section">
+                  <h4 className="demo-title">基础用法</h4>
+                  <div className="demo-row">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', maxWidth: '400px' }}>
+                      <AILoading type="typing" text="AI正在思考中..." />
+                      <AILoading type="thinking" text="AI正在思考" />
+                      <AILoading type="processing" text="AI正在处理" />
+                      <AILoading type="dots" />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AILoading } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <AILoading type="typing" text="AI正在思考中..." />
+    <AILoading type="thinking" text="AI正在思考" />
+    <AILoading type="processing" text="AI正在处理" />
+    <AILoading type="dots" />
+  </div>
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiLoadingBasic}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiLoadingBasic: !prev.aiLoadingBasic}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">不同加载类型</h4>
+                  <div className="demo-row">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', maxWidth: '400px' }}>
+                      <AILoading type="typing" text="AI正在分析您的问题，请稍候..." typingSpeed={100} />
+                      <AILoading type="typing" texts={[
+                        'AI正在分析问题...',
+                        'AI正在搜索相关信息...',
+                        'AI正在生成答案...'
+                      ]} loop={true} typingSpeed={80} />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AILoading } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <AILoading type="typing" text="AI正在分析您的问题，请稍候..." typingSpeed={100} />
+    <AILoading type="typing" texts={[
+      'AI正在分析问题...',
+      'AI正在搜索相关信息...',
+      'AI正在生成答案...'
+    ]} loop={true} typingSpeed={80} />
+  </div>
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiLoadingTypes}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiLoadingTypes: !prev.aiLoadingTypes}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">进度条功能</h4>
+                  <div className="demo-row">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', maxWidth: '400px' }}>
+                      <AILoading type="processing" text="AI正在生成内容" showProgress={true} progress={65} />
+                      <AILoading type="processing" text="AI正在处理中" showProgress={true} indeterminate={true} />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AILoading } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <AILoading type="processing" text="AI正在生成内容" showProgress={true} progress={65} />
+    <AILoading type="processing" text="AI正在处理中" showProgress={true} indeterminate={true} />
+  </div>
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiLoadingProgress}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiLoadingProgress: !prev.aiLoadingProgress}))}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="component-api">
+                <h4 className="api-title">API</h4>
+                <div className="api-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>type</td>
+                        <td>加载类型</td>
+                        <td><code>'typing' | 'thinking' | 'processing' | 'dots'</code></td>
+                        <td><code>'typing'</code></td>
+                      </tr>
+                      <tr>
+                        <td>text</td>
+                        <td>加载文本</td>
+                        <td><code>string</code></td>
+                        <td><code>'AI正在思考中...'</code></td>
+                      </tr>
+                      <tr>
+                        <td>texts</td>
+                        <td>自定义加载文本数组</td>
+                        <td><code>string[]</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td>typingSpeed</td>
+                        <td>打字机效果速度（毫秒）</td>
+                        <td><code>number</code></td>
+                        <td><code>100</code></td>
+                      </tr>
+                      <tr>
+                        <td>loop</td>
+                        <td>是否循环播放文本</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>showProgress</td>
+                        <td>是否显示进度条</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>progress</td>
+                        <td>进度值（0-100）</td>
+                        <td><code>number</code></td>
+                        <td><code>0</code></td>
+                      </tr>
+                      <tr>
+                        <td>indeterminate</td>
+                        <td>是否不确定进度</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>onComplete</td>
+                        <td>加载完成回调</td>
+                        <td><code>() =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td>onTextChange</td>
+                        <td>文本变化回调</td>
+                        <td><code>(text: string) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {activeComponent === 'ai-prompt-input' && (
+            <div className="component-section">
+              <h3 className="component-title">AIPromptInput AI提示输入</h3>
+              <p className="component-description">智能提示输入框组件，专为AI应用设计，支持自动补全、历史记录、模板选择和快捷指令。</p>
+              
+              <div className="component-demo">
+                <div className="demo-section">
+                  <h4 className="demo-title">基础用法</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '500px' }}>
+                      <AIPromptInput 
+                        placeholder="输入你的提示..."
+                        label="AI提示输入"
+                        helpText="输入你想要AI帮助的内容"
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AIPromptInput } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <AIPromptInput 
+    placeholder="输入你的提示..."
+    label="AI提示输入"
+    helpText="输入你想要AI帮助的内容"
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiPromptInputBasic}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiPromptInputBasic: !prev.aiPromptInputBasic}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">智能建议</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '500px' }}>
+                      <AIPromptInput 
+                        placeholder="输入你的提示..."
+                        label="智能提示输入"
+                        helpText="输入时会显示相关建议"
+                        suggestions={[
+                          { id: '1', text: '请帮我写一个React组件的代码', category: '编程', usage: 156 },
+                          { id: '2', text: '解释一下什么是机器学习', category: 'AI', usage: 89 },
+                          { id: '3', text: '帮我优化这个SQL查询语句', category: '数据库', usage: 234 }
+                        ]}
+                        showSuggestions={true}
+                        minCharsForSuggestions={1}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AIPromptInput } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <AIPromptInput 
+    placeholder="输入你的提示..."
+    label="智能提示输入"
+    helpText="输入时会显示相关建议"
+    suggestions={[
+      { id: '1', text: '请帮我写一个React组件的代码', category: '编程', usage: 156 },
+      { id: '2', text: '解释一下什么是机器学习', category: 'AI', usage: 89 },
+      { id: '3', text: '帮我优化这个SQL查询语句', category: '数据库', usage: 234 }
+    ]}
+    showSuggestions={true}
+    minCharsForSuggestions={1}
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiPromptInputSuggestions}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiPromptInputSuggestions: !prev.aiPromptInputSuggestions}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">历史记录</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '500px' }}>
+                      <AIPromptInput 
+                        placeholder="输入你的提示..."
+                        label="带历史记录的输入框"
+                        helpText="点击时钟图标查看历史记录"
+                        history={[
+                          '请帮我写一个React组件的代码',
+                          '解释一下什么是机器学习',
+                          '帮我优化这个SQL查询语句'
+                        ]}
+                        showHistory={true}
+                        maxHistoryItems={5}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AIPromptInput } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <AIPromptInput 
+    placeholder="输入你的提示..."
+    label="带历史记录的输入框"
+    helpText="点击时钟图标查看历史记录"
+    history={[
+      '请帮我写一个React组件的代码',
+      '解释一下什么是机器学习',
+      '帮我优化这个SQL查询语句'
+    ]}
+    showHistory={true}
+    maxHistoryItems={5}
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiPromptInputHistory}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiPromptInputHistory: !prev.aiPromptInputHistory}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">模板选择</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '500px' }}>
+                      <AIPromptInput 
+                        placeholder="输入你的提示..."
+                        label="模板选择器"
+                        helpText="点击文档图标选择模板"
+                        templates={[
+                          {
+                            id: '1',
+                            name: '代码审查',
+                            description: '帮助审查代码质量和潜在问题',
+                            content: '请帮我审查以下代码，指出可能的问题和改进建议：\\n\\n[代码]',
+                            category: '编程',
+                            tags: ['代码', '审查', '质量']
+                          },
+                          {
+                            id: '2',
+                            name: '学习计划',
+                            description: '制定个性化的学习计划',
+                            content: '我想学习[技能]，请帮我制定一个为期[时间]的学习计划。',
+                            category: '教育',
+                            tags: ['学习', '计划', '技能']
+                          }
+                        ]}
+                        showTemplates={true}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AIPromptInput } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <AIPromptInput 
+    placeholder="输入你的提示..."
+    label="模板选择器"
+    helpText="点击文档图标选择模板"
+    templates={[
+      {
+        id: '1',
+        name: '代码审查',
+        description: '帮助审查代码质量和潜在问题',
+        content: '请帮我审查以下代码，指出可能的问题和改进建议：\\\\n\\\\n[代码]',
+        category: '编程',
+        tags: ['代码', '审查', '质量']
+      },
+      {
+        id: '2',
+        name: '学习计划',
+        description: '制定个性化的学习计划',
+        content: '我想学习[技能]，请帮我制定一个为期[时间]的学习计划。',
+        category: '教育',
+        tags: ['学习', '计划', '技能']
+      }
+    ]}
+    showTemplates={true}
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiPromptInputTemplates}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiPromptInputTemplates: !prev.aiPromptInputTemplates}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">快捷指令</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '500px' }}>
+                      <AIPromptInput 
+                        placeholder='输入"/"查看快捷指令...'
+                        label="快捷指令输入框"
+                        helpText='输入"/"触发快捷指令'
+                        shortcuts={[
+                          {
+                            key: 'code',
+                            label: '代码生成',
+                            description: '生成指定功能的代码',
+                            action: '请帮我生成一个[功能]的代码，使用[技术栈]。'
+                          },
+                          {
+                            key: 'explain',
+                            label: '概念解释',
+                            description: '解释复杂概念',
+                            action: '请用简单易懂的方式解释[概念]。'
+                          }
+                        ]}
+                        showShortcuts={true}
+                        shortcutTrigger="/"
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AIPromptInput } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <AIPromptInput 
+    placeholder="输入"/"查看快捷指令..."
+    label="快捷指令输入框"
+    helpText="输入"/"触发快捷指令"
+    shortcuts={[
+      {
+        key: 'code',
+        label: '代码生成',
+        description: '生成指定功能的代码',
+        action: '请帮我生成一个[功能]的代码，使用[技术栈]。'
+      },
+      {
+        key: 'explain',
+        label: '概念解释',
+        description: '解释复杂概念',
+        action: '请用简单易懂的方式解释[概念]。'
+      }
+    ]}
+    showShortcuts={true}
+    shortcutTrigger="/"
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiPromptInputShortcuts}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiPromptInputShortcuts: !prev.aiPromptInputShortcuts}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">完整功能</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '500px' }}>
+                      <AIPromptInput 
+                        placeholder='输入你的提示或使用"/"快捷指令...'
+                        label="完整功能输入框"
+                        helpText="支持建议、历史、模板和快捷指令"
+                        suggestions={[
+                          { id: '1', text: '请帮我写一个React组件的代码', category: '编程', usage: 156 },
+                          { id: '2', text: '解释一下什么是机器学习', category: 'AI', usage: 89 }
+                        ]}
+                        history={[
+                          '请帮我写一个React组件的代码',
+                          '解释一下什么是机器学习'
+                        ]}
+                        templates={[
+                          {
+                            id: '1',
+                            name: '代码审查',
+                            description: '帮助审查代码质量和潜在问题',
+                            content: '请帮我审查以下代码，指出可能的问题和改进建议：\\n\\n[代码]',
+                            category: '编程',
+                            tags: ['代码', '审查', '质量']
+                          }
+                        ]}
+                        shortcuts={[
+                          {
+                            key: 'code',
+                            label: '代码生成',
+                            description: '生成指定功能的代码',
+                            action: '请帮我生成一个[功能]的代码，使用[技术栈]。'
+                          }
+                        ]}
+                        showSuggestions={true}
+                        showHistory={true}
+                        showTemplates={true}
+                        showShortcuts={true}
+                        minCharsForSuggestions={1}
+                        maxHistoryItems={5}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { AIPromptInput } from '@velvet/ui';
+
+const App: React.FC = () => (
+  <AIPromptInput 
+    placeholder="输入你的提示或使用"/"快捷指令..."
+    label="完整功能输入框"
+    helpText="支持建议、历史、模板和快捷指令"
+    suggestions={[
+      { id: '1', text: '请帮我写一个React组件的代码', category: '编程', usage: 156 },
+      { id: '2', text: '解释一下什么是机器学习', category: 'AI', usage: 89 }
+    ]}
+    history={[
+      '请帮我写一个React组件的代码',
+      '解释一下什么是机器学习'
+    ]}
+    templates={[
+      {
+        id: '1',
+        name: '代码审查',
+        description: '帮助审查代码质量和潜在问题',
+        content: '请帮我审查以下代码，指出可能的问题和改进建议：\\\\n\\\\n[代码]',
+        category: '编程',
+        tags: ['代码', '审查', '质量']
+      }
+    ]}
+    shortcuts={[
+      {
+        key: 'code',
+        label: '代码生成',
+        description: '生成指定功能的代码',
+        action: '请帮我生成一个[功能]的代码，使用[技术栈]。'
+      }
+    ]}
+    showSuggestions={true}
+    showHistory={true}
+    showTemplates={true}
+    showShortcuts={true}
+    minCharsForSuggestions={1}
+    maxHistoryItems={5}
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.aiPromptInputFull}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiPromptInputFull: !prev.aiPromptInputFull}))}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="component-api">
+                <h4 className="api-title">API</h4>
+                <div className="api-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>value</td>
+                        <td>输入框的值</td>
+                        <td><code>string</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td>placeholder</td>
+                        <td>输入框的占位符</td>
+                        <td><code>string</code></td>
+                        <td><code>'输入你的提示...'</code></td>
+                      </tr>
+                      <tr>
+                        <td>label</td>
+                        <td>输入框标签</td>
+                        <td><code>string</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td>size</td>
+                        <td>输入框尺寸</td>
+                        <td><code>'sm' | 'md' | 'lg'</code></td>
+                        <td><code>'md'</code></td>
+                      </tr>
+                      <tr>
+                        <td>variant</td>
+                        <td>输入框样式变体</td>
+                        <td><code>'outline' | 'filled' | 'underline'</code></td>
+                        <td><code>'outline'</code></td>
+                      </tr>
+                      <tr>
+                        <td>showSuggestions</td>
+                        <td>是否显示自动补全</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td>showHistory</td>
+                        <td>是否显示历史记录</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td>showTemplates</td>
+                        <td>是否显示模板选择器</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td>showShortcuts</td>
+                        <td>是否显示快捷指令</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td>onChange</td>
+                        <td>值变化时的回调</td>
+                        <td><code>(value: string) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td>onEnter</td>
+                        <td>按下回车键时的回调</td>
+                        <td><code>(value: string) =&gt; void</code></td>
+                        <td><code>-</code></td>
                       </tr>
                     </tbody>
                   </table>
