@@ -14,4 +14,6 @@ export { AILoading } from './components/AILoading';
 export type { AILoadingProps } from './components/AILoading';
 export { AIPromptInput } from './components/AIPromptInput';
 export type { AIPromptInputProps, PromptSuggestion, PromptTemplate } from './components/AIPromptInput';
+export { Select } from './components/Select';
+export type { SelectOption, SelectOwnProps } from './components/Select';
 // 等等... 

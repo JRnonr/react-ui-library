@@ -200,4 +200,23 @@ export const X = ({ className, size, ...props }: IconProps) => (
     <path d="M18 6 6 18" />
     <path d="m6 6 12 12" />
   </svg>
+);
+
+export const ChevronDown = ({ className, size, ...props }: IconProps) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    xmlns="http://www.w3.org/2000/svg"
+    data-testid="chevron-down-icon"
+    {...props}
+  >
+    <polyline points="6,9 12,15 18,9" />
+  </svg>
 ); 
