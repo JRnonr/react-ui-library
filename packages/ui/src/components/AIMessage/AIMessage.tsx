@@ -65,7 +65,6 @@ export const AIMessage = forwardRef<HTMLDivElement, AIMessageOwnProps & React.HT
       showTimestamp = true,
       timestamp,
       showCopyButton = true,
-      enableCodeHighlight = true,
       avatar,
       username = 'AI Assistant',
       showUsername = true,
@@ -74,6 +73,7 @@ export const AIMessage = forwardRef<HTMLDivElement, AIMessageOwnProps & React.HT
       onCopy,
       onCopyError,
       onClick,
+      enableCodeHighlight = true,
       ...rest
     },
     ref
@@ -113,7 +113,7 @@ export const AIMessage = forwardRef<HTMLDivElement, AIMessageOwnProps & React.HT
         return <div className="ai-message__content" />;
       }
 
-      // 简单的markdown解析和代码高亮
+      // 完整的markdown解析和渲染
       const lines = content.split('\n');
       const elements: React.ReactNode[] = [];
       let currentText = '';
@@ -152,12 +152,13 @@ export const AIMessage = forwardRef<HTMLDivElement, AIMessageOwnProps & React.HT
         if (line.startsWith('```')) {
           if (inCodeBlock) {
             // 结束代码块
-            inCodeBlock = false;
+            flushText();
             elements.push(
               <pre key={`code-${elements.length}`} className="ai-message__code-block">
                 <code>{codeBlockContent}</code>
               </pre>
             );
+            inCodeBlock = false;
             codeBlockContent = '';
           } else {
             // 开始代码块
@@ -166,34 +167,67 @@ export const AIMessage = forwardRef<HTMLDivElement, AIMessageOwnProps & React.HT
           }
         } else if (inCodeBlock) {
           // 在代码块内
-          codeBlockContent += (codeBlockContent ? '\n' : '') + line;
-        } else {
-          // 处理markdown语法
-          
+          codeBlockContent += line + '\n';
+        } else if (line.startsWith('#')) {
           // 处理标题
-          if (line.startsWith('#')) {
-            flushText();
-            const level = line.match(/^#+/)?.[0].length || 1;
-            const text = line.replace(/^#+\s*/, '');
-            const HeadingTag = `h${Math.min(level, 6)}` as keyof JSX.IntrinsicElements;
+          flushText();
+          const level = line.match(/^#+/)?.[0].length || 1;
+          const text = line.replace(/^#+\s*/, '');
+          const headingLevel = Math.min(level, 6);
+          
+          if (headingLevel === 1) {
             elements.push(
-              <HeadingTag key={`heading-${elements.length}`} className={`ai-message__heading ai-message__heading--h${level}`}>
+              <h1 key={`heading-${elements.length}`} className="ai-message__heading ai-message__heading--h1">
                 {text}
-              </HeadingTag>
+              </h1>
             );
-          } else if (line.trim() === '') {
-            // 空行
-            flushText();
-            elements.push(<br key={`br-${elements.length}`} />);
+          } else if (headingLevel === 2) {
+            elements.push(
+              <h2 key={`heading-${elements.length}`} className="ai-message__heading ai-message__heading--h2">
+                {text}
+              </h2>
+            );
+          } else if (headingLevel === 3) {
+            elements.push(
+              <h3 key={`heading-${elements.length}`} className="ai-message__heading ai-message__heading--h3">
+                {text}
+              </h3>
+            );
+          } else if (headingLevel === 4) {
+            elements.push(
+              <h4 key={`heading-${elements.length}`} className="ai-message__heading ai-message__heading--h4">
+                {text}
+              </h4>
+            );
+          } else if (headingLevel === 5) {
+            elements.push(
+              <h5 key={`heading-${elements.length}`} className="ai-message__heading ai-message__heading--h5">
+                {text}
+              </h5>
+            );
           } else {
-            // 普通文本 - 将换行符转换为空格，这样文本可以在同一行中查找
-            currentText += (currentText ? ' ' : '') + line;
+            elements.push(
+              <h6 key={`heading-${elements.length}`} className="ai-message__heading ai-message__heading--h6">
+                {text}
+              </h6>
+            );
           }
+        } else if (line.trim() === '') {
+          // 空行
+          flushText();
+        } else {
+          // 普通文本行
+          currentText += line + ' ';
         }
       });
 
       // 处理剩余的文本
       flushText();
+
+      // 如果没有元素，返回原始内容
+      if (elements.length === 0) {
+        return <div className="ai-message__content">{content}</div>;
+      }
 
       return (
         <div className="ai-message__content">
