@@ -12,7 +12,15 @@ function App() {
     state: false,
     block: false,
     chatBasic: false,
-    chatCustom: false
+    chatCustom: false,
+    aiMessageBasic: false,
+    aiMessageMarkdown: false,
+    aiMessageStatus: false,
+    aiMessageAvatar: false,
+    aiMessageCode: false,
+    aiMessageLong: false,
+    aiMessageDisabled: false,
+    aiMessageResponsive: false
   });
 
   // 快速上手页面
@@ -749,8 +757,8 @@ const App: React.FC = () => (
 export default App;`}
                       language="typescript"
                       title="代码示例"
-                      expanded={false}
-                      onToggle={() => {}}
+                      expanded={codeExpanded.aiMessageBasic}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiMessageBasic: !prev.aiMessageBasic}))}
                     />
                   </div>
                 </div>
@@ -784,8 +792,8 @@ const App: React.FC = () => (
 export default App;`}
                       language="typescript"
                       title="代码示例"
-                      expanded={false}
-                      onToggle={() => {}}
+                      expanded={codeExpanded.aiMessageMarkdown}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiMessageMarkdown: !prev.aiMessageMarkdown}))}
                     />
                   </div>
                 </div>
@@ -849,8 +857,8 @@ const App: React.FC = () => (
 export default App;`}
                       language="typescript"
                       title="代码示例"
-                      expanded={false}
-                      onToggle={() => {}}
+                      expanded={codeExpanded.aiMessageStatus}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiMessageStatus: !prev.aiMessageStatus}))}
                     />
                   </div>
                 </div>
@@ -886,8 +894,8 @@ const App: React.FC = () => (
 export default App;`}
                       language="typescript"
                       title="代码示例"
-                      expanded={false}
-                      onToggle={() => {}}
+                      expanded={codeExpanded.aiMessageAvatar}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiMessageAvatar: !prev.aiMessageAvatar}))}
                     />
                   </div>
                 </div>
@@ -949,8 +957,8 @@ function fibonacci(n) {
 export default App;`}
                       language="typescript"
                       title="代码示例"
-                      expanded={false}
-                      onToggle={() => {}}
+                      expanded={codeExpanded.aiMessageCode}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiMessageCode: !prev.aiMessageCode}))}
                     />
                   </div>
                 </div>
@@ -984,8 +992,8 @@ const App: React.FC = () => (
 export default App;`}
                       language="typescript"
                       title="代码示例"
-                      expanded={false}
-                      onToggle={() => {}}
+                      expanded={codeExpanded.aiMessageLong}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiMessageLong: !prev.aiMessageLong}))}
                     />
                   </div>
                 </div>
@@ -1041,8 +1049,8 @@ function example() {
 export default App;`}
                       language="typescript"
                       title="代码示例"
-                      expanded={false}
-                      onToggle={() => {}}
+                      expanded={codeExpanded.aiMessageDisabled}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiMessageDisabled: !prev.aiMessageDisabled}))}
                     />
                   </div>
                 </div>
@@ -1076,8 +1084,8 @@ const App: React.FC = () => (
 export default App;`}
                       language="typescript"
                       title="代码示例"
-                      expanded={false}
-                      onToggle={() => {}}
+                      expanded={codeExpanded.aiMessageResponsive}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, aiMessageResponsive: !prev.aiMessageResponsive}))}
                     />
                   </div>
                 </div>
