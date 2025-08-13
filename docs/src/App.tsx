@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, ChatInterface, Input, AIMessage, AILoading, AIPromptInput } from '@velvet/ui';
+import { Button, ChatInterface, Input, AIMessage, AILoading, AIPromptInput, Select, Checkbox } from '@velvet/ui';
 import { CodeBlock } from './components';
 import './App.css';
 
@@ -29,8 +29,15 @@ function App() {
     aiPromptInputHistory: false,
     aiPromptInputTemplates: false,
     aiPromptInputShortcuts: false,
-    aiPromptInputFull: false
+    aiPromptInputFull: false,
+    selectBasic: false,
+    selectLabel: false,
+    selectSearchable: false,
+    selectVariants: false,
+    selectControlled: false
   });
+
+  const [selectedCity, setSelectedCity] = useState<string>('');
 
   // 快速上手页面
   const renderGettingStarted = () => (
@@ -51,6 +58,111 @@ yarn add @velvet/ui
 pnpm add @velvet/ui`}
           language="bash"
           title="安装命令"
+          expanded={true}
+        />
+
+        <h2 style={{ marginTop: 24 }}>引入样式</h2>
+        <p className="content-description">在应用入口文件中全局引入一次样式文件。</p>
+        <CodeBlock
+          code={`// main.tsx 或 _app.tsx
+import '@velvet/ui/style.css';`}
+          language="typescript"
+          title="全局样式引入"
+          expanded={true}
+        />
+
+        <h2 style={{ marginTop: 24 }}>基础用法</h2>
+        <CodeBlock
+          code={`import React from 'react';
+import '@velvet/ui/style.css';
+import { Button, Checkbox, Input, Select } from '@velvet/ui';
+
+export default function App() {
+  return (
+    <div style={{ padding: 16, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+      <Button variant="primary">按钮</Button>
+      <Checkbox label="我已阅读并同意" />
+      <Input placeholder="请输入" style={{ width: 200 }} />
+      <Select placeholder="请选择" options={[{ value: '1', label: '选项1' }]} />
+    </div>
+  );
+}`}
+          language="tsx"
+          title="基础用法示例"
+          expanded={true}
+        />
+
+        <h2 style={{ marginTop: 24 }}>按需导入</h2>
+        <p className="content-description">仅引入使用到的组件，支持 tree-shaking；类型也可按需导入。</p>
+        <CodeBlock
+          code={`import { Button } from '@velvet/ui';
+
+// 仅打包使用到的组件（支持 tree-shaking）
+export function Demo() {
+  return <Button variant="primary">提交</Button>;
+}
+
+// 类型按需导入
+import type { ButtonOwnProps } from '@velvet/ui';`}
+          language="tsx"
+          title="按需导入示例"
+          expanded={true}
+        />
+
+        <h2 style={{ marginTop: 24 }}>在 Next.js 中使用</h2>
+        <p className="content-description">组件依赖浏览器能力，请在客户端组件中使用；样式需在全局引入。</p>
+        <CodeBlock
+          code={`// app/layout.tsx（App Router）
+import '@velvet/ui/style.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="zh-CN">
+      <body>{children}</body>
+    </html>
+  );
+}`}
+          language="tsx"
+          title="App Router: 全局样式（app/layout.tsx）"
+          expanded={true}
+        />
+        <CodeBlock
+          code={`// app/page.tsx（App Router）
+"use client";
+import { Button } from '@velvet/ui';
+
+export default function Page() {
+  return <Button variant="primary">Hello</Button>;
+}`}
+          language="tsx"
+          title="App Router: 客户端页面（app/page.tsx）"
+          expanded={true}
+        />
+        <CodeBlock
+          code={`// pages/_app.tsx（Pages Router）
+import '@velvet/ui/style.css';
+import type { AppProps } from 'next/app';
+
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}`}
+          language="tsx"
+          title="Pages Router: 全局样式（pages/_app.tsx）"
+          expanded={true}
+        />
+        <CodeBlock
+          code={`// 可选：按需禁用 SSR 渲染指定组件
+import dynamic from 'next/dynamic';
+
+const ClientButton = dynamic(() => import('@velvet/ui').then(m => m.Button), {
+  ssr: false,
+});
+
+export default function Page() {
+  return <ClientButton>Hello</ClientButton>;
+}`}
+          language="tsx"
+          title="按需禁用 SSR（可选）"
           expanded={true}
         />
       </div>
@@ -98,14 +210,6 @@ pnpm add @velvet/ui`}
                   onClick={() => setActiveComponent('checkbox')}
                 >
                   Checkbox 复选框
-                </a>
-              </li>
-              <li className="sidebar-item">
-                <a 
-                  className={activeComponent === 'radio' ? 'active' : ''}
-                  onClick={() => setActiveComponent('radio')}
-                >
-                  Radio 单选框
                 </a>
               </li>
               <li className="sidebar-item">
@@ -562,10 +666,283 @@ export default App;`}
           {activeComponent === 'select' && (
             <div className="component-section">
               <h3 className="component-title">Select 选择器</h3>
-              <p className="component-description">选择器组件支持单选和多选模式。</p>
-              <div className="component-placeholder">
-                <h3>开发中</h3>
-                <p>Select 组件正在开发中，敬请期待...</p>
+              <p className="component-description">选择器组件支持单选、搜索、清除等功能。</p>
+              
+              <div className="component-demo">
+                <div className="demo-section">
+                  <h4 className="demo-title">基础用法</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '400px' }}>
+                      <Select
+                        placeholder="请选择城市"
+                        options={[
+                          { value: 'beijing', label: '北京' },
+                          { value: 'shanghai', label: '上海' },
+                          { value: 'guangzhou', label: '广州' },
+                          { value: 'shenzhen', label: '深圳' }
+                        ]}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { Select, SelectOption } from '@velvet/ui';
+
+const options: SelectOption[] = [
+  { value: 'beijing', label: '北京' },
+  { value: 'shanghai', label: '上海' },
+  { value: 'guangzhou', label: '广州' },
+  { value: 'shenzhen', label: '深圳' }
+];
+
+const App: React.FC = () => (
+  <Select
+    placeholder="请选择城市"
+    options={options}
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.selectBasic}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, selectBasic: !prev.selectBasic}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">带标签和帮助文本</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '400px' }}>
+                      <Select
+                        label="选择城市"
+                        helpText="请选择您所在的城市"
+                        placeholder="请选择城市"
+                        options={[
+                          { value: 'beijing', label: '北京' },
+                          { value: 'shanghai', label: '上海' },
+                          { value: 'guangzhou', label: '广州' },
+                          { value: 'shenzhen', label: '深圳' }
+                        ]}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { Select, SelectOption } from '@velvet/ui';
+
+const options: SelectOption[] = [
+  { value: 'beijing', label: '北京' },
+  { value: 'shanghai', label: '上海' },
+  { value: 'guangzhou', label: '广州' },
+  { value: 'shenzhen', label: '深圳' }
+];
+
+const App: React.FC = () => (
+  <Select
+    label="选择城市"
+    helpText="请选择您所在的城市"
+    placeholder="请选择城市"
+    options={options}
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.selectLabel}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, selectLabel: !prev.selectLabel}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">可搜索和可清除</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '400px' }}>
+                      <Select
+                        searchable
+                        allowClear
+                        placeholder="搜索并选择城市"
+                        options={[
+                          { value: 'beijing', label: '北京' },
+                          { value: 'shanghai', label: '上海' },
+                          { value: 'guangzhou', label: '广州' },
+                          { value: 'shenzhen', label: '深圳' },
+                          { value: 'hangzhou', label: '杭州' },
+                          { value: 'nanjing', label: '南京' }
+                        ]}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { Select, SelectOption } from '@velvet/ui';
+
+const options: SelectOption[] = [
+  { value: 'beijing', label: '北京' },
+  { value: 'shanghai', label: '上海' },
+  { value: 'guangzhou', label: '广州' },
+  { value: 'shenzhen', label: '深圳' },
+  { value: 'hangzhou', label: '杭州' },
+  { value: 'nanjing', label: '南京' }
+];
+
+const App: React.FC = () => (
+  <Select
+    searchable
+    allowClear
+    placeholder="搜索并选择城市"
+    options={options}
+  />
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.selectSearchable}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, selectSearchable: !prev.selectSearchable}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">不同变体和尺寸</h4>
+                  <div className="demo-row">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', maxWidth: '400px' }}>
+                      <Select
+                        variant="outline"
+                        size="sm"
+                        placeholder="Outline 小尺寸"
+                        options={[
+                          { value: 'option1', label: '选项1' },
+                          { value: 'option2', label: '选项2' }
+                        ]}
+                      />
+                      <Select
+                        variant="filled"
+                        size="md"
+                        placeholder="Filled 中等尺寸"
+                        options={[
+                          { value: 'option1', label: '选项1' },
+                          { value: 'option2', label: '选项2' }
+                        ]}
+                      />
+                      <Select
+                        variant="underline"
+                        size="lg"
+                        placeholder="Underline 大尺寸"
+                        options={[
+                          { value: 'option1', label: '选项1' },
+                          { value: 'option2', label: '选项2' }
+                        ]}
+                      />
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React from 'react';
+import { Select, SelectOption } from '@velvet/ui';
+
+const options: SelectOption[] = [
+  { value: 'option1', label: '选项1' },
+  { value: 'option2', label: '选项2' }
+];
+
+const App: React.FC = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <Select 
+      variant="outline" 
+      size="sm" 
+      placeholder="Outline 小尺寸" 
+      options={options} 
+    />
+    <Select 
+      variant="filled" 
+      size="md" 
+      placeholder="Filled 中等尺寸" 
+      options={options} 
+    />
+    <Select 
+      variant="underline" 
+      size="lg" 
+      placeholder="Underline 大尺寸" 
+      options={options} 
+    />
+  </div>
+);
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.selectVariants}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, selectVariants: !prev.selectVariants}))}
+                    />
+                  </div>
+                </div>
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">受控组件</h4>
+                  <div className="demo-row">
+                    <div style={{ width: '100%', maxWidth: '400px' }}>
+                      <Select
+                        value={selectedCity}
+                        onChange={(value: string | number | undefined) => setSelectedCity(value as string)}
+                        placeholder="受控组件"
+                        options={[
+                          { value: 'beijing', label: '北京' },
+                          { value: 'shanghai', label: '上海' },
+                          { value: 'guangzhou', label: '广州' },
+                          { value: 'shenzhen', label: '深圳' }
+                        ]}
+                      />
+                      <div style={{ marginTop: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
+                        当前选择: {selectedCity || '未选择'}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import React, { useState } from 'react';
+import { Select, SelectOption } from '@velvet/ui';
+
+const options: SelectOption[] = [
+  { value: 'beijing', label: '北京' },
+  { value: 'shanghai', label: '上海' },
+  { value: 'guangzhou', label: '广州' },
+  { value: 'shenzhen', label: '深圳' }
+];
+
+const App: React.FC = () => {
+  const [selectedCity, setSelectedCity] = useState<string>('');
+
+  return (
+    <div>
+      <Select
+        value={selectedCity}
+        onChange={(value: string | number | undefined) => setSelectedCity(value as string)}
+        placeholder="受控组件"
+        options={options}
+      />
+      <div style={{ marginTop: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
+        当前选择: {selectedCity || '未选择'}
+      </div>
+    </div>
+  );
+};
+
+export default App;`}
+                      language="typescript"
+                      title="代码示例"
+                      expanded={codeExpanded.selectControlled}
+                      onToggle={() => setCodeExpanded(prev => ({...prev, selectControlled: !prev.selectControlled}))}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -574,20 +951,214 @@ export default App;`}
             <div className="component-section">
               <h3 className="component-title">Checkbox 复选框</h3>
               <p className="component-description">复选框组件支持多种状态和组合。</p>
-              <div className="component-placeholder">
-                <h3>开发中</h3>
-                <p>Checkbox 组件正在开发中，敬请期待...</p>
+              
+              <div className="component-demo">
+                
+                
+                
+                <div className="demo-section">
+                  <h4 className="demo-title">基础用法</h4>
+                  <div className="demo-row">
+                    <Checkbox label="基础复选框" />
+                    <Checkbox label="已选中的复选框" checked />
+                    <Checkbox label="不确定状态" indeterminate />
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import { Checkbox } from '@velvet/ui';
+
+<Checkbox label="基础复选框" />
+<Checkbox label="已选中的复选框" checked />
+<Checkbox label="不确定状态" indeterminate />`}
+                      language="tsx"
+                      title="基础用法代码"
+                      expanded={codeExpanded.basic}
+                      onToggle={() => setCodeExpanded(prev => ({ ...prev, basic: !prev.basic }))}
+                    />
+                  </div>
+                </div>
+
+                <div className="demo-section">
+                  <h4 className="demo-title">不同尺寸</h4>
+                  <div className="demo-row">
+                    <Checkbox size="sm" label="小尺寸" />
+                    <Checkbox size="md" label="中等尺寸" />
+                    <Checkbox size="lg" label="大尺寸" />
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import { Checkbox } from '@velvet/ui';
+
+<Checkbox size="sm" label="小尺寸" />
+<Checkbox size="md" label="中等尺寸" />
+<Checkbox size="lg" label="大尺寸" />`}
+                      language="tsx"
+                      title="尺寸代码"
+                      expanded={codeExpanded.size}
+                      onToggle={() => setCodeExpanded(prev => ({ ...prev, size: !prev.size }))}
+                    />
+                  </div>
+                </div>
+
+                <div className="demo-section">
+                  <h4 className="demo-title">不同变体</h4>
+                  <div className="demo-row">
+                    <Checkbox variant="default" label="默认变体" checked />
+                    <Checkbox variant="primary" label="主要变体" checked />
+                    <Checkbox variant="success" label="成功变体" checked />
+                    <Checkbox variant="warning" label="警告变体" checked />
+                    <Checkbox variant="danger" label="危险变体" checked />
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import { Checkbox } from '@velvet/ui';
+
+<Checkbox variant="default" label="默认变体" checked />
+<Checkbox variant="primary" label="主要变体" checked />
+<Checkbox variant="success" label="成功变体" checked />
+<Checkbox variant="warning" label="警告变体" checked />
+<Checkbox variant="danger" label="危险变体" checked />`}
+                      language="tsx"
+                      title="变体代码"
+                      expanded={codeExpanded.state}
+                      onToggle={() => setCodeExpanded(prev => ({ ...prev, state: !prev.state }))}
+                    />
+                  </div>
+                </div>
+
+                <div className="demo-section">
+                  <h4 className="demo-title">状态示例</h4>
+                  <div className="demo-row">
+                    <Checkbox disabled label="禁用的复选框" />
+                    <Checkbox disabled checked label="禁用的已选中复选框" />
+                    <Checkbox readOnly label="只读复选框" />
+                    <Checkbox required label="必填复选框" />
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import { Checkbox } from '@velvet/ui';
+
+<Checkbox disabled label="禁用的复选框" />
+<Checkbox disabled checked label="禁用的已选中复选框" />
+<Checkbox readOnly label="只读复选框" />
+<Checkbox required label="必填复选框" />`}
+                      language="tsx"
+                      title="状态代码"
+                      expanded={codeExpanded.block}
+                      onToggle={() => setCodeExpanded(prev => ({ ...prev, block: !prev.block }))}
+                    />
+                  </div>
+                </div>
+
+                <div className="demo-section">
+                  <h4 className="demo-title">带描述文本</h4>
+                  <div className="demo-row">
+                    <Checkbox
+                      label="接收营销邮件"
+                      description="我们将向您发送产品更新和促销信息"
+                    />
+                    <Checkbox
+                      label="接收推送通知"
+                      description="及时获取重要更新和消息"
+                    />
+                  </div>
+                  <div className="demo-code">
+                    <CodeBlock
+                      code={`import { Checkbox } from '@velvet/ui';
+
+<Checkbox
+  label="接收营销邮件"
+  description="我们将向您发送产品更新和促销信息"
+/>
+<Checkbox
+  label="接收推送通知"
+  description="及时获取重要更新和消息"
+/>`}
+                      language="tsx"
+                      title="描述文本代码"
+                      expanded={codeExpanded.chatBasic}
+                      onToggle={() => setCodeExpanded(prev => ({ ...prev, chatBasic: !prev.chatBasic }))}
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
-          
-          {activeComponent === 'radio' && (
-            <div className="component-section">
-              <h3 className="component-title">Radio 单选框</h3>
-              <p className="component-description">单选框组件支持单选模式和组合。</p>
-              <div className="component-placeholder">
-                <h3>开发中</h3>
-                <p>Radio 组件正在开发中，敬请期待...</p>
+              
+              <div className="component-api">
+                <h4 className="api-title">API</h4>
+                <div className="api-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>checked</td>
+                        <td>复选框是否被选中</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>indeterminate</td>
+                        <td>复选框是否处于不确定状态</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>disabled</td>
+                        <td>复选框是否被禁用</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>size</td>
+                        <td>复选框的尺寸</td>
+                        <td><code>'sm' | 'md' | 'lg'</code></td>
+                        <td><code>'md'</code></td>
+                      </tr>
+                      <tr>
+                        <td>variant</td>
+                        <td>复选框的样式变体</td>
+                        <td><code>'default' | 'primary' | 'success' | 'warning' | 'danger'</code></td>
+                        <td><code>'default'</code></td>
+                      </tr>
+                      <tr>
+                        <td>label</td>
+                        <td>复选框的标签文本</td>
+                        <td><code>string</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td>description</td>
+                        <td>复选框的描述文本</td>
+                        <td><code>string</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td>required</td>
+                        <td>复选框是否必填</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>readOnly</td>
+                        <td>复选框是否只读</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td>onChange</td>
+                        <td>状态变化回调</td>
+                        <td><code>(checked: boolean, event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           )}
