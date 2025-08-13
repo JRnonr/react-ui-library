@@ -1,5 +1,5 @@
-import xe, { forwardRef as me, createElement as be, useState as k, useRef as ce, useCallback as _, useEffect as se, useMemo as Je } from "react";
-var Ie = { exports: {} }, je = {};
+import je, { forwardRef as xe, useState as D, useRef as re, useCallback as h, useEffect as ae, useMemo as Fe, useId as Ge } from "react";
+var Ie = { exports: {} }, ve = {};
 /**
  * @license React
  * react-jsx-runtime.production.min.js
@@ -9,381 +9,256 @@ var Ie = { exports: {} }, je = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var Se = xe, Xe = Symbol.for("react.element"), Ye = Symbol.for("react.fragment"), Ge = Object.prototype.hasOwnProperty, Qe = Se.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, Fe = { key: !0, ref: !0, __self: !0, __source: !0 };
-function Pe(i, l, c) {
-  var a, x = {}, v = null, D = null;
-  c !== void 0 && (v = "" + c), l.key !== void 0 && (v = "" + l.key), l.ref !== void 0 && (D = l.ref);
-  for (a in l) Ge.call(l, a) && !Fe.hasOwnProperty(a) && (x[a] = l[a]);
-  if (i && i.defaultProps) for (a in l = i.defaultProps, l) x[a] === void 0 && (x[a] = l[a]);
-  return { $$typeof: Xe, type: i, key: v, ref: D, props: x, _owner: Qe.current };
+var Qe = je, Xe = Symbol.for("react.element"), Ze = Symbol.for("react.fragment"), Oe = Object.prototype.hasOwnProperty, es = Qe.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, ss = { key: !0, ref: !0, __self: !0, __source: !0 };
+function Pe(s, c, o) {
+  var a, x = {}, g = null, w = null;
+  o !== void 0 && (g = "" + o), c.key !== void 0 && (g = "" + c.key), c.ref !== void 0 && (w = c.ref);
+  for (a in c) Oe.call(c, a) && !ss.hasOwnProperty(a) && (x[a] = c[a]);
+  if (s && s.defaultProps) for (a in c = s.defaultProps, c) x[a] === void 0 && (x[a] = c[a]);
+  return { $$typeof: Xe, type: s, key: g, ref: w, props: x, _owner: es.current };
 }
-je.Fragment = Ye;
-je.jsx = Pe;
-je.jsxs = Pe;
-Ie.exports = je;
-var e = Ie.exports;
+ve.Fragment = Ze;
+ve.jsx = Pe;
+ve.jsxs = Pe;
+Ie.exports = ve;
+var e = Ie.exports, Le = { exports: {} }, Ne = {};
 /**
- * @license lucide-react v0.539.0 - ISC
+ * @license React
+ * react-jsx-runtime.production.min.js
  *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Oe = (i) => i.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase(), es = (i) => i.replace(
-  /^([A-Z])|[\s-_]+(\w)/g,
-  (l, c, a) => a ? a.toUpperCase() : c.toLowerCase()
-), we = (i) => {
-  const l = es(i);
-  return l.charAt(0).toUpperCase() + l.slice(1);
-}, Le = (...i) => i.filter((l, c, a) => !!l && l.trim() !== "" && a.indexOf(l) === c).join(" ").trim(), ss = (i) => {
-  for (const l in i)
-    if (l.startsWith("aria-") || l === "role" || l === "title")
-      return !0;
-};
-/**
- * @license lucide-react v0.539.0 - ISC
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
-var ts = {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: 24,
-  height: 24,
+var ts = je, as = Symbol.for("react.element"), is = Symbol.for("react.fragment"), ls = Object.prototype.hasOwnProperty, cs = ts.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, ns = { key: !0, ref: !0, __self: !0, __source: !0 };
+function De(s, c, o) {
+  var a, x = {}, g = null, w = null;
+  o !== void 0 && (g = "" + o), c.key !== void 0 && (g = "" + c.key), c.ref !== void 0 && (w = c.ref);
+  for (a in c) ls.call(c, a) && !ns.hasOwnProperty(a) && (x[a] = c[a]);
+  if (s && s.defaultProps) for (a in c = s.defaultProps, c) x[a] === void 0 && (x[a] = c[a]);
+  return { $$typeof: as, type: s, key: g, ref: w, props: x, _owner: cs.current };
+}
+Ne.Fragment = is;
+Ne.jsx = De;
+Ne.jsxs = De;
+Le.exports = Ne;
+var z = Le.exports;
+const oe = (s) => ({
+  width: s.size ?? 16,
+  height: s.size ?? 16,
   viewBox: "0 0 24 24",
   fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 2,
+  stroke: s.color ?? "currentColor",
+  strokeWidth: s.strokeWidth ?? 2,
   strokeLinecap: "round",
-  strokeLinejoin: "round"
-};
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const as = me(
+  strokeLinejoin: "round",
+  className: s.className,
+  "aria-hidden": !0,
+  focusable: !1,
+  xmlns: "http://www.w3.org/2000/svg"
+}), Re = (s) => /* @__PURE__ */ z.jsx("svg", { ...oe(s), children: /* @__PURE__ */ z.jsx("path", { d: "M20 6 9 17l-5-5" }) }), rs = (s) => /* @__PURE__ */ z.jsx("svg", { ...oe(s), children: /* @__PURE__ */ z.jsx("path", { d: "M6 9l6 6 6-6" }) }), ye = (s) => /* @__PURE__ */ z.jsx("svg", { ...oe(s), children: /* @__PURE__ */ z.jsx("path", { d: "M18 6L6 18M6 6l12 12" }) }), ds = (s) => /* @__PURE__ */ z.jsxs("svg", { ...oe(s), children: [
+  /* @__PURE__ */ z.jsx("rect", { x: "9", y: "9", width: "13", height: "13", rx: "2", ry: "2" }),
+  /* @__PURE__ */ z.jsx("rect", { x: "2", y: "2", width: "13", height: "13", rx: "2", ry: "2" })
+] }), we = (s) => /* @__PURE__ */ z.jsxs("svg", { ...oe(s), children: [
+  /* @__PURE__ */ z.jsx("circle", { cx: "12", cy: "12", r: "10", opacity: "0.25", stroke: s.color ?? "currentColor", strokeWidth: s.strokeWidth ?? 2, strokeLinecap: "round", className: "btn__loading-circle" }),
+  /* @__PURE__ */ z.jsx("path", { d: "M21 12a9 9 0 0 1-9 9" })
+] }), os = (s) => /* @__PURE__ */ z.jsxs("svg", { ...oe(s), children: [
+  /* @__PURE__ */ z.jsx("circle", { cx: "11", cy: "11", r: "8" }),
+  /* @__PURE__ */ z.jsx("line", { x1: "21", y1: "21", x2: "16.65", y2: "16.65" })
+] }), ke = (s) => /* @__PURE__ */ z.jsxs("svg", { ...oe(s), children: [
+  /* @__PURE__ */ z.jsx("circle", { cx: "12", cy: "12", r: "9" }),
+  /* @__PURE__ */ z.jsx("path", { d: "M12 7v5l3 3" })
+] }), ps = (s) => /* @__PURE__ */ z.jsx("svg", { ...oe(s), children: /* @__PURE__ */ z.jsx("path", { d: "M13 2L3 14h7l-1 8 10-12h-7l1-8z" }) }), $e = (s) => /* @__PURE__ */ z.jsxs("svg", { ...oe(s), children: [
+  /* @__PURE__ */ z.jsx("path", { d: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" }),
+  /* @__PURE__ */ z.jsx("path", { d: "M14 2v6h6" }),
+  /* @__PURE__ */ z.jsx("line", { x1: "8", y1: "13", x2: "16", y2: "13" }),
+  /* @__PURE__ */ z.jsx("line", { x1: "8", y1: "17", x2: "16", y2: "17" })
+] }), us = xe(
   ({
-    color: i = "currentColor",
-    size: l = 24,
-    strokeWidth: c = 2,
-    absoluteStrokeWidth: a,
-    className: x = "",
-    children: v,
-    iconNode: D,
-    ...A
-  }, $) => be(
-    "svg",
-    {
-      ref: $,
-      ...ts,
-      width: l,
-      height: l,
-      stroke: i,
-      strokeWidth: a ? Number(c) * 24 / Number(l) : c,
-      className: Le("lucide", x),
-      ...!v && !ss(A) && { "aria-hidden": "true" },
-      ...A
-    },
-    [
-      ...D.map(([y, j]) => be(y, j)),
-      ...Array.isArray(v) ? v : [v]
-    ]
-  )
-);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const de = (i, l) => {
-  const c = me(
-    ({ className: a, ...x }, v) => be(as, {
-      ref: v,
-      iconNode: l,
-      className: Le(
-        `lucide-${Oe(we(i))}`,
-        `lucide-${i}`,
-        a
-      ),
-      ...x
-    })
-  );
-  return c.displayName = we(i), c;
-};
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const is = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]], ls = de("check", is);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const ns = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]], cs = de("chevron-down", ns);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const rs = [
-  ["path", { d: "M12 6v6l4 2", key: "mmk7yg" }],
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
-], ge = de("clock", rs);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const ds = [
-  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
-  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
-], os = de("copy", ds);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const ps = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
-], ke = de("file-text", ps);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const us = [["path", { d: "M21 12a9 9 0 1 1-6.219-8.56", key: "13zald" }]], $e = de("loader-circle", us);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const ms = [
-  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
-  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
-], _s = de("search", ms);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const hs = [
-  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
-  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
-], ye = de("x", hs);
-/**
- * @license lucide-react v0.539.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const fs = [
-  [
-    "path",
-    {
-      d: "M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z",
-      key: "1xq2db"
-    }
-  ]
-], xs = de("zap", fs), js = me(
-  ({
-    as: i,
-    className: l = "",
-    variant: c = "primary",
+    as: s,
+    className: c = "",
+    variant: o = "primary",
     size: a = "md",
     loading: x = !1,
-    block: v = !1,
-    disabled: D = !1,
-    type: A = "button",
-    onClick: $,
-    style: y,
-    children: j,
-    ...p
-  }, u) => {
-    const N = i || "button";
+    block: g = !1,
+    disabled: w = !1,
+    type: H = "button",
+    onClick: R,
+    style: $,
+    children: v,
+    ...n
+  }, l) => {
+    const N = s || "button";
     if (N === "button") {
-      const z = "btn", O = `btn--${c}`, T = `btn--${a}`, I = [
-        z,
-        O,
-        T,
-        v ? "btn--block" : "",
+      const M = "btn", J = `btn--${o}`, B = `btn--${a}`, P = [
+        M,
+        J,
+        B,
+        g ? "btn--block" : "",
         x ? "btn--loading" : "",
-        D || x ? "btn--disabled" : "",
-        l
-      ].filter(Boolean).join(" "), s = (n) => {
-        if (D || x) {
-          n.preventDefault();
+        w || x ? "btn--disabled" : "",
+        c
+      ].filter(Boolean).join(" "), t = (r) => {
+        if (w || x) {
+          r.preventDefault();
           return;
         }
-        $ == null || $(n);
+        R == null || R(r);
       };
       return /* @__PURE__ */ e.jsxs(
         "button",
         {
-          ref: u,
-          type: A,
-          className: I,
-          disabled: D || x,
-          onClick: s,
-          style: y,
-          ...p,
+          ref: l,
+          type: H,
+          className: P,
+          disabled: w || x,
+          onClick: t,
+          style: $,
+          ...n,
           children: [
-            x && /* @__PURE__ */ e.jsx("span", { className: "btn__loading-spinner", "aria-hidden": "true", "data-testid": "loading-spinner", children: /* @__PURE__ */ e.jsx($e, { className: "btn__loading-svg", size: 16 }) }),
-            /* @__PURE__ */ e.jsx("span", { className: "btn__content", children: j })
+            x && /* @__PURE__ */ e.jsx("span", { className: "btn__loading-spinner", "aria-hidden": "true", "data-testid": "loading-spinner", children: /* @__PURE__ */ e.jsx(we, { className: "btn__loading-svg", size: 16 }) }),
+            /* @__PURE__ */ e.jsx("span", { className: "btn__content", children: v })
           ]
         }
       );
     }
-    const f = "btn", q = `btn--${c}`, w = `btn--${a}`, Q = [
-      f,
-      q,
-      w,
-      v ? "btn--block" : "",
+    const j = "btn", U = `btn--${o}`, k = `btn--${a}`, Z = [
+      j,
+      U,
+      k,
+      g ? "btn--block" : "",
       x ? "btn--loading" : "",
-      l
+      c
     ].filter(Boolean).join(" ");
-    return xe.createElement(N, {
-      ref: u,
-      className: Q,
-      style: y,
-      ...p
+    return je.createElement(N, {
+      ref: l,
+      className: Z,
+      style: $,
+      ...n
     }, [
-      x && /* @__PURE__ */ e.jsx("span", { className: "btn__loading-spinner", "aria-hidden": "true", "data-testid": "loading-spinner", children: /* @__PURE__ */ e.jsx($e, { className: "btn__loading-svg", size: 16 }) }, "loading"),
-      /* @__PURE__ */ e.jsx("span", { className: "btn__content", children: j }, "content")
+      x && /* @__PURE__ */ e.jsx("span", { className: "btn__loading-spinner", "aria-hidden": "true", "data-testid": "loading-spinner", children: /* @__PURE__ */ e.jsx(we, { className: "btn__loading-svg", size: 16 }) }, "loading"),
+      /* @__PURE__ */ e.jsx("span", { className: "btn__content", children: v }, "content")
     ].filter(Boolean));
   }
 );
-js.displayName = "Button";
-const Ns = me(({
-  initialMessages: i = [],
-  placeholder: l = "输入消息...",
-  disabled: c = !1,
+us.displayName = "Button";
+const ms = xe(({
+  initialMessages: s = [],
+  placeholder: c = "输入消息...",
+  disabled: o = !1,
   onSendMessage: a,
   renderMessage: x,
-  className: v = "",
-  style: D,
-  ...A
-}, $) => {
-  const y = Array.isArray(i) ? i : [], [j, p] = k(y), [u, N] = k(""), [f, q] = k(!1), [w, K] = k(/* @__PURE__ */ new Set()), M = ce(null), Q = ce(null), z = _(() => {
-    var s;
-    (s = M.current) != null && s.scrollIntoView && M.current.scrollIntoView({ behavior: "smooth" });
-  }, []), O = _(() => {
-    var n;
-    const s = (n = M.current) == null ? void 0 : n.parentElement;
-    if (s) {
+  className: g = "",
+  style: w,
+  ...H
+}, R) => {
+  const $ = Array.isArray(s) ? s : [], [v, n] = D($), [l, N] = D(""), [j, U] = D(!1), [k, q] = D(/* @__PURE__ */ new Set()), T = re(null), Z = re(null), M = h(() => {
+    var r;
+    const t = (r = T.current) == null ? void 0 : r.parentElement;
+    t && (t.scrollTop = t.scrollHeight);
+  }, []), J = h(() => {
+    var r;
+    const t = (r = T.current) == null ? void 0 : r.parentElement;
+    if (t) {
       const m = document.createElement("div");
-      m.style.height = "1px", m.style.visibility = "hidden", s.appendChild(m), setTimeout(() => {
+      m.style.height = "1px", m.style.visibility = "hidden", t.appendChild(m), setTimeout(() => {
         m.parentNode && m.parentNode.removeChild(m);
       }, 0);
     }
   }, []);
-  se(() => {
-    z(), O();
-  }, [j, z, O]);
-  const T = _((s, n) => {
+  ae(() => {
+    v.length > 0 && M(), J();
+  }, [v, M, J]);
+  const B = h((t, r) => {
     const m = {
       id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
-      content: s,
-      type: n,
+      content: t,
+      type: r,
       timestamp: /* @__PURE__ */ new Date()
     };
-    return p((P) => [...P, m]), m;
-  }, []), H = _(async (s) => {
-    const n = {
+    return n((L) => [...L, m]), m;
+  }, []), Y = h(async (t) => {
+    const r = {
       id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
       content: "",
       type: "assistant",
       timestamp: /* @__PURE__ */ new Date(),
       isTyping: !0
     };
-    p((C) => [...C, n]);
+    n((V) => [...V, r]);
     let m = "";
-    const P = s.split(" ");
-    for (let C = 0; C < P.length; C++)
-      m += (C > 0 ? " " : "") + P[C], p(
-        (E) => E.map(
-          (d) => d.id === n.id ? { ...d, content: m } : d
+    const L = t.split(" ");
+    for (let V = 0; V < L.length; V++)
+      m += (V > 0 ? " " : "") + L[V], n(
+        (I) => I.map(
+          (p) => p.id === r.id ? { ...p, content: m } : p
         )
-      ), await new Promise((E) => setTimeout(E, 100 + Math.random() * 50));
-    p(
-      (C) => C.map(
-        (E) => E.id === n.id ? { ...E, isTyping: !1 } : E
+      ), await new Promise((I) => setTimeout(I, 100 + Math.random() * 50));
+    n(
+      (V) => V.map(
+        (I) => I.id === r.id ? { ...I, isTyping: !1 } : I
       )
     );
-  }, []), F = _(async () => {
-    if (!u.trim() || c || !a && f) return;
-    const s = u.trim(), n = Date.now().toString() + Math.random().toString(36).substr(2, 9);
-    if (!w.has(n)) {
-      K((m) => {
-        const P = new Set(m);
-        return P.add(n), P;
-      }), T(s, "user"), N(""), a || q(!0);
+  }, []), O = h(async () => {
+    if (!l.trim() || o || !a && j) return;
+    const t = l.trim(), r = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+    if (!k.has(r)) {
+      q((m) => {
+        const L = new Set(m);
+        return L.add(r), L;
+      }), B(t, "user"), N(""), a || U(!0);
       try {
         if (a) {
-          const m = await a(s);
-          typeof m == "string" && m.trim() && await H(m);
+          const m = await a(t);
+          typeof m == "string" && m.trim() && await Y(m);
         } else {
-          const m = `这是对"${s}"的AI回复。我理解你的问题，让我为你提供详细的解答...`;
-          await H(m);
+          const m = `这是对"${t}"的AI回复。我理解你的问题，让我为你提供详细的解答...`;
+          await Y(m);
         }
       } catch (m) {
-        console.error("发送消息失败:", m), T("抱歉，发送消息时出现错误，请重试。", "assistant");
+        console.error("发送消息失败:", m), B("抱歉，发送消息时出现错误，请重试。", "assistant");
       } finally {
-        a || q(!1), K((m) => {
-          const P = new Set(m);
-          return P.delete(n), P;
+        a || U(!1), q((m) => {
+          const L = new Set(m);
+          return L.delete(r), L;
         });
       }
     }
-  }, [u, c, f, T, a, H, w]), g = _((s) => {
-    s.key === "Enter" && !s.shiftKey && (s.preventDefault(), F());
-  }, [F]), I = (s) => /* @__PURE__ */ e.jsxs("div", { className: `chat-message chat-message--${s.type}`, children: [
-    /* @__PURE__ */ e.jsx("div", { className: "chat-message__avatar", children: s.type === "user" ? "👤" : "🤖" }),
+  }, [l, o, j, B, a, Y, k]), b = h((t) => {
+    t.key === "Enter" && !t.shiftKey && (t.preventDefault(), O());
+  }, [O]), P = (t) => /* @__PURE__ */ e.jsxs("div", { className: `chat-message chat-message--${t.type}`, children: [
+    /* @__PURE__ */ e.jsx("div", { className: "chat-message__avatar", children: t.type === "user" ? "👤" : "🤖" }),
     /* @__PURE__ */ e.jsxs("div", { className: "chat-message__content", children: [
       /* @__PURE__ */ e.jsxs("div", { className: "chat-message__text", children: [
-        s.content,
-        s.isTyping && /* @__PURE__ */ e.jsx("span", { className: "chat-message__typing-indicator", children: "|" })
+        t.content,
+        t.isTyping && /* @__PURE__ */ e.jsx("span", { className: "chat-message__typing-indicator", children: "|" })
       ] }),
-      /* @__PURE__ */ e.jsx("div", { className: "chat-message__timestamp", children: s.timestamp.toLocaleTimeString() })
+      /* @__PURE__ */ e.jsx("div", { className: "chat-message__timestamp", children: t.timestamp.toLocaleTimeString() })
     ] })
-  ] }, s.id);
-  return /* @__PURE__ */ e.jsxs("div", { ref: $, className: `chat-interface ${v}`, style: D, ...A, children: [
+  ] }, t.id);
+  return /* @__PURE__ */ e.jsxs("div", { ref: R, className: `chat-interface ${g}`, style: w, ...H, children: [
     /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__header", children: [
       /* @__PURE__ */ e.jsx("h3", { className: "chat-interface__title", children: "AI 助手" }),
-      /* @__PURE__ */ e.jsx("div", { className: "chat-interface__status", children: !a && f ? "正在思考..." : "在线" })
+      /* @__PURE__ */ e.jsx("div", { className: "chat-interface__status", children: !a && j ? "正在思考..." : "在线" })
     ] }),
     /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__messages", children: [
-      j.length === 0 ? /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__empty", children: [
+      v.length === 0 ? /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__empty", children: [
         /* @__PURE__ */ e.jsx("div", { className: "chat-interface__empty-icon", children: "💬" }),
         /* @__PURE__ */ e.jsx("p", { children: "开始与AI助手对话吧！" })
-      ] }) : j.map((s) => /* @__PURE__ */ e.jsx("div", { children: x ? x(s) : I(s) }, s.id)),
-      /* @__PURE__ */ e.jsx("div", { ref: M })
+      ] }) : v.map((t) => /* @__PURE__ */ e.jsx("div", { children: x ? x(t) : P(t) }, t.id)),
+      /* @__PURE__ */ e.jsx("div", { ref: T })
     ] }),
     /* @__PURE__ */ e.jsxs("div", { className: "chat-interface__input", children: [
       /* @__PURE__ */ e.jsx(
         "textarea",
         {
-          ref: Q,
-          value: u,
-          onChange: (s) => N(s.target.value),
-          onKeyDown: g,
-          placeholder: l,
-          disabled: c || !a && f,
+          ref: Z,
+          value: l,
+          onChange: (t) => N(t.target.value),
+          onKeyDown: b,
+          placeholder: c,
+          disabled: o || !a && j,
           className: "chat-interface__textarea",
           rows: 1
         }
@@ -391,148 +266,148 @@ const Ns = me(({
       /* @__PURE__ */ e.jsx(
         "button",
         {
-          onClick: F,
-          disabled: !u.trim() || c || !a && f,
+          onClick: O,
+          disabled: !l.trim() || o || !a && j,
           className: "chat-interface__send-btn",
           "aria-label": "发送消息",
-          children: !a && f ? /* @__PURE__ */ e.jsx("span", { className: "chat-interface__loading-spinner" }) : "发送"
+          children: !a && j ? /* @__PURE__ */ e.jsx("span", { className: "chat-interface__loading-spinner" }) : "发送"
         }
       )
     ] })
   ] });
 });
-Ns.displayName = "ChatInterface";
-const vs = me(
+ms.displayName = "ChatInterface";
+const _s = xe(
   ({
-    type: i = "text",
-    variant: l = "outline",
-    size: c = "md",
+    type: s = "text",
+    variant: c = "outline",
+    size: o = "md",
     disabled: a = !1,
     readOnly: x = !1,
-    required: v = !1,
-    placeholder: D,
-    defaultValue: A,
-    value: $,
-    onChange: y,
-    onFocus: j,
-    onBlur: p,
-    onKeyDown: u,
+    required: g = !1,
+    placeholder: w,
+    defaultValue: H,
+    value: R,
+    onChange: $,
+    onFocus: v,
+    onBlur: n,
+    onKeyDown: l,
     onEnter: N,
-    prefix: f,
-    suffix: q,
-    allowClear: w = !1,
-    showPasswordToggle: K = !1,
-    label: M,
-    helpText: Q,
-    errorText: z,
-    showCount: O = !1,
-    maxLength: T,
-    className: H = "",
-    style: F,
-    name: g,
-    id: I,
-    autoComplete: s,
-    autoFocus: n,
+    prefix: j,
+    suffix: U,
+    allowClear: k = !1,
+    showPasswordToggle: q = !1,
+    label: T,
+    helpText: Z,
+    errorText: M,
+    showCount: J = !1,
+    maxLength: B,
+    className: Y = "",
+    style: O,
+    name: b,
+    id: P,
+    autoComplete: t,
+    autoFocus: r,
     inputMode: m,
-    ...P
-  }, C) => {
-    const [E, d] = k(A || ""), [S, R] = k(!1), [h, W] = k(!1), te = $ !== void 0 ? $ : E, Y = !!z, U = i === "password", B = _((b) => {
-      const pe = b.target.value;
-      $ === void 0 && d(pe), y == null || y(pe, b);
-    }, [$, y]), ee = _(() => {
-      $ === void 0 && d(""), y == null || y("", {});
-    }, [$, y]), G = _(() => {
-      W((b) => !b);
-    }, []), Z = _((b) => {
-      b.key === "Enter" && (N == null || N(te)), u == null || u(b);
-    }, [te, N, u]), L = _((b) => {
-      R(!0), j == null || j(b);
-    }, [j]), ae = _((b) => {
-      R(!1), p == null || p(b);
-    }, [p]), X = "input", oe = `input--${l}`, V = `input--${c}`, _e = [
-      X,
-      oe,
-      V,
-      a ? "input--disabled" : x ? "input--readonly" : Y ? "input--error" : S ? "input--focused" : "",
-      H
-    ].filter(Boolean).join(" "), ne = () => f ? /* @__PURE__ */ e.jsx("span", { className: "input__prefix", "aria-hidden": "true", children: f }) : null, he = () => {
-      const b = [];
-      return O && T && b.push(
+    ...L
+  }, V) => {
+    const [I, p] = D(H || ""), [F, A] = D(!1), [f, _] = D(!1), K = R !== void 0 ? R : I, E = !!M, C = s === "password", G = h((y) => {
+      const ue = y.target.value;
+      R === void 0 && p(ue), $ == null || $(ue, y);
+    }, [R, $]), te = h(() => {
+      R === void 0 && p(""), $ == null || $("", {});
+    }, [R, $]), se = h(() => {
+      _((y) => !y);
+    }, []), Q = h((y) => {
+      y.key === "Enter" && (N == null || N(K)), l == null || l(y);
+    }, [K, N, l]), W = h((y) => {
+      A(!0), v == null || v(y);
+    }, [v]), ie = h((y) => {
+      A(!1), n == null || n(y);
+    }, [n]), ee = "input", pe = `input--${c}`, S = `input--${o}`, _e = [
+      ee,
+      pe,
+      S,
+      a ? "input--disabled" : x ? "input--readonly" : E ? "input--error" : F ? "input--focused" : "",
+      Y
+    ].filter(Boolean).join(" "), ne = () => j ? /* @__PURE__ */ e.jsx("span", { className: "input__prefix", "aria-hidden": "true", children: j }) : null, he = () => {
+      const y = [];
+      return J && B && y.push(
         /* @__PURE__ */ e.jsxs("span", { className: "input__count", children: [
-          te.length,
+          K.length,
           "/",
-          T
+          B
         ] }, "count")
-      ), U && K && b.push(
+      ), C && q && y.push(
         /* @__PURE__ */ e.jsx(
           "button",
           {
             type: "button",
             className: "input__password-toggle",
-            onClick: G,
-            "aria-label": h ? "隐藏密码" : "显示密码",
+            onClick: se,
+            "aria-label": f ? "隐藏密码" : "显示密码",
             tabIndex: -1,
-            children: h ? "👁️" : "👁️‍🗨️"
+            children: f ? "👁️" : "👁️‍🗨️"
           },
           "password-toggle"
         )
-      ), w && te && !a && !x && b.push(
+      ), k && K && !a && !x && y.push(
         /* @__PURE__ */ e.jsx(
           "button",
           {
             type: "button",
             className: "input__clear",
-            onClick: ee,
+            onClick: te,
             "aria-label": "清除输入",
             tabIndex: -1,
             children: "✕"
           },
           "clear"
         )
-      ), q && b.push(
-        /* @__PURE__ */ e.jsx("span", { className: "input__suffix", "aria-hidden": "true", children: q }, "suffix")
-      ), b.length > 0 ? /* @__PURE__ */ e.jsx("span", { className: "input__suffix-group", children: b }) : null;
+      ), U && y.push(
+        /* @__PURE__ */ e.jsx("span", { className: "input__suffix", "aria-hidden": "true", children: U }, "suffix")
+      ), y.length > 0 ? /* @__PURE__ */ e.jsx("span", { className: "input__suffix-group", children: y }) : null;
     };
     return /* @__PURE__ */ e.jsxs("div", { className: "input__wrapper", children: [
-      M && /* @__PURE__ */ e.jsxs("label", { className: "input__label", htmlFor: I, children: [
-        M,
-        v && /* @__PURE__ */ e.jsx("span", { className: "input__required", children: "*" })
+      T && /* @__PURE__ */ e.jsxs("label", { className: "input__label", htmlFor: P, children: [
+        T,
+        g && /* @__PURE__ */ e.jsx("span", { className: "input__required", children: "*" })
       ] }),
       /* @__PURE__ */ e.jsxs("div", { className: "input__container", children: [
         ne(),
         /* @__PURE__ */ e.jsx(
           "input",
           {
-            ref: C,
-            id: I,
-            name: g,
-            type: U && K ? h ? "text" : "password" : i,
-            value: te,
-            onChange: B,
-            onFocus: L,
-            onBlur: ae,
-            onKeyDown: Z,
-            placeholder: D,
+            ref: V,
+            id: P,
+            name: b,
+            type: C && q ? f ? "text" : "password" : s,
+            value: K,
+            onChange: G,
+            onFocus: W,
+            onBlur: ie,
+            onKeyDown: Q,
+            placeholder: w,
             disabled: a,
             readOnly: x,
-            required: v,
-            maxLength: T,
-            autoComplete: s,
-            autoFocus: n,
+            required: g,
+            maxLength: B,
+            autoComplete: t,
+            autoFocus: r,
             inputMode: m,
             className: _e,
-            style: F,
-            ...P
+            style: O,
+            ...L
           }
         ),
         he()
       ] }),
-      (Q || z) && /* @__PURE__ */ e.jsx("div", { className: `input__message ${Y ? "input__message--error" : "input__message--help"}`, children: z || Q })
+      (Z || M) && /* @__PURE__ */ e.jsx("div", { className: `input__message ${E ? "input__message--error" : "input__message--help"}`, children: M || Z })
     ] });
   }
 );
-vs.displayName = "Input";
-const gs = [
+_s.displayName = "Input";
+const hs = [
   "id",
   "title",
   "lang",
@@ -548,87 +423,87 @@ const gs = [
   "translate",
   "aria-*",
   "data-*"
-], bs = (i) => {
-  const l = {};
-  return Object.keys(i).forEach((c) => {
-    gs.some((a) => c === a || c.startsWith("aria-") || c.startsWith("data-")) && (l[c] = i[c]);
-  }), l;
-}, ys = me(
+], fs = (s) => {
+  const c = {};
+  return Object.keys(s).forEach((o) => {
+    hs.some((a) => o === a || o.startsWith("aria-") || o.startsWith("data-")) && (c[o] = s[o]);
+  }), c;
+}, xs = xe(
   ({
-    content: i,
-    status: l = "success",
-    showTimestamp: c = !0,
+    content: s,
+    status: c = "success",
+    showTimestamp: o = !0,
     timestamp: a,
     showCopyButton: x = !0,
-    avatar: v,
-    username: D = "AI Assistant",
-    showUsername: A = !0,
-    className: $ = "",
-    style: y,
-    onCopy: j,
-    onCopyError: p,
-    onClick: u,
+    avatar: g,
+    username: w = "AI Assistant",
+    showUsername: H = !0,
+    className: R = "",
+    style: $,
+    onCopy: v,
+    onCopyError: n,
+    onClick: l,
     enableCodeHighlight: N = !0,
-    ...f
-  }, q) => {
-    const [w, K] = k(!1), M = _((s) => s instanceof Date ? s.toLocaleTimeString() : new Date(s).toLocaleTimeString(), []), Q = _(async () => {
+    ...j
+  }, U) => {
+    const [k, q] = D(!1), T = h((t) => t instanceof Date ? t.toLocaleTimeString() : new Date(t).toLocaleTimeString(), []), Z = h(async () => {
       try {
-        await navigator.clipboard.writeText(i), K(!0), j == null || j(i), setTimeout(() => K(!1), 2e3);
-      } catch (s) {
-        p == null || p(s);
+        await navigator.clipboard.writeText(s), q(!0), v == null || v(s), setTimeout(() => q(!1), 2e3);
+      } catch (t) {
+        n == null || n(t);
       }
-    }, [i, j, p]), z = _(() => {
+    }, [s, v, n]), M = h(() => {
       if (!N)
-        return /* @__PURE__ */ e.jsx("div", { className: "ai-message__content", children: i });
-      if (!i.trim())
+        return /* @__PURE__ */ e.jsx("div", { className: "ai-message__content", children: s });
+      if (!s.trim())
         return /* @__PURE__ */ e.jsx("div", { className: "ai-message__content" });
-      const s = i.split(`
-`), n = [];
-      let m = "", P = !1, C = "";
-      const E = () => {
+      const t = s.split(`
+`), r = [];
+      let m = "", L = !1, V = "";
+      const I = () => {
         if (m.trim()) {
-          let d = m;
-          d = d.replace(/\*\*(.*?)\*\*/g, (S, R) => `<strong class="ai-message__bold">${R}</strong>`), d = d.replace(/\*(.*?)\*/g, (S, R) => `<em class="ai-message__italic">${R}</em>`), d = d.replace(/`(.*?)`/g, (S, R) => `<code class="ai-message__inline-code">${R}</code>`), n.push(
+          let p = m;
+          p = p.replace(/\*\*(.*?)\*\*/g, (F, A) => `<strong class="ai-message__bold">${A}</strong>`), p = p.replace(/\*(.*?)\*/g, (F, A) => `<em class="ai-message__italic">${A}</em>`), p = p.replace(/`(.*?)`/g, (F, A) => `<code class="ai-message__inline-code">${A}</code>`), r.push(
             /* @__PURE__ */ e.jsx(
               "p",
               {
                 className: "ai-message__text",
-                dangerouslySetInnerHTML: { __html: d }
+                dangerouslySetInnerHTML: { __html: p }
               },
-              `text-${n.length}`
+              `text-${r.length}`
             )
           ), m = "";
         }
       };
-      return s.forEach((d) => {
-        var S;
-        if (d.startsWith("```"))
-          P ? (E(), n.push(
-            /* @__PURE__ */ e.jsx("pre", { className: "ai-message__code-block", children: /* @__PURE__ */ e.jsx("code", { children: C }) }, `code-${n.length}`)
-          ), P = !1, C = "") : (E(), P = !0);
-        else if (P)
-          C += d + `
+      return t.forEach((p) => {
+        var F;
+        if (p.startsWith("```"))
+          L ? (I(), r.push(
+            /* @__PURE__ */ e.jsx("pre", { className: "ai-message__code-block", children: /* @__PURE__ */ e.jsx("code", { children: V }) }, `code-${r.length}`)
+          ), L = !1, V = "") : (I(), L = !0);
+        else if (L)
+          V += p + `
 `;
-        else if (d.startsWith("#")) {
-          E();
-          const R = ((S = d.match(/^#+/)) == null ? void 0 : S[0].length) || 1, h = d.replace(/^#+\s*/, ""), W = Math.min(R, 6);
-          W === 1 ? n.push(
-            /* @__PURE__ */ e.jsx("h1", { className: "ai-message__heading ai-message__heading--h1", children: h }, `heading-${n.length}`)
-          ) : W === 2 ? n.push(
-            /* @__PURE__ */ e.jsx("h2", { className: "ai-message__heading ai-message__heading--h2", children: h }, `heading-${n.length}`)
-          ) : W === 3 ? n.push(
-            /* @__PURE__ */ e.jsx("h3", { className: "ai-message__heading ai-message__heading--h3", children: h }, `heading-${n.length}`)
-          ) : W === 4 ? n.push(
-            /* @__PURE__ */ e.jsx("h4", { className: "ai-message__heading ai-message__heading--h4", children: h }, `heading-${n.length}`)
-          ) : W === 5 ? n.push(
-            /* @__PURE__ */ e.jsx("h5", { className: "ai-message__heading ai-message__heading--h5", children: h }, `heading-${n.length}`)
-          ) : n.push(
-            /* @__PURE__ */ e.jsx("h6", { className: "ai-message__heading ai-message__heading--h6", children: h }, `heading-${n.length}`)
+        else if (p.startsWith("#")) {
+          I();
+          const A = ((F = p.match(/^#+/)) == null ? void 0 : F[0].length) || 1, f = p.replace(/^#+\s*/, ""), _ = Math.min(A, 6);
+          _ === 1 ? r.push(
+            /* @__PURE__ */ e.jsx("h1", { className: "ai-message__heading ai-message__heading--h1", children: f }, `heading-${r.length}`)
+          ) : _ === 2 ? r.push(
+            /* @__PURE__ */ e.jsx("h2", { className: "ai-message__heading ai-message__heading--h2", children: f }, `heading-${r.length}`)
+          ) : _ === 3 ? r.push(
+            /* @__PURE__ */ e.jsx("h3", { className: "ai-message__heading ai-message__heading--h3", children: f }, `heading-${r.length}`)
+          ) : _ === 4 ? r.push(
+            /* @__PURE__ */ e.jsx("h4", { className: "ai-message__heading ai-message__heading--h4", children: f }, `heading-${r.length}`)
+          ) : _ === 5 ? r.push(
+            /* @__PURE__ */ e.jsx("h5", { className: "ai-message__heading ai-message__heading--h5", children: f }, `heading-${r.length}`)
+          ) : r.push(
+            /* @__PURE__ */ e.jsx("h6", { className: "ai-message__heading ai-message__heading--h6", children: f }, `heading-${r.length}`)
           );
-        } else d.trim() === "" ? E() : m += d + " ";
-      }), E(), n.length === 0 ? /* @__PURE__ */ e.jsx("div", { className: "ai-message__content", children: i }) : /* @__PURE__ */ e.jsx("div", { className: "ai-message__content", children: n });
-    }, [i, N]), O = _(() => {
-      switch (l) {
+        } else p.trim() === "" ? I() : m += p + " ";
+      }), I(), r.length === 0 ? /* @__PURE__ */ e.jsx("div", { className: "ai-message__content", children: s }) : /* @__PURE__ */ e.jsx("div", { className: "ai-message__content", children: r });
+    }, [s, N]), J = h(() => {
+      switch (c) {
         case "sending":
           return /* @__PURE__ */ e.jsxs("div", { className: "ai-message__status ai-message__status--sending", children: [
             /* @__PURE__ */ e.jsx("div", { className: "ai-message__status-dot" }),
@@ -647,46 +522,46 @@ const gs = [
         default:
           return null;
       }
-    }, [l]), T = "ai-message", H = `ai-message--${l}`, g = [
-      T,
-      H,
-      l === "streaming" ? "ai-message--streaming" : "",
-      $
-    ].filter(Boolean).join(" "), I = bs(f);
+    }, [c]), B = "ai-message", Y = `ai-message--${c}`, b = [
+      B,
+      Y,
+      c === "streaming" ? "ai-message--streaming" : "",
+      R
+    ].filter(Boolean).join(" "), P = fs(j);
     return /* @__PURE__ */ e.jsxs(
       "div",
       {
-        ref: q,
-        className: g,
-        style: y,
-        onClick: u,
+        ref: U,
+        className: b,
+        style: $,
+        onClick: l,
         "data-testid": "ai-message",
-        ...I,
+        ...P,
         children: [
-          (v || A) && /* @__PURE__ */ e.jsxs("div", { className: "ai-message__header", children: [
-            v && /* @__PURE__ */ e.jsx("div", { className: "ai-message__avatar", children: v }),
-            A && /* @__PURE__ */ e.jsxs("div", { className: "ai-message__user-info", children: [
-              /* @__PURE__ */ e.jsx("span", { className: "ai-message__username", children: D }),
-              c && a && /* @__PURE__ */ e.jsx("span", { className: "ai-message__timestamp", children: M(a) })
+          (g || H) && /* @__PURE__ */ e.jsxs("div", { className: "ai-message__header", children: [
+            g && /* @__PURE__ */ e.jsx("div", { className: "ai-message__avatar", children: g }),
+            H && /* @__PURE__ */ e.jsxs("div", { className: "ai-message__user-info", children: [
+              /* @__PURE__ */ e.jsx("span", { className: "ai-message__username", children: w }),
+              o && a && /* @__PURE__ */ e.jsx("span", { className: "ai-message__timestamp", children: T(a) })
             ] })
           ] }),
           /* @__PURE__ */ e.jsxs("div", { className: "ai-message__body", children: [
-            z(),
-            O()
+            M(),
+            J()
           ] }),
           x && /* @__PURE__ */ e.jsx("div", { className: "ai-message__actions", children: /* @__PURE__ */ e.jsx(
             "button",
             {
-              className: `ai-message__copy-btn ${w ? "ai-message__copy-btn--copied" : ""}`,
-              onClick: Q,
-              disabled: l === "sending" || l === "streaming",
-              "aria-label": w ? "已复制" : "复制内容",
-              title: w ? "已复制" : "复制内容",
-              children: w ? /* @__PURE__ */ e.jsxs(e.Fragment, { children: [
-                /* @__PURE__ */ e.jsx(ls, { className: "ai-message__copy-icon", size: 16 }),
+              className: `ai-message__copy-btn ${k ? "ai-message__copy-btn--copied" : ""}`,
+              onClick: Z,
+              disabled: c === "sending" || c === "streaming",
+              "aria-label": k ? "已复制" : "复制内容",
+              title: k ? "已复制" : "复制内容",
+              children: k ? /* @__PURE__ */ e.jsxs(e.Fragment, { children: [
+                /* @__PURE__ */ e.jsx(Re, { className: "ai-message__copy-icon", size: 16 }),
                 "已复制"
               ] }) : /* @__PURE__ */ e.jsxs(e.Fragment, { children: [
-                /* @__PURE__ */ e.jsx(os, { className: "ai-message__copy-icon", size: 16 }),
+                /* @__PURE__ */ e.jsx(ds, { className: "ai-message__copy-icon", size: 16 }),
                 "复制"
               ] })
             }
@@ -696,412 +571,412 @@ const gs = [
     );
   }
 );
-ys.displayName = "AIMessage";
-const Is = ({
-  type: i = "typing",
-  text: l = "AI正在思考中...",
-  texts: c = [],
+xs.displayName = "AIMessage";
+const bs = ({
+  type: s = "typing",
+  text: c = "AI正在思考中...",
+  texts: o = [],
   typingSpeed: a = 100,
   loop: x = !1,
-  showProgress: v = !1,
-  progress: D = 0,
-  indeterminate: A = !1,
-  className: $ = "",
-  style: y = {},
-  onComplete: j,
-  onTextChange: p
+  showProgress: g = !1,
+  progress: w = 0,
+  indeterminate: H = !1,
+  className: R = "",
+  style: $ = {},
+  onComplete: v,
+  onTextChange: n
 }) => {
-  const [u, N] = k(""), [f, q] = k(0), [w, K] = k(!1), [M, Q] = k(0), z = c.length > 0 ? c : [l], O = _(async (g) => {
-    K(!0);
-    let I = "";
-    for (let s = 0; s < g.length; s++)
-      I += g[s], N(I), p == null || p(I), await new Promise((n) => setTimeout(n, a));
-    K(!1), j == null || j();
-  }, [a, p, j]), T = _(() => {
-    const g = setInterval(() => {
-      Q((I) => (I + 1) % 4);
+  const [l, N] = D(""), [j, U] = D(0), [k, q] = D(!1), [T, Z] = D(0), M = o.length > 0 ? o : [c], J = h(async (b) => {
+    q(!0);
+    let P = "";
+    for (let t = 0; t < b.length; t++)
+      P += b[t], N(P), n == null || n(P), await new Promise((r) => setTimeout(r, a));
+    q(!1), v == null || v();
+  }, [a, n, v]), B = h(() => {
+    const b = setInterval(() => {
+      Z((P) => (P + 1) % 4);
     }, 500);
-    return () => clearInterval(g);
+    return () => clearInterval(b);
   }, []);
-  se(() => {
-    if (i === "typing" && z.length > 0) {
-      const g = z[f];
-      O(g);
+  ae(() => {
+    if (s === "typing" && M.length > 0) {
+      const b = M[j];
+      J(b);
     }
-  }, [i, f, z.length, a, p, j]), se(() => {
-    if (x && i === "typing" && !w) {
-      const g = setTimeout(() => {
-        q((I) => (I + 1) % z.length);
+  }, [s, j, M.length, a, n, v]), ae(() => {
+    if (x && s === "typing" && !k) {
+      const b = setTimeout(() => {
+        U((P) => (P + 1) % M.length);
       }, 1e3);
-      return () => clearTimeout(g);
+      return () => clearTimeout(b);
     }
-  }, [x, i, w, z.length, f]), se(() => {
-    if (i === "thinking")
-      return T();
-  }, [i, T]), se(() => {
-    if (i === "dots") {
-      const g = setInterval(() => {
-        Q((I) => (I + 1) % 4);
+  }, [x, s, k, M.length, j]), ae(() => {
+    if (s === "thinking")
+      return B();
+  }, [s, B]), ae(() => {
+    if (s === "dots") {
+      const b = setInterval(() => {
+        Z((P) => (P + 1) % 4);
       }, 300);
-      return () => clearInterval(g);
+      return () => clearInterval(b);
     }
-  }, [i]);
-  const H = () => {
-    switch (i) {
+  }, [s]);
+  const Y = () => {
+    switch (s) {
       case "typing":
         return /* @__PURE__ */ e.jsxs("div", { className: "ai-loading-typing", children: [
-          /* @__PURE__ */ e.jsx("span", { className: "ai-loading-text", children: u }),
+          /* @__PURE__ */ e.jsx("span", { className: "ai-loading-text", children: l }),
           /* @__PURE__ */ e.jsx("span", { className: "ai-loading-cursor", children: "|" })
         ] });
       case "thinking":
         return /* @__PURE__ */ e.jsxs("div", { className: "ai-loading-thinking", children: [
-          /* @__PURE__ */ e.jsx("span", { className: "ai-loading-text", children: l }),
-          /* @__PURE__ */ e.jsx("div", { className: "ai-loading-dots", children: [0, 1, 2].map((g) => /* @__PURE__ */ e.jsx(
+          /* @__PURE__ */ e.jsx("span", { className: "ai-loading-text", children: c }),
+          /* @__PURE__ */ e.jsx("div", { className: "ai-loading-dots", children: [0, 1, 2].map((b) => /* @__PURE__ */ e.jsx(
             "span",
             {
-              className: `ai-loading-dot ${g === M ? "active" : ""}`
+              className: `ai-loading-dot ${b === T ? "active" : ""}`
             },
-            g
+            b
           )) })
         ] });
       case "processing":
         return /* @__PURE__ */ e.jsxs("div", { className: "ai-loading-processing", children: [
           /* @__PURE__ */ e.jsx("div", { className: "ai-loading-spinner" }),
-          /* @__PURE__ */ e.jsx("span", { className: "ai-loading-text", children: l })
+          /* @__PURE__ */ e.jsx("span", { className: "ai-loading-text", children: c })
         ] });
       case "dots":
-        return /* @__PURE__ */ e.jsx("div", { className: "ai-loading-dots-only", children: [0, 1, 2, 3].map((g) => /* @__PURE__ */ e.jsx(
+        return /* @__PURE__ */ e.jsx("div", { className: "ai-loading-dots-only", children: [0, 1, 2, 3].map((b) => /* @__PURE__ */ e.jsx(
           "span",
           {
-            className: `ai-loading-dot ${g === M ? "active" : ""}`
+            className: `ai-loading-dot ${b === T ? "active" : ""}`
           },
-          g
+          b
         )) });
       default:
         return null;
     }
-  }, F = () => v ? /* @__PURE__ */ e.jsxs("div", { className: "ai-loading-progress", children: [
+  }, O = () => g ? /* @__PURE__ */ e.jsxs("div", { className: "ai-loading-progress", children: [
     /* @__PURE__ */ e.jsx("div", { className: "ai-loading-progress-bar", children: /* @__PURE__ */ e.jsx(
       "div",
       {
-        className: `ai-loading-progress-fill ${A ? "indeterminate" : ""}`,
+        className: `ai-loading-progress-fill ${H ? "indeterminate" : ""}`,
         style: {
-          width: A ? "100%" : `${D}%`
+          width: H ? "100%" : `${w}%`
         }
       }
     ) }),
-    !A && /* @__PURE__ */ e.jsxs("span", { className: "ai-loading-progress-text", children: [
-      Math.round(D),
+    !H && /* @__PURE__ */ e.jsxs("span", { className: "ai-loading-progress-text", children: [
+      Math.round(w),
       "%"
     ] })
   ] }) : null;
   return /* @__PURE__ */ e.jsxs(
     "div",
     {
-      className: `ai-loading ai-loading-${i} ${$}`,
-      style: y,
+      className: `ai-loading ai-loading-${s} ${R}`,
+      style: $,
       role: "status",
-      "aria-label": `AI加载中，类型：${i}`,
+      "aria-label": `AI加载中，类型：${s}`,
       children: [
-        H(),
-        F()
+        Y(),
+        O()
       ]
     }
   );
-}, Ps = ({
-  value: i,
-  defaultValue: l = "",
-  placeholder: c = "输入你的提示...",
+}, ks = ({
+  value: s,
+  defaultValue: c = "",
+  placeholder: o = "输入你的提示...",
   disabled: a = !1,
   readOnly: x = !1,
-  size: v = "md",
-  variant: D = "outline",
-  clearable: A = !0,
-  showHistory: $ = !0,
-  showShortcuts: y = !0,
-  showTemplates: j = !0,
-  showSuggestions: p = !0,
-  maxHistoryItems: u = 10,
+  size: g = "md",
+  variant: w = "outline",
+  clearable: H = !0,
+  showHistory: R = !0,
+  showShortcuts: $ = !0,
+  showTemplates: v = !0,
+  showSuggestions: n = !0,
+  maxHistoryItems: l = 10,
   maxSuggestions: N = 8,
-  minCharsForSuggestions: f = 2,
-  shortcutTrigger: q = "/",
-  history: w = [],
-  suggestions: K = [],
-  templates: M = [],
-  shortcuts: Q = [],
-  label: z,
-  required: O = !1,
-  helpText: T,
-  errorText: H,
-  error: F = !1,
-  className: g = "",
-  style: I,
-  onChange: s,
-  onFocus: n,
+  minCharsForSuggestions: j = 2,
+  shortcutTrigger: U = "/",
+  history: k = [],
+  suggestions: q = [],
+  templates: T = [],
+  shortcuts: Z = [],
+  label: M,
+  required: J = !1,
+  helpText: B,
+  errorText: Y,
+  error: O = !1,
+  className: b = "",
+  style: P,
+  onChange: t,
+  onFocus: r,
   onBlur: m,
-  onEnter: P,
-  onSuggestionSelect: C,
-  onTemplateSelect: E,
-  onShortcutSelect: d,
-  onHistoryClear: S,
-  onHistoryAdd: R
+  onEnter: L,
+  onSuggestionSelect: V,
+  onTemplateSelect: I,
+  onShortcutSelect: p,
+  onHistoryClear: F,
+  onHistoryAdd: A
 }) => {
-  const [h, W] = k(i ?? l), [te, Y] = k(!1), [U, B] = k(!1), [ee, G] = k(!1), [Z, L] = k(!1), [ae, X] = k(!1), [oe, V] = k(-1), [le, _e] = k([]), [ne, he] = k([]), [b, pe] = k([]), re = ce(null), Ne = ce(null), r = ce(null), J = ce(null), ve = ce(null);
-  se(() => {
-    i !== void 0 && W(i);
-  }, [i]), se(() => {
-    if (h.length >= f) {
-      const t = K.filter(
-        (o) => o.text.toLowerCase().includes(h.toLowerCase())
+  const [f, _] = D(s ?? c), [K, E] = D(!1), [C, G] = D(!1), [te, se] = D(!1), [Q, W] = D(!1), [ie, ee] = D(!1), [pe, S] = D(-1), [ce, _e] = D([]), [ne, he] = D([]), [y, ue] = D([]), de = re(null), ge = re(null), d = re(null), X = re(null), be = re(null);
+  ae(() => {
+    s !== void 0 && _(s);
+  }, [s]), ae(() => {
+    if (f.length >= j) {
+      const i = q.filter(
+        (u) => u.text.toLowerCase().includes(f.toLowerCase())
       ).slice(0, N);
-      _e(t);
+      _e(i);
     } else
       _e([]);
-  }, [h, f, N]), se(() => {
-    if (h.length >= f) {
-      const t = M.filter(
-        (o) => o.name.toLowerCase().includes(h.toLowerCase()) || o.description.toLowerCase().includes(h.toLowerCase()) || o.tags.some((ie) => ie.toLowerCase().includes(h.toLowerCase()))
+  }, [f, j, N]), ae(() => {
+    if (f.length >= j) {
+      const i = T.filter(
+        (u) => u.name.toLowerCase().includes(f.toLowerCase()) || u.description.toLowerCase().includes(f.toLowerCase()) || u.tags.some((le) => le.toLowerCase().includes(f.toLowerCase()))
       ).slice(0, N);
-      he(t);
+      he(i);
     } else
       he([]);
-  }, [h, f, N]), se(() => {
-    if (h.startsWith(q)) {
-      const t = h.slice(q.length).toLowerCase(), o = Q.filter(
-        (ie) => ie.key.toLowerCase().includes(t) || ie.label.toLowerCase().includes(t) || ie.description.toLowerCase().includes(t)
+  }, [f, j, N]), ae(() => {
+    if (f.startsWith(U)) {
+      const i = f.slice(U.length).toLowerCase(), u = Z.filter(
+        (le) => le.key.toLowerCase().includes(i) || le.label.toLowerCase().includes(i) || le.description.toLowerCase().includes(i)
       ).slice(0, N);
-      pe(o);
+      ue(u);
     } else
-      pe([]);
-  }, [h, q, N]);
-  const De = _((t) => {
-    const o = t.target.value;
-    W(o), s == null || s(o), V(-1), o.startsWith(q) && y ? (X(!0), B(!1), G(!1), L(!1)) : o.length >= f && p ? (B(!0), X(!1), G(!1), L(!1)) : (B(!1), X(!1), G(!1), L(!1));
-  }, [s, q, y, f, p]), Ae = _((t) => {
-    Y(!0), n == null || n(t), h.length >= f && p && B(!0);
-  }, [n, h, f, p]), Me = _((t) => {
-    Y(!1), m == null || m(t), setTimeout(() => {
-      B(!1), G(!1), L(!1), X(!1), V(-1);
+      ue([]);
+  }, [f, U, N]);
+  const Ee = h((i) => {
+    const u = i.target.value;
+    _(u), t == null || t(u), S(-1), u.startsWith(U) && $ ? (ee(!0), G(!1), se(!1), W(!1)) : u.length >= j && n ? (G(!0), ee(!1), se(!1), W(!1)) : (G(!1), ee(!1), se(!1), W(!1));
+  }, [t, U, $, j, n]), ze = h((i) => {
+    E(!0), r == null || r(i), f.length >= j && n && G(!0);
+  }, [r, f, j, n]), Me = h((i) => {
+    E(!1), m == null || m(i), setTimeout(() => {
+      G(!1), se(!1), W(!1), ee(!1), S(-1);
     }, 150);
-  }, [m]), ze = _((t) => {
-    var o;
-    if (t.key === "Enter")
-      t.preventDefault(), P == null || P(h), h.trim() && R && R(h.trim()), B(!1), G(!1), L(!1), X(!1), V(-1);
-    else if (t.key === "Escape")
-      B(!1), G(!1), L(!1), X(!1), V(-1), (o = re.current) == null || o.blur();
-    else if (t.key === "ArrowDown") {
-      if (t.preventDefault(), [
-        U && le.length > 0,
-        ee && w.length > 0,
-        Z && ne.length > 0,
-        ae && b.length > 0
+  }, [m]), Ae = h((i) => {
+    var u;
+    if (i.key === "Enter")
+      i.preventDefault(), L == null || L(f), f.trim() && A && A(f.trim()), G(!1), se(!1), W(!1), ee(!1), S(-1);
+    else if (i.key === "Escape")
+      G(!1), se(!1), W(!1), ee(!1), S(-1), (u = de.current) == null || u.blur();
+    else if (i.key === "ArrowDown") {
+      if (i.preventDefault(), [
+        C && ce.length > 0,
+        te && k.length > 0,
+        Q && ne.length > 0,
+        ie && y.length > 0
       ].some(Boolean)) {
-        const ue = Math.max(
-          U ? le.length - 1 : -1,
-          ee ? w.length - 1 : -1,
-          Z ? ne.length - 1 : -1,
-          ae ? b.length - 1 : -1
+        const me = Math.max(
+          C ? ce.length - 1 : -1,
+          te ? k.length - 1 : -1,
+          Q ? ne.length - 1 : -1,
+          ie ? y.length - 1 : -1
         );
-        V((fe) => fe < ue ? fe + 1 : 0);
+        S((fe) => fe < me ? fe + 1 : 0);
       }
-    } else if (t.key === "ArrowUp" && (t.preventDefault(), [
-      U && le.length > 0,
-      ee && w.length > 0,
-      Z && ne.length > 0,
-      ae && b.length > 0
+    } else if (i.key === "ArrowUp" && (i.preventDefault(), [
+      C && ce.length > 0,
+      te && k.length > 0,
+      Q && ne.length > 0,
+      ie && y.length > 0
     ].some(Boolean))) {
-      const ue = Math.max(
-        U ? le.length - 1 : -1,
-        ee ? w.length - 1 : -1,
-        Z ? ne.length - 1 : -1,
-        ae ? b.length - 1 : -1
+      const me = Math.max(
+        C ? ce.length - 1 : -1,
+        te ? k.length - 1 : -1,
+        Q ? ne.length - 1 : -1,
+        ie ? y.length - 1 : -1
       );
-      V((fe) => fe > 0 ? fe - 1 : ue);
+      S((fe) => fe > 0 ? fe - 1 : me);
     }
   }, [
-    P,
-    h,
-    R,
-    U,
-    ee,
-    Z,
-    ae,
-    le,
+    L,
+    f,
+    A,
+    C,
+    te,
+    Q,
+    ie,
+    ce,
     ne,
-    b,
-    w
-  ]), Re = _((t) => {
-    var o;
-    W(t.text), s == null || s(t.text), C == null || C(t), B(!1), V(-1), (o = re.current) == null || o.focus();
-  }, [s, C]), Ve = _((t) => {
-    var o;
-    W(t.content), s == null || s(t.content), E == null || E(t), L(!1), V(-1), (o = re.current) == null || o.focus();
-  }, [s, E]), Ce = _((t) => {
-    var o;
-    W(t.action), s == null || s(t.action), d == null || d(t), X(!1), V(-1), (o = re.current) == null || o.focus();
-  }, [s, d]), Ee = _((t) => {
-    var o;
-    W(t), s == null || s(t), G(!1), V(-1), (o = re.current) == null || o.focus();
-  }, [s]), Te = _(() => {
-    var t;
-    W(""), s == null || s(""), B(!1), G(!1), L(!1), X(!1), V(-1), (t = re.current) == null || t.focus();
-  }, [s]), We = _(() => {
-    G(!ee), B(!1), L(!1), X(!1), V(-1);
-  }, [ee]), qe = _(() => {
-    L(!Z), B(!1), G(!1), X(!1), V(-1);
-  }, [Z]), Be = Je(() => {
-    const t = "ai-prompt-input", o = `ai-prompt-input--${v}`, ie = `ai-prompt-input--${D}`;
-    return `${t} ${o} ${ie} ${F ? "ai-prompt-input--error" : ""} ${te ? "ai-prompt-input--focused" : ""} ${a ? "ai-prompt-input--disabled" : ""} ${g}`.trim();
-  }, [v, D, F, te, a, g]), Ke = () => !U || le.length === 0 ? null : /* @__PURE__ */ e.jsxs("div", { ref: Ne, className: "ai-prompt-input__panel ai-prompt-input__suggestions", children: [
+    y,
+    k
+  ]), Te = h((i) => {
+    var u;
+    _(i.text), t == null || t(i.text), V == null || V(i), G(!1), S(-1), (u = de.current) == null || u.focus();
+  }, [t, V]), Ve = h((i) => {
+    var u;
+    _(i.content), t == null || t(i.content), I == null || I(i), W(!1), S(-1), (u = de.current) == null || u.focus();
+  }, [t, I]), We = h((i) => {
+    var u;
+    _(i.action), t == null || t(i.action), p == null || p(i), ee(!1), S(-1), (u = de.current) == null || u.focus();
+  }, [t, p]), Be = h((i) => {
+    var u;
+    _(i), t == null || t(i), se(!1), S(-1), (u = de.current) == null || u.focus();
+  }, [t]), Ke = h(() => {
+    var i;
+    _(""), t == null || t(""), G(!1), se(!1), W(!1), ee(!1), S(-1), (i = de.current) == null || i.focus();
+  }, [t]), Se = h(() => {
+    se(!te), G(!1), W(!1), ee(!1), S(-1);
+  }, [te]), He = h(() => {
+    W(!Q), G(!1), se(!1), ee(!1), S(-1);
+  }, [Q]), Ue = Fe(() => {
+    const i = "ai-prompt-input", u = `ai-prompt-input--${g}`, le = `ai-prompt-input--${w}`;
+    return `${i} ${u} ${le} ${O ? "ai-prompt-input--error" : ""} ${K ? "ai-prompt-input--focused" : ""} ${a ? "ai-prompt-input--disabled" : ""} ${b}`.trim();
+  }, [g, w, O, K, a, b]), qe = () => !C || ce.length === 0 ? null : /* @__PURE__ */ e.jsxs("div", { ref: ge, className: "ai-prompt-input__panel ai-prompt-input__suggestions", children: [
     /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__panel-header", children: [
-      /* @__PURE__ */ e.jsx(_s, { size: 16 }),
+      /* @__PURE__ */ e.jsx(os, { size: 16 }),
       /* @__PURE__ */ e.jsx("span", { children: "建议" })
     ] }),
-    /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__panel-content", children: le.map((t, o) => /* @__PURE__ */ e.jsxs(
+    /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__panel-content", children: ce.map((i, u) => /* @__PURE__ */ e.jsxs(
       "div",
       {
-        className: `ai-prompt-input__suggestion-item ${o === oe ? "ai-prompt-input__suggestion-item--selected" : ""}`,
-        onClick: () => Re(t),
+        className: `ai-prompt-input__suggestion-item ${u === pe ? "ai-prompt-input__suggestion-item--selected" : ""}`,
+        onClick: () => Te(i),
         children: [
-          /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__suggestion-text", children: t.text }),
-          t.category && /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__suggestion-category", children: t.category }),
-          t.usage && /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__suggestion-usage", children: [
+          /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__suggestion-text", children: i.text }),
+          i.category && /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__suggestion-category", children: i.category }),
+          i.usage && /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__suggestion-usage", children: [
             "使用 ",
-            t.usage,
+            i.usage,
             " 次"
           ] })
         ]
       },
-      t.id
+      i.id
     )) })
-  ] }), He = () => !ee || w.length === 0 ? null : /* @__PURE__ */ e.jsxs("div", { ref: r, className: "ai-prompt-input__panel ai-prompt-input__history", children: [
+  ] }), Ye = () => !te || k.length === 0 ? null : /* @__PURE__ */ e.jsxs("div", { ref: d, className: "ai-prompt-input__panel ai-prompt-input__history", children: [
     /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__panel-header", children: [
-      /* @__PURE__ */ e.jsx(ge, { size: 16 }),
+      /* @__PURE__ */ e.jsx(ke, { size: 16 }),
       /* @__PURE__ */ e.jsx("span", { children: "历史记录" }),
       /* @__PURE__ */ e.jsx(
         "button",
         {
           className: "ai-prompt-input__clear-history",
-          onClick: S,
+          onClick: F,
           type: "button",
           children: /* @__PURE__ */ e.jsx(ye, { size: 14 })
         }
       )
     ] }),
-    /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__panel-content", children: w.slice(0, u).map((t, o) => /* @__PURE__ */ e.jsxs(
+    /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__panel-content", children: k.slice(0, l).map((i, u) => /* @__PURE__ */ e.jsxs(
       "div",
       {
-        className: `ai-prompt-input__history-item ${o === oe ? "ai-prompt-input__history-item--selected" : ""}`,
-        onClick: () => Ee(t),
+        className: `ai-prompt-input__history-item ${u === pe ? "ai-prompt-input__history-item--selected" : ""}`,
+        onClick: () => Be(i),
         children: [
-          /* @__PURE__ */ e.jsx(ge, { size: 14 }),
-          /* @__PURE__ */ e.jsx("span", { className: "ai-prompt-input__history-text", children: t })
+          /* @__PURE__ */ e.jsx(ke, { size: 14 }),
+          /* @__PURE__ */ e.jsx("span", { className: "ai-prompt-input__history-text", children: i })
         ]
       },
-      o
+      u
     )) })
-  ] }), Ue = () => {
-    if (!Z) return null;
-    const t = h.length >= f ? ne : M.slice(0, N);
-    return t.length === 0 ? null : /* @__PURE__ */ e.jsxs("div", { ref: J, className: "ai-prompt-input__panel ai-prompt-input__templates", children: [
+  ] }), Ce = () => {
+    if (!Q) return null;
+    const i = f.length >= j ? ne : T.slice(0, N);
+    return i.length === 0 ? null : /* @__PURE__ */ e.jsxs("div", { ref: X, className: "ai-prompt-input__panel ai-prompt-input__templates", children: [
       /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__panel-header", children: [
-        /* @__PURE__ */ e.jsx(ke, { size: 16 }),
+        /* @__PURE__ */ e.jsx($e, { size: 16 }),
         /* @__PURE__ */ e.jsx("span", { children: "模板" })
       ] }),
-      /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__panel-content", children: t.map((o, ie) => /* @__PURE__ */ e.jsxs(
+      /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__panel-content", children: i.map((u, le) => /* @__PURE__ */ e.jsxs(
         "div",
         {
-          className: `ai-prompt-input__template-item ${ie === oe ? "ai-prompt-input__template-item--selected" : ""}`,
-          onClick: () => Ve(o),
+          className: `ai-prompt-input__template-item ${le === pe ? "ai-prompt-input__template-item--selected" : ""}`,
+          onClick: () => Ve(u),
           children: [
             /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__template-header", children: [
-              /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__template-name", children: o.name }),
-              /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__template-category", children: o.category })
+              /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__template-name", children: u.name }),
+              /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__template-category", children: u.category })
             ] }),
-            /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__template-description", children: o.description }),
-            /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__template-tags", children: o.tags.slice(0, 3).map((ue) => /* @__PURE__ */ e.jsx("span", { className: "ai-prompt-input__template-tag", children: ue }, ue)) })
+            /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__template-description", children: u.description }),
+            /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__template-tags", children: u.tags.slice(0, 3).map((me) => /* @__PURE__ */ e.jsx("span", { className: "ai-prompt-input__template-tag", children: me }, me)) })
           ]
         },
-        o.id
+        u.id
       )) })
     ] });
-  }, Ze = () => !ae || b.length === 0 ? null : /* @__PURE__ */ e.jsxs("div", { ref: ve, className: "ai-prompt-input__panel ai-prompt-input__shortcuts", children: [
+  }, Je = () => !ie || y.length === 0 ? null : /* @__PURE__ */ e.jsxs("div", { ref: be, className: "ai-prompt-input__panel ai-prompt-input__shortcuts", children: [
     /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__panel-header", children: [
-      /* @__PURE__ */ e.jsx(xs, { size: 16 }),
+      /* @__PURE__ */ e.jsx(ps, { size: 16 }),
       /* @__PURE__ */ e.jsx("span", { children: "快捷指令" })
     ] }),
-    /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__panel-content", children: b.map((t, o) => /* @__PURE__ */ e.jsxs(
+    /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__panel-content", children: y.map((i, u) => /* @__PURE__ */ e.jsxs(
       "div",
       {
-        className: `ai-prompt-input__shortcut-item ${o === oe ? "ai-prompt-input__shortcut-item--selected" : ""}`,
-        onClick: () => Ce(t),
+        className: `ai-prompt-input__shortcut-item ${u === pe ? "ai-prompt-input__shortcut-item--selected" : ""}`,
+        onClick: () => We(i),
         children: [
           /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__shortcut-key", children: [
             "/",
-            t.key
+            i.key
           ] }),
-          /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__shortcut-label", children: t.label }),
-          /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__shortcut-description", children: t.description })
+          /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__shortcut-label", children: i.label }),
+          /* @__PURE__ */ e.jsx("div", { className: "ai-prompt-input__shortcut-description", children: i.description })
         ]
       },
-      t.key
+      i.key
     )) })
   ] });
-  return /* @__PURE__ */ e.jsxs("div", { className: Be, style: I, children: [
-    z && /* @__PURE__ */ e.jsxs("label", { className: "ai-prompt-input__label", children: [
-      z,
-      O && /* @__PURE__ */ e.jsx("span", { className: "ai-prompt-input__required", children: "*" })
+  return /* @__PURE__ */ e.jsxs("div", { className: Ue, style: P, children: [
+    M && /* @__PURE__ */ e.jsxs("label", { className: "ai-prompt-input__label", children: [
+      M,
+      J && /* @__PURE__ */ e.jsx("span", { className: "ai-prompt-input__required", children: "*" })
     ] }),
     /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__wrapper", children: [
       /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__input-container", children: [
         /* @__PURE__ */ e.jsx(
           "input",
           {
-            ref: re,
+            ref: de,
             type: "text",
-            value: h,
-            onChange: De,
-            onFocus: Ae,
+            value: f,
+            onChange: Ee,
+            onFocus: ze,
             onBlur: Me,
-            onKeyDown: ze,
-            placeholder: c,
+            onKeyDown: Ae,
+            placeholder: o,
             disabled: a,
             readOnly: x,
             className: "ai-prompt-input__input",
-            "aria-label": z || c,
-            "aria-invalid": F,
-            "aria-describedby": H ? "error-text" : T ? "help-text" : void 0
+            "aria-label": M || o,
+            "aria-invalid": O,
+            "aria-describedby": Y ? "error-text" : B ? "help-text" : void 0
           }
         ),
         /* @__PURE__ */ e.jsxs("div", { className: "ai-prompt-input__actions", children: [
-          $ && /* @__PURE__ */ e.jsx(
+          R && /* @__PURE__ */ e.jsx(
             "button",
             {
               type: "button",
               className: "ai-prompt-input__action-btn ai-prompt-input__history-btn",
-              onClick: We,
+              onClick: Se,
               disabled: a,
               "aria-label": "显示历史记录",
-              children: /* @__PURE__ */ e.jsx(ge, { size: 16 })
+              children: /* @__PURE__ */ e.jsx(ke, { size: 16 })
             }
           ),
-          j && /* @__PURE__ */ e.jsx(
+          v && /* @__PURE__ */ e.jsx(
             "button",
             {
               type: "button",
               className: "ai-prompt-input__action-btn ai-prompt-input__templates-btn",
-              onClick: qe,
+              onClick: He,
               disabled: a,
               "aria-label": "显示模板",
-              children: /* @__PURE__ */ e.jsx(ke, { size: 16 })
+              children: /* @__PURE__ */ e.jsx($e, { size: 16 })
             }
           ),
-          A && h && /* @__PURE__ */ e.jsx(
+          H && f && /* @__PURE__ */ e.jsx(
             "button",
             {
               type: "button",
               className: "ai-prompt-input__action-btn ai-prompt-input__clear-btn",
-              onClick: Te,
+              onClick: Ke,
               disabled: a,
               "aria-label": "清除输入",
               children: /* @__PURE__ */ e.jsx(ye, { size: 16 })
@@ -1109,242 +984,382 @@ const Is = ({
           )
         ] })
       ] }),
-      Ke(),
-      He(),
-      Ue(),
-      Ze()
+      qe(),
+      Ye(),
+      Ce(),
+      Je()
     ] }),
-    T && !H && /* @__PURE__ */ e.jsx("div", { id: "help-text", className: "ai-prompt-input__help-text", children: T }),
-    H && /* @__PURE__ */ e.jsx("div", { id: "error-text", className: "ai-prompt-input__error-text", children: H })
+    B && !Y && /* @__PURE__ */ e.jsx("div", { id: "help-text", className: "ai-prompt-input__help-text", children: B }),
+    Y && /* @__PURE__ */ e.jsx("div", { id: "error-text", className: "ai-prompt-input__error-text", children: Y })
   ] });
-}, ws = me(
+}, js = xe(
   ({
-    variant: i = "outline",
-    size: l = "md",
-    disabled: c = !1,
+    variant: s = "outline",
+    size: c = "md",
+    disabled: o = !1,
     readOnly: a = !1,
     required: x = !1,
-    placeholder: v = "请选择",
-    defaultValue: D,
-    value: A,
-    onChange: $,
-    onFocus: y,
-    onBlur: j,
-    onOpen: p,
-    onClose: u,
+    placeholder: g = "请选择",
+    defaultValue: w,
+    value: H,
+    onChange: R,
+    onFocus: $,
+    onBlur: v,
+    onOpen: n,
+    onClose: l,
     options: N = [],
-    searchable: f = !1,
-    allowClear: q = !1,
-    label: w,
-    helpText: K,
-    errorText: M,
-    showArrow: Q = !0,
-    maxHeight: z = 300,
-    className: O = "",
-    style: T,
-    name: H,
-    id: F,
-    autoFocus: g = !1,
-    showEmptyOption: I = !1,
-    emptyOptionText: s = "请选择",
-    noDataText: n = "暂无数据",
+    searchable: j = !1,
+    allowClear: U = !1,
+    label: k,
+    helpText: q,
+    errorText: T,
+    showArrow: Z = !0,
+    maxHeight: M = 300,
+    className: J = "",
+    style: B,
+    name: Y,
+    id: O,
+    autoFocus: b = !1,
+    showEmptyOption: P = !1,
+    emptyOptionText: t = "请选择",
+    noDataText: r = "暂无数据",
     loading: m = !1,
-    loadingText: P = "加载中...",
-    ...C
-  }, E) => {
-    const [d, S] = k(!1), [R, h] = k(A ?? D), [W, te] = k(""), [Y, U] = k(-1), B = ce(null), ee = ce(null), G = ce(null), Z = F || `select-${Math.random().toString(36).substr(2, 9)}`, L = xe.useMemo(() => !f || !W ? N : N.filter(
-      (r) => r.label.toLowerCase().includes(W.toLowerCase())
-    ), [N, f, W]), ae = xe.useMemo(() => N.find((r) => r.value === R), [N, R]), X = _((r) => {
-      let J = N.find((ve) => ve.value === r);
-      r === "" && !J && I && (J = { value: "", label: s }), h(r), $ == null || $(r, J);
-    }, [N, $, I, s]), oe = _(() => {
-      if (c || a) return;
-      const r = !d;
-      S(r), r ? (p == null || p(), f && G.current && setTimeout(() => {
-        var J;
-        return (J = G.current) == null ? void 0 : J.focus();
-      }, 0)) : u == null || u();
-    }, [c, a, d, p, u, f]), V = _((r) => {
-      r.disabled || (X(r.value), S(!1), u == null || u(), te(""), U(-1));
-    }, [X, u]), le = _((r) => {
-      r.stopPropagation(), X(void 0);
-    }, [X]), _e = _((r) => {
-      if (!(c || a))
-        switch (r.key) {
+    loadingText: L = "加载中...",
+    ...V
+  }, I) => {
+    const [p, F] = D(!1), [A, f] = D(H ?? w), [_, K] = D(""), [E, C] = D(-1), G = re(null), te = re(null), se = re(null), Q = O || `select-${Math.random().toString(36).substr(2, 9)}`, W = je.useMemo(() => !j || !_ ? N : N.filter(
+      (d) => d.label.toLowerCase().includes(_.toLowerCase())
+    ), [N, j, _]), ie = je.useMemo(() => N.find((d) => d.value === A), [N, A]), ee = h((d) => {
+      let X = N.find((be) => be.value === d);
+      d === "" && !X && P && (X = { value: "", label: t }), f(d), R == null || R(d, X);
+    }, [N, R, P, t]), pe = h(() => {
+      if (o || a) return;
+      const d = !p;
+      F(d), d ? (n == null || n(), j && se.current && setTimeout(() => {
+        var X;
+        return (X = se.current) == null ? void 0 : X.focus();
+      }, 0)) : l == null || l();
+    }, [o, a, p, n, l, j]), S = h((d) => {
+      d.disabled || (ee(d.value), F(!1), l == null || l(), K(""), C(-1));
+    }, [ee, l]), ce = h((d) => {
+      d.stopPropagation(), ee(void 0);
+    }, [ee]), _e = h((d) => {
+      if (!(o || a))
+        switch (d.key) {
           case "Enter":
           case " ":
-            r.preventDefault(), d ? Y >= 0 && L[Y] && V(L[Y]) : (S(!0), p == null || p());
+            d.preventDefault(), p ? E >= 0 && W[E] && S(W[E]) : (F(!0), n == null || n());
             break;
           case "Escape":
-            d && (S(!1), u == null || u(), U(-1));
+            p && (F(!1), l == null || l(), C(-1));
             break;
           case "ArrowDown":
-            r.preventDefault(), d ? U(
-              (J) => J < L.length - 1 ? J + 1 : 0
-            ) : (S(!0), p == null || p(), U(0));
+            d.preventDefault(), p ? C(
+              (X) => X < W.length - 1 ? X + 1 : 0
+            ) : (F(!0), n == null || n(), C(0));
             break;
           case "ArrowUp":
-            r.preventDefault(), d && U(
-              (J) => J > 0 ? J - 1 : L.length - 1
+            d.preventDefault(), p && C(
+              (X) => X > 0 ? X - 1 : W.length - 1
             );
             break;
           case "Tab":
-            d && (S(!1), u == null || u(), U(-1));
+            p && (F(!1), l == null || l(), C(-1));
             break;
         }
-    }, [c, a, d, Y, L, p, u, V]), ne = _((r) => {
-      y == null || y(r);
-    }, [y]), he = _((r) => {
-      j == null || j(r);
-    }, [j]), b = _((r) => {
-      te(r.target.value), U(-1);
-    }, []), pe = _((r) => {
-      r.key === "Enter" && Y >= 0 && L[Y] && V(L[Y]);
-    }, [Y, L, V]);
-    se(() => {
-      const r = (J) => {
-        B.current && !B.current.contains(J.target) && (S(!1), u == null || u(), U(-1));
+    }, [o, a, p, E, W, n, l, S]), ne = h((d) => {
+      $ == null || $(d);
+    }, [$]), he = h((d) => {
+      v == null || v(d);
+    }, [v]), y = h((d) => {
+      K(d.target.value), C(-1);
+    }, []), ue = h((d) => {
+      d.key === "Enter" && E >= 0 && W[E] && S(W[E]);
+    }, [E, W, S]);
+    ae(() => {
+      const d = (X) => {
+        G.current && !G.current.contains(X.target) && (F(!1), l == null || l(), C(-1));
       };
-      if (d)
-        return document.addEventListener("mousedown", r), () => document.removeEventListener("mousedown", r);
-    }, [d, u]), se(() => {
-      g && B.current && B.current.focus();
-    }, [g]), se(() => {
-      A !== void 0 && h(A);
-    }, [A]);
-    const re = [
+      if (p)
+        return document.addEventListener("mousedown", d), () => document.removeEventListener("mousedown", d);
+    }, [p, l]), ae(() => {
+      b && G.current && G.current.focus();
+    }, [b]), ae(() => {
+      H !== void 0 && f(H);
+    }, [H]);
+    const de = [
       "select",
-      `select--${i}`,
-      `select--${l}`,
-      O,
+      `select--${s}`,
+      `select--${c}`,
+      J,
       {
-        "select--disabled": c,
+        "select--disabled": o,
         "select--readonly": a,
-        "select--error": !!M,
-        "select--open": d
+        "select--error": !!T,
+        "select--open": p
       }
-    ].filter(Boolean).join(" "), Ne = [
+    ].filter(Boolean).join(" "), ge = [
       "select__selector",
       {
-        "select__selector--disabled": c,
+        "select__selector--disabled": o,
         "select__selector--readonly": a,
-        "select__selector--error": !!M,
-        "select__selector--open": d
+        "select__selector--error": !!T,
+        "select__selector--open": p
       }
     ].filter(Boolean).join(" ");
     return /* @__PURE__ */ e.jsxs("div", { className: "select__wrapper", children: [
-      w && /* @__PURE__ */ e.jsxs("label", { htmlFor: Z, className: "select__label", id: `${Z}-label`, children: [
-        w,
+      k && /* @__PURE__ */ e.jsxs("label", { htmlFor: Q, className: "select__label", id: `${Q}-label`, children: [
+        k,
         x && /* @__PURE__ */ e.jsx("span", { className: "select__required", children: "*" })
       ] }),
       /* @__PURE__ */ e.jsxs(
         "div",
         {
-          ref: B,
-          className: re,
-          style: T,
-          tabIndex: c || a ? -1 : 0,
+          ref: (d) => {
+            G.current = d, typeof I == "function" ? I(d) : I && (I.current = d);
+          },
+          className: de,
+          style: B,
+          tabIndex: o || a ? -1 : 0,
           onFocus: ne,
           onBlur: he,
           onKeyDown: _e,
-          onClick: oe,
+          onClick: pe,
           role: "combobox",
-          "aria-expanded": d,
+          "aria-expanded": p,
           "aria-haspopup": "listbox",
-          "aria-labelledby": w ? `${Z}-label` : void 0,
-          "aria-describedby": M ? `${Z}-error` : K ? `${Z}-help` : void 0,
-          ...C,
+          "aria-labelledby": k ? `${Q}-label` : void 0,
+          "aria-describedby": T ? `${Q}-error` : q ? `${Q}-help` : void 0,
+          ...V,
           children: [
-            /* @__PURE__ */ e.jsxs("div", { className: Ne, children: [
-              /* @__PURE__ */ e.jsx("div", { className: "select__content", children: ae ? /* @__PURE__ */ e.jsx("span", { className: "select__selected", children: ae.label }) : /* @__PURE__ */ e.jsx("span", { className: "select__placeholder", children: v }) }),
+            /* @__PURE__ */ e.jsxs("div", { className: ge, children: [
+              /* @__PURE__ */ e.jsx("div", { className: "select__content", children: ie ? /* @__PURE__ */ e.jsx("span", { className: "select__selected", children: ie.label }) : /* @__PURE__ */ e.jsx("span", { className: "select__placeholder", children: g }) }),
               /* @__PURE__ */ e.jsxs("div", { className: "select__actions", children: [
-                q && R && /* @__PURE__ */ e.jsx(
+                U && A && /* @__PURE__ */ e.jsx(
                   "button",
                   {
                     type: "button",
                     className: "select__clear",
-                    onClick: le,
+                    onClick: ce,
                     "aria-label": "清除选择",
                     children: /* @__PURE__ */ e.jsx(ye, { size: 16 })
                   }
                 ),
-                Q && /* @__PURE__ */ e.jsx(
-                  cs,
+                Z && /* @__PURE__ */ e.jsx(
+                  rs,
                   {
                     size: 16,
-                    className: `select__arrow ${d ? "select__arrow--open" : ""}`
+                    className: `select__arrow ${p ? "select__arrow--open" : ""}`
                   }
                 )
               ] })
             ] }),
-            d && /* @__PURE__ */ e.jsxs("div", { className: "select__dropdown", ref: ee, style: { maxHeight: z }, children: [
-              f && /* @__PURE__ */ e.jsx("div", { className: "select__search", children: /* @__PURE__ */ e.jsx(
+            p && /* @__PURE__ */ e.jsxs("div", { className: "select__dropdown", ref: te, style: { maxHeight: M }, children: [
+              j && /* @__PURE__ */ e.jsx("div", { className: "select__search", children: /* @__PURE__ */ e.jsx(
                 "input",
                 {
-                  ref: G,
+                  ref: se,
                   type: "text",
                   className: "select__search-input",
                   placeholder: "搜索...",
-                  value: W,
-                  onChange: b,
-                  onKeyDown: pe,
-                  onClick: (r) => r.stopPropagation()
+                  value: _,
+                  onChange: y,
+                  onKeyDown: ue,
+                  onClick: (d) => d.stopPropagation()
                 }
               ) }),
               /* @__PURE__ */ e.jsx("div", { className: "select__options", role: "listbox", children: m ? /* @__PURE__ */ e.jsxs("div", { className: "select__loading", children: [
                 /* @__PURE__ */ e.jsx("div", { className: "select__loading-spinner" }),
-                /* @__PURE__ */ e.jsx("span", { children: P })
-              ] }) : L.length === 0 ? /* @__PURE__ */ e.jsx("div", { className: "select__no-data", children: n }) : /* @__PURE__ */ e.jsxs(e.Fragment, { children: [
-                I && /* @__PURE__ */ e.jsx(
+                /* @__PURE__ */ e.jsx("span", { children: L })
+              ] }) : W.length === 0 ? /* @__PURE__ */ e.jsx("div", { className: "select__no-data", children: r }) : /* @__PURE__ */ e.jsxs(e.Fragment, { children: [
+                P && /* @__PURE__ */ e.jsx(
                   "div",
                   {
-                    className: `select__option ${Y === -1 ? "select__option--highlighted" : ""}`,
-                    onClick: () => V({ value: "", label: s }),
+                    className: `select__option ${E === -1 ? "select__option--highlighted" : ""}`,
+                    onClick: () => S({ value: "", label: t }),
                     role: "option",
-                    "aria-selected": R === "",
-                    children: s === v ? "请选择选项" : s
+                    "aria-selected": A === "",
+                    children: t === g ? "请选择选项" : t
                   }
                 ),
-                L.map((r, J) => /* @__PURE__ */ e.jsx(
+                W.map((d, X) => /* @__PURE__ */ e.jsx(
                   "div",
                   {
-                    className: `select__option ${r.value === R ? "select__option--selected" : ""} ${r.disabled ? "select__option--disabled" : ""} ${J === Y ? "select__option--highlighted" : ""}`,
-                    onClick: () => V(r),
+                    className: `select__option ${d.value === A ? "select__option--selected" : ""} ${d.disabled ? "select__option--disabled" : ""} ${X === E ? "select__option--highlighted" : ""}`,
+                    onClick: () => S(d),
                     role: "option",
-                    "aria-selected": r.value === R,
-                    "aria-disabled": r.disabled,
-                    children: r.label
+                    "aria-selected": d.value === A,
+                    "aria-disabled": d.disabled,
+                    children: d.label
                   },
-                  r.value
+                  d.value
                 ))
               ] }) })
             ] })
           ]
         }
       ),
-      K && /* @__PURE__ */ e.jsx("div", { className: "select__help", id: `${Z}-help`, children: K }),
-      M && /* @__PURE__ */ e.jsx("div", { className: "select__error", id: `${Z}-error`, children: M }),
-      H && /* @__PURE__ */ e.jsx(
+      q && /* @__PURE__ */ e.jsx("div", { className: "select__help", id: `${Q}-help`, children: q }),
+      T && /* @__PURE__ */ e.jsx("div", { className: "select__error", id: `${Q}-error`, children: T }),
+      Y && /* @__PURE__ */ e.jsx(
         "input",
         {
           type: "hidden",
-          name: H,
-          value: R || ""
+          name: Y,
+          value: A || ""
         }
       )
     ] });
   }
 );
-ws.displayName = "Select";
-const Ls = "0.0.0";
+js.displayName = "Select";
+const vs = xe(
+  ({
+    checked: s = !1,
+    indeterminate: c = !1,
+    disabled: o = !1,
+    size: a = "md",
+    variant: x = "default",
+    label: g,
+    description: w,
+    value: H,
+    name: R,
+    id: $,
+    required: v = !1,
+    readOnly: n = !1,
+    onChange: l,
+    onFocus: N,
+    onBlur: j,
+    className: U = "",
+    style: k,
+    children: q,
+    ...T
+  }, Z) => {
+    const M = Ge(), J = $ || M, B = `${J}-label`, Y = w ? `${J}-description` : void 0, O = "checkbox", b = `checkbox--${a}`, P = `checkbox--${x}`, L = [
+      O,
+      b,
+      P,
+      o ? "checkbox--disabled" : "",
+      c ? "checkbox--indeterminate" : "",
+      s && !c ? "checkbox--checked" : "",
+      U
+    ].filter(Boolean).join(" "), V = (_) => {
+      if (o || n) {
+        _.preventDefault();
+        return;
+      }
+      l == null || l(_.target.checked, _);
+    }, I = (_) => {
+      if ((_.key === "Enter" || _.key === " ") && (_.preventDefault(), !o && !n)) {
+        const K = !s, E = {
+          target: { checked: K }
+        };
+        l == null || l(K, E);
+      }
+    }, p = (_) => {
+      if (o || n) {
+        _.preventDefault();
+        return;
+      }
+      _.stopPropagation();
+      const K = !s, E = {
+        target: { checked: K }
+      };
+      l == null || l(K, E);
+    }, F = (_) => {
+      if (o || n) {
+        _.preventDefault();
+        return;
+      }
+      const K = !s, E = {
+        target: { checked: K }
+      };
+      l == null || l(K, E);
+    }, A = (_) => {
+      if (o || n) {
+        _.preventDefault();
+        return;
+      }
+      _.currentTarget.classList.add("checkbox--touching");
+    }, f = (_) => {
+      if (o || n) {
+        _.preventDefault();
+        return;
+      }
+      _.currentTarget.classList.remove("checkbox--touching");
+      const E = !s, C = {
+        target: { checked: E }
+      };
+      l == null || l(E, C);
+    };
+    return /* @__PURE__ */ e.jsxs("div", { className: L, style: k, children: [
+      /* @__PURE__ */ e.jsxs("div", { className: "checkbox__container", children: [
+        /* @__PURE__ */ e.jsx(
+          "input",
+          {
+            ref: Z,
+            id: J,
+            type: "checkbox",
+            name: R,
+            value: H,
+            checked: s,
+            disabled: o,
+            readOnly: n,
+            required: v,
+            "aria-describedby": Y,
+            "aria-invalid": v && !s,
+            "aria-checked": c ? "mixed" : s ? "true" : "false",
+            onChange: V,
+            onFocus: N,
+            onBlur: j,
+            onKeyDown: I,
+            className: "checkbox__input",
+            ...T
+          }
+        ),
+        /* @__PURE__ */ e.jsx(
+          "div",
+          {
+            className: "checkbox__control",
+            onClick: p,
+            onTouchStart: A,
+            onTouchEnd: f,
+            role: "button",
+            tabIndex: o || n ? -1 : 0,
+            "aria-pressed": s,
+            "aria-label": g || "复选框",
+            children: /* @__PURE__ */ e.jsxs("div", { className: "checkbox__icon", children: [
+              s && !c && /* @__PURE__ */ e.jsx(Re, { size: 16 }),
+              c && /* @__PURE__ */ e.jsx("div", { className: "checkbox__indeterminate-line" })
+            ] })
+          }
+        ),
+        (g || q) && /* @__PURE__ */ e.jsx(
+          "label",
+          {
+            htmlFor: J,
+            id: B,
+            className: "checkbox__label",
+            onClick: F,
+            children: g || q
+          }
+        )
+      ] }),
+      w && /* @__PURE__ */ e.jsx("div", { id: Y, className: "checkbox__description", children: w })
+    ] });
+  }
+);
+vs.displayName = "Checkbox";
+const ys = "0.0.0";
 export {
-  Is as AILoading,
-  ys as AIMessage,
-  Ps as AIPromptInput,
-  js as Button,
-  Ns as ChatInterface,
-  vs as Input,
-  ws as Select,
-  Ls as version
+  bs as AILoading,
+  xs as AIMessage,
+  ks as AIPromptInput,
+  us as Button,
+  ms as ChatInterface,
+  vs as Checkbox,
+  _s as Input,
+  js as Select,
+  ys as version
 };
 //# sourceMappingURL=index.es.js.map

@@ -9,6 +9,6 @@ module.exports = {
   setupFilesAfterEnv: [path.join(__dirname, 'setupTests.ts')],
   moduleNameMapper: {
     ...base.moduleNameMapper,
-    '^lucide-react$': path.join(__dirname, 'src/__mocks__/lucide-react.tsx'),
+    '^@velvet/icons$': '<rootDir>/../icons/src'
   },
 }; 

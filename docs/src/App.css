@@ -316,7 +316,7 @@
 }
 
 .sidebar-title {
-  font-size: 30 px;
+  font-size: 30px;
   font-weight: 600;
   color: #262626;
   text-transform: uppercase;
@@ -584,6 +584,8 @@
   font-size: 14px;
 }
 
+
+
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .main-content {
@@ -659,4 +661,6 @@
   .demo-row {
     gap: 12px;
   }
+
+
 } 

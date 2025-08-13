@@ -16,4 +16,6 @@ export { AIPromptInput } from './components/AIPromptInput';
 export type { AIPromptInputProps, PromptSuggestion, PromptTemplate } from './components/AIPromptInput';
 export { Select } from './components/Select';
 export type { SelectOption, SelectOwnProps } from './components/Select';
+export { Checkbox } from './components/Checkbox';
+export type { CheckboxOwnProps } from './components/Checkbox';
 // 等等... 

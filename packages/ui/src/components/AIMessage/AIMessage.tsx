@@ -1,6 +1,6 @@
 'use client';
 import React, { forwardRef, useState, useCallback } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { IconCopy, IconCheck } from '@velvet/icons';
 import './AIMessage.css';
 
 export type MessageStatus = 'sending' | 'success' | 'error' | 'streaming';
@@ -331,12 +331,12 @@ export const AIMessage = forwardRef<HTMLDivElement, AIMessageOwnProps & React.HT
             >
               {copied ? (
                 <>
-                  <Check className="ai-message__copy-icon" size={16} />
+                  <IconCheck className="ai-message__copy-icon" size={16} />
                   已复制
                 </>
               ) : (
                 <>
-                  <Copy className="ai-message__copy-icon" size={16} />
+                  <IconCopy className="ai-message__copy-icon" size={16} />
                   复制
                 </>
               )}

@@ -25,9 +25,13 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "prepack": "vite build",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "pnpm jest --config ./jest.config.cjs",
     "test:coverage": "pnpm jest --config ./jest.config.cjs --coverage"
+  },
+  "dependencies": {
+    "@velvet/icons": "workspace:*"
   },
   "devDependencies": {
     "@jest/globals": "^30.0.5",

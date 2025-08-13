@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button, ChatInterface, Input, AIMessage, AILoading, AIPromptInput, Select, Checkbox } from '@velvet/ui';
 import { CodeBlock } from './components';
 import './App.css';
@@ -38,6 +38,13 @@ function App() {
   });
 
   const [selectedCity, setSelectedCity] = useState<string>('');
+  const componentsContentRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (activeSection === 'components' && componentsContentRef.current) {
+      componentsContentRef.current.scrollTop = 0;
+    }
+  }, [activeComponent, activeSection]);
 
   // 快速上手页面
   const renderGettingStarted = () => (
@@ -249,7 +256,7 @@ export default function Page() {
         </aside>
 
         {/* 右侧内容区域 */}
-        <main className="components-content">
+        <main className="components-content" ref={componentsContentRef}>
           {activeComponent === 'button' && (
             <div className="component-section">
               <h3 className="component-title">Button 按钮</h3>
@@ -2405,14 +2412,14 @@ export default App;`}
             <a 
               href="#getting-started" 
               className={activeSection === 'getting-started' ? 'active' : ''}
-              onClick={() => setActiveSection('getting-started')}
+              onClick={(e) => { e.preventDefault(); setActiveSection('getting-started'); }}
             >
               快速上手
             </a>
             <a 
               href="#components" 
               className={activeSection === 'components' ? 'active' : ''}
-              onClick={() => setActiveSection('components')}
+              onClick={(e) => { e.preventDefault(); setActiveSection('components'); }}
             >
               组件
             </a>

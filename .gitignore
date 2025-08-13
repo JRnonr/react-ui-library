@@ -10,6 +10,7 @@ storybook-static/
 
 # Coverage
 /coverage/
+/packages/ui/coverage/
 
 # Logs
 npm-debug.log*
@@ -35,5 +36,9 @@ pnpm-debug.log*
 
 # Misc
 **/.DS_Store
+
+audit.json
+/packages/ui/dist/
+/packages/icons/dist/
 
 *storybook.log

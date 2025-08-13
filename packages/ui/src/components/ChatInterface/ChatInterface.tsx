@@ -48,8 +48,9 @@ export const ChatInterface = forwardRef<HTMLDivElement, ChatInterfaceProps>(({
 
   // 自动滚动到底部
   const scrollToBottom = useCallback(() => {
-    if (messagesEndRef.current?.scrollIntoView) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    const messagesContainer = messagesEndRef.current?.parentElement;
+    if (messagesContainer) {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
   }, []);
 
@@ -73,7 +74,9 @@ export const ChatInterface = forwardRef<HTMLDivElement, ChatInterfaceProps>(({
   }, []);
 
   useEffect(() => {
-    scrollToBottom();
+    if (messages.length > 0) {
+      scrollToBottom();
+    }
     // 确保滚动条显示
     forceScrollbarDisplay();
   }, [messages, scrollToBottom, forceScrollbarDisplay]);

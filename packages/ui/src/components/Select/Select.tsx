@@ -1,6 +1,6 @@
 'use client';
 import React, { forwardRef, useState, useCallback, useRef, useEffect } from 'react';
-import { ChevronDown, X } from 'lucide-react';
+import { IconChevronDown, IconX } from '@velvet/icons';
 import './Select.css';
 
 export type SelectOption = {
@@ -327,7 +327,11 @@ export const Select = forwardRef<HTMLDivElement, SelectOwnProps & React.HTMLAttr
         )}
         
         <div
-          ref={containerRef}
+          ref={(node) => {
+            (containerRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
+            if (typeof ref === 'function') ref(node);
+            else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+          }}
           className={selectClasses}
           style={style}
           tabIndex={disabled || readOnly ? -1 : 0}
@@ -359,12 +363,12 @@ export const Select = forwardRef<HTMLDivElement, SelectOwnProps & React.HTMLAttr
                   onClick={handleClear}
                   aria-label="清除选择"
                 >
-                  <X size={16} />
+                  <IconX size={16} />
                 </button>
               )}
               
               {showArrow && (
-                <ChevronDown 
+                <IconChevronDown 
                   size={16} 
                   className={`select__arrow ${isOpen ? 'select__arrow--open' : ''}`}
                 />

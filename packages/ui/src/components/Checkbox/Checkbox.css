@@ -1,0 +1,391 @@
+/* Checkbox 基础样式 */
+.checkbox {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  font-family: inherit;
+  user-select: none;
+}
+
+.checkbox__container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.checkbox__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d1d5db;
+  border-radius: 0.25rem;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.checkbox__control:hover {
+  border-color: #9ca3af;
+}
+
+.checkbox__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.checkbox__indeterminate-line {
+  width: 8px;
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.checkbox__label {
+  font-size: inherit;
+  line-height: 1.5;
+  color: #374151;
+  cursor: pointer;
+}
+
+.checkbox__description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #6b7280;
+  margin-left: 1.5rem;
+}
+
+/* 尺寸变体 */
+.checkbox--sm .checkbox__control {
+  width: 1rem;
+  height: 1rem;
+}
+
+.checkbox--sm .checkbox__icon {
+  font-size: 0.75rem;
+}
+
+.checkbox--sm .checkbox__label {
+  font-size: 0.875rem;
+}
+
+.checkbox--sm .checkbox__description {
+  font-size: 0.75rem;
+  margin-left: 1.25rem;
+}
+
+.checkbox--md .checkbox__control {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.checkbox--md .checkbox__icon {
+  font-size: 0.875rem;
+}
+
+.checkbox--md .checkbox__label {
+  font-size: 1rem;
+}
+
+.checkbox--md .checkbox__description {
+  font-size: 0.875rem;
+  margin-left: 1.5rem;
+}
+
+.checkbox--lg .checkbox__control {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.checkbox--lg .checkbox__icon {
+  font-size: 1rem;
+}
+
+.checkbox--lg .checkbox__label {
+  font-size: 1.125rem;
+}
+
+.checkbox--lg .checkbox__description {
+  font-size: 1rem;
+  margin-left: 1.75rem;
+}
+
+/* 变体样式 */
+.checkbox--default.checkbox--checked .checkbox__control {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.checkbox--default.checkbox--checked .checkbox__icon {
+  opacity: 1;
+}
+
+.checkbox--default.checkbox--indeterminate .checkbox__control {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.checkbox--default.checkbox--indeterminate .checkbox__icon {
+  opacity: 1;
+}
+
+.checkbox--primary.checkbox--checked .checkbox__control {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.checkbox--primary.checkbox--indeterminate .checkbox__control {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.checkbox--success.checkbox--checked .checkbox__control {
+  background-color: #10b981;
+  border-color: #10b981;
+}
+
+.checkbox--success.checkbox--indeterminate .checkbox__control {
+  background-color: #10b981;
+  border-color: #10b981;
+}
+
+.checkbox--warning.checkbox--checked .checkbox__control {
+  background-color: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.checkbox--warning.checkbox--indeterminate .checkbox__control {
+  background-color: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.checkbox--danger.checkbox--checked .checkbox__control {
+  background-color: #ef4444;
+  border-color: #ef4444;
+}
+
+.checkbox--danger.checkbox--indeterminate .checkbox__control {
+  background-color: #ef4444;
+  border-color: #ef4444;
+}
+
+/* 焦点状态 */
+.checkbox__input:focus + .checkbox__control {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.checkbox__input:focus:not(:focus-visible) + .checkbox__control {
+  outline: none;
+}
+
+/* 禁用状态 */
+.checkbox--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkbox--disabled .checkbox__container {
+  cursor: not-allowed;
+}
+
+.checkbox--disabled .checkbox__label {
+  cursor: not-allowed;
+  color: #9ca3af;
+}
+
+.checkbox--disabled .checkbox__control {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.checkbox--disabled .checkbox__control:hover {
+  border-color: #d1d5db;
+}
+
+.checkbox--disabled .checkbox__description {
+  color: #9ca3af;
+}
+
+/* 只读状态 */
+.checkbox--readonly .checkbox__control {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+.checkbox--readonly .checkbox__label {
+  color: #6b7280;
+}
+
+/* 错误状态（必填但未选中） */
+.checkbox__input[aria-invalid="true"] + .checkbox__control {
+  border-color: #ef4444;
+}
+
+.checkbox__input[aria-invalid="true"]:focus + .checkbox__control {
+  outline-color: #ef4444;
+}
+
+/* 动画效果 */
+.checkbox__control {
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+}
+
+.checkbox__control:active {
+  transform: scale(0.95);
+}
+
+.checkbox__icon {
+  transform: scale(0.8);
+  transition: all 0.2s ease-in-out;
+}
+
+.checkbox--checked .checkbox__icon,
+.checkbox--indeterminate .checkbox__icon {
+  transform: scale(1);
+}
+
+/* 交互增强样式 */
+.checkbox__control {
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.checkbox__control:hover:not(.checkbox--disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.checkbox__control:active:not(.checkbox--disabled) {
+  transform: scale(0.95);
+}
+
+.checkbox__control:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* 触摸反馈 */
+.checkbox--touching .checkbox__control {
+  transform: scale(0.9);
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* 标签点击样式 */
+.checkbox__label {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.checkbox__label:hover:not(.checkbox--disabled) {
+  color: #1f2937;
+}
+
+.checkbox__label:active:not(.checkbox--disabled) {
+  color: #111827;
+}
+
+/* 键盘焦点样式 */
+.checkbox__control:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* 禁用状态的交互 */
+.checkbox--disabled .checkbox__control,
+.checkbox--disabled .checkbox__label {
+  cursor: not-allowed;
+}
+
+.checkbox--disabled .checkbox__control:hover,
+.checkbox--disabled .checkbox__control:active {
+  transform: none;
+  box-shadow: none;
+}
+
+/* 只读状态的交互 */
+.checkbox--readonly .checkbox__control,
+.checkbox--readonly .checkbox__label {
+  cursor: default;
+}
+
+.checkbox--readonly .checkbox__control:hover,
+.checkbox--readonly .checkbox__control:active {
+  transform: none;
+  box-shadow: none;
+}
+
+/* 响应式触摸优化 */
+@media (hover: none) and (pointer: coarse) {
+  .checkbox__control {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .checkbox__label {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+  .checkbox--lg .checkbox__control {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+  
+  .checkbox--md .checkbox__control {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  
+  .checkbox--sm .checkbox__control {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .checkbox__control {
+    border-width: 3px;
+  }
+  
+  .checkbox__input:focus + .checkbox__control {
+    outline-width: 3px;
+  }
+}
+
+/* 减少动画模式支持 */
+@media (prefers-reduced-motion: reduce) {
+  .checkbox__control,
+  .checkbox__icon {
+    transition: none;
+  }
+  
+  .checkbox__control:active {
+    transform: none;
+  }
+} 

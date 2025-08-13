@@ -4,8 +4,8 @@
     "composite": true,
     "declaration": true,
     "outDir": "dist",
-    "types": ["jest", "@testing-library/jest-dom", "react", "react-dom"]
+    "types": ["react", "react-dom"]
   },
   "include": ["src"],
-  "exclude": ["vite.config.ts", "dist", "node_modules"]
+  "exclude": ["vite.config.ts", "dist", "node_modules", "**/__tests__/**"]
 } 

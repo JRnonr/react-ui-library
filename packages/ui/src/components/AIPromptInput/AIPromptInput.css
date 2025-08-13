@@ -149,7 +149,7 @@
 /* 状态样式 */
 .ai-prompt-input--focused .ai-prompt-input__input-container {
   border-color: var(--ai-prompt-input-focus-color, #3b82f6);
-  box-shadow: 0 0 0 3px var(--ai-prompt-input-focus-shadow, rgba(59, 130, 246, 0.1));
+  box-shadow: 0 0 0 2px var(--ai-prompt-input-focus-shadow, rgba(59, 130, 246, 0.1));
 }
 
 .ai-prompt-input--error .ai-prompt-input__input-container {

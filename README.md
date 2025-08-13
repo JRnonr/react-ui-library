@@ -1,25 +1,14 @@
-# 组件库项目
-
-[![项目状态](https://img.shields.io/badge/状态-100%25%20完成-brightgreen)](https://github.com/your-repo/react-ui-library)
-[![测试状态](https://img.shields.io/badge/测试-100%25%20通过-brightgreen)](https://github.com/your-repo/react-ui-library)
-[![组件数量](https://img.shields.io/badge/组件-7个-blu)](https://github.com/your-repo/react-ui-library)
-
 一个基于 React + TypeScript + Vite 的现代化组件库项目。
-
-## 🎉 项目完成状态
-
-**所有计划中的组件都已完成！** 这是一个功能完整、生产就绪的React组件库。
 
 ## 技术栈
 
-- **React**: 18.2+ - 使用最新的React特性和Hooks
-- **TypeScript**: 5.3+ - 完整的类型安全支持
-- **Vite**: 5.4+ - 快速的构建工具和开发服务器
-- **Jest**: 29.7+ - 完整的测试框架
-- **Storybook**: 9.1+ - 组件文档和开发环境
-- **PNPM**: 8.15+ - 高效的包管理器
-- **ESLint**: 最新版本 - 代码质量检查
-- **CSS**: 模块化CSS，支持主题定制
+- 基础: React 18.3.1, TypeScript 5.9.2, Node >= 20
+- 构建: Vite 5.4.19
+- 测试: Jest 29.7.0, Testing Library (react 14.3.1, user-event 14.6.1), jsdom 29.7.0, SWC (@swc/jest 0.2.39, @swc/core 1.13.3)
+- 文档: Storybook 9.1.1
+- 包管理: PNPM 10.13.1, PNPM Workspace (Monorepo)
+- 代码质量: ESLint 9.33.c0
+- 样式: CSS Modules
 
 
 ## 项目结构
@@ -63,7 +52,7 @@
 ├── package.json             # 根目录工作区配置
 ├── pnpm-workspace.yaml     # pnpm 工作区配置
 ├── eslint.config.mjs       # ESLint 配置
-├── vitest.config.ts        # Vitest 测试配置
+├── (tests use Jest at package level) # Vitest 已移除，统一使用 Jest
 └── README.md               # 项目说明
 ```
 
@@ -102,6 +91,8 @@ pnpm storybook
 pnpm build-storybook
 ```
 
+
+覆盖率 `pnpm --filter @velvet/ui test:coverage` 
 
 ## 包管理
 
@@ -390,4 +381,27 @@ pnpm --filter @repo/ui run build
   - 边界情况和异常处理
   - 可访问性功能和ARIA支持
   - 性能优化和状态管理
+
+#### **Checkbox 复选框组件** 
+- **位置**: `packages/ui/src/components/Checkbox/`
+- **特性**: 受控/非受控；不确定状态（indeterminate）；多尺寸（sm、md、lg）；多变体（default、primary、success、warning、danger）；无障碍支持与键盘导航；描述文本；禁用/只读；表单属性；响应式与高对比度
+- **API 特性**:
+  - 事件：`onChange(checked, event)`、`onFocus(event)`、`onBlur(event)`
+  - ARIA：`aria-checked`（支持 mixed）、`aria-describedby`、`aria-invalid` 等
+  - 可访问性：支持 Tab/Enter/Space 键操作，焦点管理
+  - `ref` 转发可获取原生 `input` 引用
+- **测试**: 包含完整的单元测试，**19 个测试用例**
+- **测试覆盖率**: **96.61% 语句覆盖率，91.80% 分支覆盖率，100% 函数覆盖率**
+- **覆盖的功能**:
+  - 基础渲染与标签显示
+  - 受控模式与标签点击切换
+  - 键盘导航（Space/Enter 切换）
+  - 不确定状态（`aria-checked="mixed"`）
+  - 禁用与只读交互拦截
+  - 尺寸与变体类名渲染
+  - 描述文本与 `aria-describedby`
+  - 必填校验（`aria-invalid`）
+  - 自定义 `id`/`className`/`style`
+  - 子元素作为标签、焦点事件回调
+  - 表单属性 `name`/`value`
 

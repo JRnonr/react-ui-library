@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
-import { Search, Clock, Zap, FileText, X } from 'lucide-react';
+import { IconSearch, IconClock, IconZap, IconFileText, IconX } from '@velvet/icons';
 import './AIPromptInput.css';
 
 export interface PromptSuggestion {
@@ -410,7 +410,7 @@ export const AIPromptInput: React.FC<AIPromptInputProps> = ({
     return (
       <div ref={suggestionsRef} className="ai-prompt-input__panel ai-prompt-input__suggestions">
         <div className="ai-prompt-input__panel-header">
-          <Search size={16} />
+          <IconSearch size={16} />
           <span>建议</span>
         </div>
         <div className="ai-prompt-input__panel-content">
@@ -443,14 +443,14 @@ export const AIPromptInput: React.FC<AIPromptInputProps> = ({
     return (
       <div ref={historyRef} className="ai-prompt-input__panel ai-prompt-input__history">
         <div className="ai-prompt-input__panel-header">
-          <Clock size={16} />
+          <IconClock size={16} />
           <span>历史记录</span>
           <button
             className="ai-prompt-input__clear-history"
             onClick={onHistoryClear}
             type="button"
           >
-            <X size={14} />
+            <IconX size={14} />
           </button>
         </div>
         <div className="ai-prompt-input__panel-content">
@@ -462,7 +462,7 @@ export const AIPromptInput: React.FC<AIPromptInputProps> = ({
               }`}
               onClick={() => handleHistorySelect(item)}
             >
-              <Clock size={14} />
+              <IconClock size={14} />
               <span className="ai-prompt-input__history-text">{item}</span>
             </div>
           ))}
@@ -484,7 +484,7 @@ export const AIPromptInput: React.FC<AIPromptInputProps> = ({
     return (
       <div ref={templatesRef} className="ai-prompt-input__panel ai-prompt-input__templates">
         <div className="ai-prompt-input__panel-header">
-          <FileText size={16} />
+          <IconFileText size={16} />
           <span>模板</span>
         </div>
         <div className="ai-prompt-input__panel-content">
@@ -520,7 +520,7 @@ export const AIPromptInput: React.FC<AIPromptInputProps> = ({
     return (
       <div ref={shortcutsRef} className="ai-prompt-input__panel ai-prompt-input__shortcuts">
         <div className="ai-prompt-input__panel-header">
-          <Zap size={16} />
+          <IconZap size={16} />
           <span>快捷指令</span>
         </div>
         <div className="ai-prompt-input__panel-content">
@@ -579,7 +579,7 @@ export const AIPromptInput: React.FC<AIPromptInputProps> = ({
                 disabled={disabled}
                 aria-label="显示历史记录"
               >
-                <Clock size={16} />
+                <IconClock size={16} />
               </button>
             )}
             
@@ -591,7 +591,7 @@ export const AIPromptInput: React.FC<AIPromptInputProps> = ({
                 disabled={disabled}
                 aria-label="显示模板"
               >
-                <FileText size={16} />
+                <IconFileText size={16} />
               </button>
             )}
             
@@ -603,7 +603,7 @@ export const AIPromptInput: React.FC<AIPromptInputProps> = ({
                 disabled={disabled}
                 aria-label="清除输入"
               >
-                <X size={16} />
+                <IconX size={16} />
               </button>
             )}
           </div>

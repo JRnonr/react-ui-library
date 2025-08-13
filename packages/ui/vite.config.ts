@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     dts({
       entryRoot: 'src',
-      tsconfigPath: path.resolve(__dirname, 'tsconfig.json'),
+      tsconfigPath: path.resolve(__dirname, 'tsconfig.build.json'),
       outDir: 'dist/types',
       copyDtsFiles: true,
       include: ['src/**/*.ts', 'src/**/*.tsx'],

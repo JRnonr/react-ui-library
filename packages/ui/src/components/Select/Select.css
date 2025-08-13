@@ -121,7 +121,7 @@
 
 .select--open .select__selector {
   border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 
 /* 选择器内容样式 */
@@ -336,7 +336,7 @@
 /* 焦点管理 */
 .select:focus-within .select__selector {
   border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 
 /* 无障碍支持 */
