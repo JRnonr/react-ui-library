@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
-import { IconSearch, IconClock, IconZap, IconFileText, IconX } from '@velvet/icons';
+import { IconSearch, IconClock, IconZap, IconFileText, IconX } from '@velvetdesign/icons';
 import './AIPromptInput.css';
 
 export interface PromptSuggestion {

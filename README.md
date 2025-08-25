@@ -10,6 +10,15 @@
 - 代码质量: ESLint 9.33.c0
 - 样式: CSS Modules
 
+## 发布
+
+- 已发布到 npm：
+  - `@velvetdesign/ui` v0.1.0
+  - `@velvetdesign/icons` v0.1.0
+- 安装：
+```bash
+pnpm add @velvetdesign/ui @velvetdesign/icons
+```
 
 ## 项目结构
 
@@ -92,7 +101,7 @@ pnpm build-storybook
 ```
 
 
-覆盖率 `pnpm --filter @velvet/ui test:coverage` 
+覆盖率 `pnpm --filter @velvetdesign/ui test:coverage` 
 
 ## 包管理
 

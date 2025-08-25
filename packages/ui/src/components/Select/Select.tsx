@@ -1,6 +1,6 @@
 'use client';
 import React, { forwardRef, useState, useCallback, useRef, useEffect } from 'react';
-import { IconChevronDown, IconX } from '@velvet/icons';
+import { IconChevronDown, IconX } from '@velvetdesign/icons';
 import './Select.css';
 
 export type SelectOption = {

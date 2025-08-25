@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Button, ChatInterface, Input, AIMessage, AILoading, AIPromptInput, Select, Checkbox } from '@velvet/ui';
+import { Button, ChatInterface, Input, AIMessage, AILoading, AIPromptInput, Select, Checkbox } from '@velvetdesign/ui';
 import { CodeBlock } from './components';
 import './App.css';
 
@@ -56,13 +56,13 @@ function App() {
         <h2>安装使用</h2>
         <CodeBlock
           code={`# 使用 npm 安装
-npm install @velvet/ui
+npm install @velvetdesign/ui
 
 # 使用 yarn 安装
-yarn add @velvet/ui
+yarn add @velvetdesign/ui
 
 # 使用 pnpm 安装
-pnpm add @velvet/ui`}
+pnpm add @velvetdesign/ui`}
           language="bash"
           title="安装命令"
           expanded={true}
@@ -72,7 +72,7 @@ pnpm add @velvet/ui`}
         <p className="content-description">在应用入口文件中全局引入一次样式文件。</p>
         <CodeBlock
           code={`// main.tsx 或 _app.tsx
-import '@velvet/ui/style.css';`}
+import '@velvetdesign/ui/style.css';`}
           language="typescript"
           title="全局样式引入"
           expanded={true}
@@ -81,8 +81,8 @@ import '@velvet/ui/style.css';`}
         <h2 style={{ marginTop: 24 }}>基础用法</h2>
         <CodeBlock
           code={`import React from 'react';
-import '@velvet/ui/style.css';
-import { Button, Checkbox, Input, Select } from '@velvet/ui';
+import '@velvetdesign/ui/style.css';
+import { Button, Checkbox, Input, Select } from '@velvetdesign/ui';
 
 export default function App() {
   return (
@@ -102,7 +102,7 @@ export default function App() {
         <h2 style={{ marginTop: 24 }}>按需导入</h2>
         <p className="content-description">仅引入使用到的组件，支持 tree-shaking；类型也可按需导入。</p>
         <CodeBlock
-          code={`import { Button } from '@velvet/ui';
+          code={`import { Button } from '@velvetdesign/ui';
 
 // 仅打包使用到的组件（支持 tree-shaking）
 export function Demo() {
@@ -110,7 +110,7 @@ export function Demo() {
 }
 
 // 类型按需导入
-import type { ButtonOwnProps } from '@velvet/ui';`}
+import type { ButtonOwnProps } from '@velvetdesign/ui';`}
           language="tsx"
           title="按需导入示例"
           expanded={true}
@@ -120,7 +120,7 @@ import type { ButtonOwnProps } from '@velvet/ui';`}
         <p className="content-description">组件依赖浏览器能力，请在客户端组件中使用；样式需在全局引入。</p>
         <CodeBlock
           code={`// app/layout.tsx（App Router）
-import '@velvet/ui/style.css';
+import '@velvetdesign/ui/style.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -136,7 +136,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CodeBlock
           code={`// app/page.tsx（App Router）
 "use client";
-import { Button } from '@velvet/ui';
+import { Button } from '@velvetdesign/ui';
 
 export default function Page() {
   return <Button variant="primary">Hello</Button>;
@@ -147,7 +147,7 @@ export default function Page() {
         />
         <CodeBlock
           code={`// pages/_app.tsx（Pages Router）
-import '@velvet/ui/style.css';
+import '@velvetdesign/ui/style.css';
 import type { AppProps } from 'next/app';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -161,7 +161,7 @@ export default function App({ Component, pageProps }: AppProps) {
           code={`// 可选：按需禁用 SSR 渲染指定组件
 import dynamic from 'next/dynamic';
 
-const ClientButton = dynamic(() => import('@velvet/ui').then(m => m.Button), {
+const ClientButton = dynamic(() => import('@velvetdesign/ui').then(m => m.Button), {
   ssr: false,
 });
 
@@ -185,7 +185,10 @@ export default function Page() {
         {/* 左侧导航 */}
         <aside className="components-sidebar">
           <div className="sidebar-section">
-            <h2 className="sidebar-title">组件</h2>
+            <h2 className="sidebar-main-title">组件</h2>
+          </div>
+          <div className="sidebar-section">
+            <h3 className="sidebar-sub-title">基础组件</h3>
             <ul className="sidebar-menu">
               <li className="sidebar-item">
                 <a 
@@ -219,6 +222,11 @@ export default function Page() {
                   Checkbox 复选框
                 </a>
               </li>
+            </ul>
+          </div>
+          <div className="sidebar-section">
+            <h3 className="sidebar-sub-title">AI组件</h3>
+            <ul className="sidebar-menu">
               <li className="sidebar-item">
                 <a 
                   className={activeComponent === 'chat' ? 'active' : ''}
@@ -276,7 +284,7 @@ export default function Page() {
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Button } from '@velvet/ui';
+import { Button } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -308,7 +316,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Button } from '@velvet/ui';
+import { Button } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -336,7 +344,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Button } from '@velvet/ui';
+import { Button } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', gap: '8px' }}>
@@ -362,7 +370,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Button } from '@velvet/ui';
+import { Button } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ width: '100%' }}>
@@ -456,7 +464,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Input } from '@velvet/ui';
+import { Input } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
@@ -485,7 +493,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Input } from '@velvet/ui';
+import { Input } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
@@ -514,7 +522,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Input } from '@velvet/ui';
+import { Input } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
@@ -544,7 +552,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Input } from '@velvet/ui';
+import { Input } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
@@ -575,7 +583,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Input } from '@velvet/ui';
+import { Input } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
@@ -694,7 +702,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Select, SelectOption } from '@velvet/ui';
+import { Select, SelectOption } from '@velvetdesign/ui';
 
 const options: SelectOption[] = [
   { value: 'beijing', label: '北京' },
@@ -739,7 +747,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Select, SelectOption } from '@velvet/ui';
+import { Select, SelectOption } from '@velvetdesign/ui';
 
 const options: SelectOption[] = [
   { value: 'beijing', label: '北京' },
@@ -788,7 +796,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Select, SelectOption } from '@velvet/ui';
+import { Select, SelectOption } from '@velvetdesign/ui';
 
 const options: SelectOption[] = [
   { value: 'beijing', label: '北京' },
@@ -853,7 +861,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { Select, SelectOption } from '@velvet/ui';
+import { Select, SelectOption } from '@velvetdesign/ui';
 
 const options: SelectOption[] = [
   { value: 'option1', label: '选项1' },
@@ -915,7 +923,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React, { useState } from 'react';
-import { Select, SelectOption } from '@velvet/ui';
+import { Select, SelectOption } from '@velvetdesign/ui';
 
 const options: SelectOption[] = [
   { value: 'beijing', label: '北京' },
@@ -972,7 +980,7 @@ export default App;`}
                   </div>
                   <div className="demo-code">
                     <CodeBlock
-                      code={`import { Checkbox } from '@velvet/ui';
+                      code={`import { Checkbox } from '@velvetdesign/ui';
 
 <Checkbox label="基础复选框" />
 <Checkbox label="已选中的复选框" checked />
@@ -994,7 +1002,7 @@ export default App;`}
                   </div>
                   <div className="demo-code">
                     <CodeBlock
-                      code={`import { Checkbox } from '@velvet/ui';
+                      code={`import { Checkbox } from '@velvetdesign/ui';
 
 <Checkbox size="sm" label="小尺寸" />
 <Checkbox size="md" label="中等尺寸" />
@@ -1018,7 +1026,7 @@ export default App;`}
                   </div>
                   <div className="demo-code">
                     <CodeBlock
-                      code={`import { Checkbox } from '@velvet/ui';
+                      code={`import { Checkbox } from '@velvetdesign/ui';
 
 <Checkbox variant="default" label="默认变体" checked />
 <Checkbox variant="primary" label="主要变体" checked />
@@ -1043,7 +1051,7 @@ export default App;`}
                   </div>
                   <div className="demo-code">
                     <CodeBlock
-                      code={`import { Checkbox } from '@velvet/ui';
+                      code={`import { Checkbox } from '@velvetdesign/ui';
 
 <Checkbox disabled label="禁用的复选框" />
 <Checkbox disabled checked label="禁用的已选中复选框" />
@@ -1071,7 +1079,7 @@ export default App;`}
                   </div>
                   <div className="demo-code">
                     <CodeBlock
-                      code={`import { Checkbox } from '@velvet/ui';
+                      code={`import { Checkbox } from '@velvetdesign/ui';
 
 <Checkbox
   label="接收营销邮件"
@@ -1196,7 +1204,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { ChatInterface } from '@velvet/ui';
+import { ChatInterface } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <ChatInterface 
@@ -1244,7 +1252,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { ChatInterface } from '@velvet/ui';
+import { ChatInterface } from '@velvetdesign/ui';
 
 const App: React.FC = () => {
   const handleSendMessage = async (message: string) => {
@@ -1347,7 +1355,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIMessage } from '@velvet/ui';
+import { AIMessage } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIMessage 
@@ -1381,7 +1389,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIMessage } from '@velvet/ui';
+import { AIMessage } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIMessage 
@@ -1430,7 +1438,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIMessage } from '@velvet/ui';
+import { AIMessage } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -1482,7 +1490,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIMessage } from '@velvet/ui';
+import { AIMessage } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIMessage 
@@ -1536,7 +1544,7 @@ def greet(name):
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIMessage } from '@velvet/ui';
+import { AIMessage } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIMessage 
@@ -1581,7 +1589,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIMessage } from '@velvet/ui';
+import { AIMessage } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIMessage 
@@ -1628,7 +1636,7 @@ function example() {
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIMessage } from '@velvet/ui';
+import { AIMessage } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIMessage 
@@ -1673,7 +1681,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIMessage } from '@velvet/ui';
+import { AIMessage } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIMessage 
@@ -1775,7 +1783,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AILoading } from '@velvet/ui';
+import { AILoading } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -1810,7 +1818,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AILoading } from '@velvet/ui';
+import { AILoading } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -1843,7 +1851,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AILoading } from '@velvet/ui';
+import { AILoading } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -1962,7 +1970,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIPromptInput } from '@velvet/ui';
+import { AIPromptInput } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIPromptInput 
@@ -2002,7 +2010,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIPromptInput } from '@velvet/ui';
+import { AIPromptInput } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIPromptInput 
@@ -2049,7 +2057,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIPromptInput } from '@velvet/ui';
+import { AIPromptInput } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIPromptInput 
@@ -2108,7 +2116,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIPromptInput } from '@velvet/ui';
+import { AIPromptInput } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIPromptInput 
@@ -2176,7 +2184,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIPromptInput } from '@velvet/ui';
+import { AIPromptInput } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIPromptInput 
@@ -2257,7 +2265,7 @@ export default App;`}
                   <div className="demo-code">
                     <CodeBlock
                       code={`import React from 'react';
-import { AIPromptInput } from '@velvet/ui';
+import { AIPromptInput } from '@velvetdesign/ui';
 
 const App: React.FC = () => (
   <AIPromptInput 

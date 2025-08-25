@@ -1,6 +1,6 @@
 'use client';
 import React, { forwardRef, useId } from 'react';
-import { IconCheck } from '@velvet/icons';
+import { IconCheck } from '@velvetdesign/icons';
 import './Checkbox.css';
 
 export type CheckboxOwnProps = {

@@ -1,6 +1,6 @@
 'use client';
 import React, { forwardRef } from 'react';
-import { IconLoader } from '@velvet/icons';
+import { IconLoader } from '@velvetdesign/icons';
 import './Button.css';
 
 export type ButtonOwnProps = {

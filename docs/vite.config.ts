@@ -7,6 +7,7 @@ export default defineConfig({
   publicDir: 'public',
   resolve: {
     alias: {
+      '@velvetdesign/ui': resolve(__dirname, '../packages/ui/src'),
       '@velvet/ui': resolve(__dirname, '../packages/ui/src')
     }
   },

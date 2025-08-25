@@ -1,5 +1,5 @@
 {
-  "name": "@velvet/ui",
+  "name": "@velvetdesign/ui",
   "version": "0.1.0",
   "private": false,
   "type": "module",
@@ -34,7 +34,7 @@
     "test:coverage": "pnpm jest --config ./jest.config.cjs --coverage"
   },
   "dependencies": {
-    "@velvet/icons": "^0.1.0"
+    "@velvetdesign/icons": "^0.1.0"
   },
   "devDependencies": {
     "@jest/globals": "^30.0.5",

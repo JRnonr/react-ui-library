@@ -1,6 +1,6 @@
 'use client';
 import React, { forwardRef, useState, useCallback } from 'react';
-import { IconCopy, IconCheck } from '@velvet/icons';
+import { IconCopy, IconCheck } from '@velvetdesign/icons';
 import './AIMessage.css';
 
 export type MessageStatus = 'sending' | 'success' | 'error' | 'streaming';

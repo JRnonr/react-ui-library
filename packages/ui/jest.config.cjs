@@ -9,6 +9,6 @@ module.exports = {
   setupFilesAfterEnv: [path.join(__dirname, 'setupTests.ts')],
   moduleNameMapper: {
     ...base.moduleNameMapper,
-    '^@velvet/icons$': '<rootDir>/../icons/src'
+    '^@velvetdesign/icons$': '<rootDir>/../icons/src'
   },
 }; 
