@@ -1,6 +1,6 @@
 {
   "name": "@velvet/icons",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": false,
   "type": "module",
   "main": "dist/index.cjs.js",
@@ -12,6 +12,9 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "vite build",
@@ -27,4 +30,4 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }
-} 
+}
