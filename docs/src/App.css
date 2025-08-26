@@ -566,8 +566,6 @@
   font-size: inherit;
 }
 
-
-
 /* 组件占位符 */
 .component-placeholder {
   display: flex;
@@ -593,34 +591,34 @@
   font-size: 14px;
 }
 
-
-
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .main-content {
     padding: 24px 32px;
     margin: 16px;
   }
-  
+
   .components-layout {
     gap: 32px;
-    height: calc(100vh - 164px); /* 调整平板端高度：减去固定头部(64px)、margin-top(64px)和边距(36px) */
+    height: calc(
+      100vh - 164px
+    ); /* 调整平板端高度：减去固定头部(64px)、margin-top(64px)和边距(36px) */
   }
-  
+
   .components-sidebar {
     width: 240px;
     top: 16px; /* 调整移动端顶部距离 */
     max-height: calc(100vh - 164px); /* 调整平板端最大高度 */
   }
-  
+
   .component-demo {
     padding: 24px;
   }
-  
+
   .demo-section {
     padding: 24px;
   }
-  
+
   .demo-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -631,45 +629,43 @@
   .app-container {
     flex-direction: column;
   }
-  
+
   .main-content {
     margin: 0;
     border-radius: 0;
   }
-  
+
   .header-left {
     gap: 24px;
   }
-  
+
   .search-box {
     min-width: 180px;
   }
-  
+
   .components-layout {
     flex-direction: column;
     gap: 24px;
     height: auto; /* 移动端取消固定高度 */
   }
-  
+
   .components-sidebar {
     width: 100%;
     position: static; /* 移动端取消sticky定位 */
     max-height: none;
     overflow-y: visible;
   }
-  
+
   .components-content {
     overflow-y: visible; /* 移动端取消独立滚动 */
     padding-right: 0;
   }
-  
+
   .component-demo {
     padding: 20px;
   }
-  
+
   .demo-row {
     gap: 12px;
   }
-
-
-} 
+}

@@ -7,7 +7,7 @@
 - 测试: Jest 29.7.0, Testing Library (react 14.3.1, user-event 14.6.1), jsdom 29.7.0, SWC (@swc/jest 0.2.39, @swc/core 1.13.3)
 - 文档: Storybook 9.1.1
 - 包管理: PNPM 10.13.1, PNPM Workspace (Monorepo)
-- 代码质量: ESLint 9.33.c0
+- 代码质量/工程化: ESLint 9.33.0, Prettier 3.6.2, Husky 9.1.7, lint-staged 15.5.2
 - 样式: CSS Modules
 
 ## 发布
@@ -16,6 +16,7 @@
   - `@velvetdesign/ui` v0.1.0
   - `@velvetdesign/icons` v0.1.0
 - 安装：
+
 ```bash
 pnpm add @velvetdesign/ui @velvetdesign/icons
 ```
@@ -67,8 +68,6 @@ pnpm add @velvetdesign/ui @velvetdesign/icons
 
 ## 开发
 
-**重要：本项目使用 pnpm 作为包管理器，请确保使用 pnpm 而不是 npm 或 yarn。**
-
 ```bash
 # 安装依赖
 pnpm install
@@ -100,8 +99,7 @@ pnpm storybook
 pnpm build-storybook
 ```
 
-
-覆盖率 `pnpm --filter @velvetdesign/ui test:coverage` 
+覆盖率 `pnpm --filter @velvetdesign/ui test:coverage`
 
 ## 包管理
 
@@ -130,7 +128,8 @@ pnpm --filter @repo/ui run build
 
 ### **已完成的组件**：
 
-#### **Button 按钮组件** 
+#### **Button 按钮组件**
+
 - **位置**: `packages/ui/src/components/Button/`
 - **特性**: 支持多种样式变体、尺寸、状态
 - **变体**: default, primary, secondary, outline, ghost, danger
@@ -151,7 +150,8 @@ pnpm --filter @repo/ui run build
   - SVG 加载动画
   - 属性组合和默认值
 
-#### **ChatInterface 聊天界面组件** 
+#### **ChatInterface 聊天界面组件**
+
 - **位置**: `packages/ui/src/components/ChatInterface/`
 - **特性**: 现代化的AI聊天界面，支持实时对话和打字机效果
 - **核心功能**:
@@ -184,7 +184,8 @@ pnpm --filter @repo/ui run build
   - 异步操作和状态更新
   - 用户交互和事件响应
 
-#### **Input 输入框组件** 
+#### **Input 输入框组件**
+
 - **位置**: `packages/ui/src/components/Input/`
 - **特性**: 功能完整的现代化输入框组件，支持多种输入类型和交互功能
 - **核心功能**:
@@ -221,7 +222,8 @@ pnpm --filter @repo/ui run build
   - 输入类型和属性设置
   - ref转发和边界情况处理
 
-#### **AIMessage AI消息组件** 
+#### **AIMessage AI消息组件**
+
 - **位置**: `packages/ui/src/components/AIMessage/`
 - **特性**: 专门用于显示AI对话消息的独立组件，支持markdown渲染和代码高亮
 - **核心功能**:
@@ -263,7 +265,8 @@ pnpm --filter @repo/ui run build
   - **性能优化** - 使用useCallback优化渲染性能，避免不必要的重渲染
   - **内存管理** - 组件卸载时正确清理事件监听器和定时器
 
-#### **AILoading AI加载组件** 
+#### **AILoading AI加载组件**
+
 - **位置**: `packages/ui/src/components/AILoading/`
 - **特性**: 专门用于AI处理时的加载动画独立组件，支持多种加载类型和动画效果
 - **核心功能**:
@@ -301,7 +304,8 @@ pnpm --filter @repo/ui run build
   - 可访问性功能
   - 性能优化和内存管理
 
-#### **AIPromptInput AI提示输入组件** 
+#### **AIPromptInput AI提示输入组件**
+
 - **位置**: `packages/ui/src/components/AIPromptInput/`
 - **特性**: 智能提示输入框独立组件，专为AI应用设计，支持自动补全、历史记录、模板选择和快捷指令
 - **核心功能**:
@@ -345,7 +349,8 @@ pnpm --filter @repo/ui run build
   - 可访问性功能和ARIA支持
   - 性能优化和状态管理
 
-#### **Select 选择器组件** 
+#### **Select 选择器组件**
+
 - **位置**: `packages/ui/src/components/Select/`
 - **特性**: 功能完整的现代化选择器组件，支持单选、搜索、清除、键盘导航等高级功能
 - **核心功能**:
@@ -375,7 +380,7 @@ pnpm --filter @repo/ui run build
   - 完整的焦点管理和键盘事件处理
   - 支持组件卸载时的清理，防止内存泄漏
 - **测试**: 包含完整的单元测试，**22 个测试用例**
-- **测试状态**: **22个测试全部通过** 
+- **测试状态**: **22个测试全部通过**
 - **测试覆盖率**: **78.63% 语句覆盖率，78.37% 分支覆盖率，92.59% 函数覆盖率**
 - **覆盖的功能**:
   - 基础组件渲染和属性设置
@@ -391,7 +396,8 @@ pnpm --filter @repo/ui run build
   - 可访问性功能和ARIA支持
   - 性能优化和状态管理
 
-#### **Checkbox 复选框组件** 
+#### **Checkbox 复选框组件**
+
 - **位置**: `packages/ui/src/components/Checkbox/`
 - **特性**: 受控/非受控；不确定状态（indeterminate）；多尺寸（sm、md、lg）；多变体（default、primary、success、warning、danger）；无障碍支持与键盘导航；描述文本；禁用/只读；表单属性；响应式与高对比度
 - **API 特性**:
@@ -414,3 +420,43 @@ pnpm --filter @repo/ui run build
   - 子元素作为标签、焦点事件回调
   - 表单属性 `name`/`value`
 
+## 提交校验（Husky + lint-staged）
+
+- 已启用 pre-commit 钩子：对已暂存的文件执行代码检查与修复。
+  - `*.{ts,tsx,js,jsx}`：`eslint --fix` + `prettier -w`
+  - `*.{css,md,json}`：`prettier -w`
+- 生效条件：执行 `pnpm install` 时会自动运行 `prepare: husky` 完成钩子安装。
+
+### 日常使用
+
+```bash
+# 暂存更改
+git add -A
+
+# 按约定式提交
+git commit -m "chore(repo): setup Husky pre-commit with lint-staged"
+```
+
+- 提交时将自动运行 `lint-staged`，若存在无法自动修复的问题，提交会被阻止；修复后重新暂存和提交即可。
+
+### 常用命令
+
+```bash
+pnpm exec lint-staged --verbose   # 手动预览/执行将处理的文件
+
+git commit -m "msg" --no-verify   # 临时跳过钩子（仅应急，不推荐）
+```
+
+### 配置位置
+
+- 钩子：`.husky/pre-commit`（当前执行 `pnpm exec lint-staged`）
+- 规则：根 `package.json` 的 `lint-staged` 字段
+- 准备脚本：根 `package.json` 的 `scripts.prepare: husky`
+
+### 提交信息风格（推荐）
+
+建议采用 Conventional Commits，例如：
+
+- `feat: add Select component search and clear features`
+- `fix(chat): avoid scroll jump on new message`
+- `chore(repo): enable Husky pre-commit and lint-staged`
